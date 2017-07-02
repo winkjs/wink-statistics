@@ -218,7 +218,7 @@ by B. P. Welford.
 **Examples**
 
 ```javascript
-var sd = mean();
+var sd = stdev();
 sd.compute( 2 );
 sd.compute( 3 );
 sd.compute( 5 );
