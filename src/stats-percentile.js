@@ -2,6 +2,8 @@
 
 // Load accessor.
 var value = require( './accessor.js' );
+// Load wink helpers for validation.
+var helpers = require( 'wink-helpers' );
 
 // ### Percentile
 /**
@@ -26,6 +28,12 @@ var value = require( './accessor.js' );
  * // returns 3.75
 */
 var percentile = function ( sortedData, q, accessor ) {
+  if ( !helpers.array.isArray( sortedData ) || !sortedData.length ) {
+    throw Error( 'stats-percentile: sortedData should be an array of length > 0, instead found: ' + ( typeof sortedData ) );
+  }
+  if ( ( typeof q !== 'number' ) || ( q <= 0 ) || ( q >= 1 ) ) {
+    throw Error( 'stats-percentile: q should be a number between 0 & 1, instead found: ' + JSON.stringify( q ) );
+  }
   // Temp variables to hold dec and int part of count*quartile respectively;
   // j_1 is `j - 1`.
   var g, j, j_1; // eslint-disable-line

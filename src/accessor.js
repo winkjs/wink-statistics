@@ -35,10 +35,10 @@
  *
 */
 var value = function ( data, accessor ) {
-  return (
-    ( accessor === undefined ) ? data :
-      ( typeof accessor === 'function' ) ? accessor( data ) : data[ accessor ]
-  );
+  if ( accessor === undefined ) return data;
+  if ( typeof accessor === 'string' || typeof accessor === 'number' ) return data[ accessor ];
+  if ( typeof accessor === 'function' ) return accessor( data );
+  throw Error( 'accessor: expecting undefined, string, number, or function, instead found: ' + ( typeof accessor ) );
 }; // accessor()
 
 module.exports = value;
