@@ -109,10 +109,10 @@ Returns the [five number summary](https://en.wikipedia.org/wiki/Five-number_summ
 
 **Parameters**
 
--   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in a ascending order of value.
+-   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
 -   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
     `sortedData` is an object or an array instead of number. If it is an object
-    then it should be the property-name (string) to access the value; or if it is an array
+    then it should be the key (string) to access the value; or if it is an array
     then it should be the index (number) to access the value; or it should be a function
     that extracts the value from the element passed to it. (optional, default `undefined`)
 
@@ -122,7 +122,7 @@ Returns the [five number summary](https://en.wikipedia.org/wiki/Five-number_summ
 fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 // returns {
 //   min: 1, q1: 1.25, q2: 2.5, q3: 3.75, max: 4,
-     iqr: 2.5, range: 3, size: 8
+//   iqr: 2.5, range: 3, size: 8
 // }
 ```
 
@@ -137,7 +137,7 @@ by Eric Langford published in Journal of Statistics Education Volume 14, Number 
 
 **Parameters**
 
--   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in a ascending order of value.
+-   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
 -   `q` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — should be between 0 and 1 indicating percentile;
     for example, to get 25<sup>th</sup> percentile, it should be 0.25.
 -   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
