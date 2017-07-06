@@ -129,6 +129,28 @@ fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — 5-number summary consisting of `min`, `q1`, `median`, `q3`,
 `max` along with `iqr`, `range`, and `size`.
 
+#### mad
+
+Returns the median of the `sortedData`.
+
+**Parameters**
+
+-   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
+    `sortedData` is an object or an array instead of number. If it is an object
+    then it should be the key (string) to access the value; or if it is an array
+    then it should be the index (number) to access the value; or it should be a function
+    that extracts the value from the element passed to it. (optional, default `undefined`)
+
+**Examples**
+
+```javascript
+mad( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
+// returns 1
+```
+
+Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — median of the `sortedData`.
+
 #### median
 
 Returns the median of the `sortedData`.
@@ -145,7 +167,7 @@ Returns the median of the `sortedData`.
 **Examples**
 
 ```javascript
-fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
+median( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 // returns 2.5
 ```
 

@@ -17,7 +17,7 @@ var percentile = require( './stats-percentile.js' );
  * that extracts the value from the element passed to it.
  * @returns {number} — median of the `sortedData`.
  * @example
- * fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
+ * median( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
  * // returns 2.5
 */
 var median = function ( sortedData, accessor ) {
