@@ -129,6 +129,49 @@ fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — 5-number summary consisting of `min`, `q1`, `median`, `q3`,
 `max` along with `iqr`, `range`, and `size`.
 
+#### histogram
+
+Generates histogram using Freedman–Diaconis method.
+If IQR & MAD both are `0` then it automatically
+downgrades to Sturges' Rule while ensuring minimum 5 bins are maintained.
+The `dataPrecision` is of the `sortedData`, i.e. the minumum number of decimal
+places observed in the data. It attempts to reduce the sparsity of distribution,
+if any, by recomputing the number of bins using Sturges' Rule.
+
+**Parameters**
+
+-   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
+-   `dataPrecision` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — of the data in terms of number of decimals.
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
+    `sortedData` is an object or an array instead of number. If it is an object
+    then it should be the key (string) to access the value; or if it is an array
+    then it should be the index (number) to access the value; or it should be a function
+    that extracts the value from the element passed to it. (optional, default `undefined`)
+
+**Examples**
+
+```javascript
+var data = [
+  12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
+  31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 65
+];
+console.log( histogram( data ) );
+// returns {
+//   classes: [
+//     { min: 12, mid: '19', max: 25 },
+//     { min: 25, mid: '32', max: 38 },
+//     { min: 38, mid: '45', max: 51 },
+//     { min: 51, mid: '58', max: 64 },
+//     { min: 64, mid: '71', max: 77 } ],
+//   freq: [ 10, 10, 7, 2, 1 ],
+//   q1: 20,  q3: 40, iqr: 20, size: 30, min: 12, max: 65,range: 53
+// }
+```
+
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — histogram conatining arrays `classes` and corresponding `freq`.
+Each element of classes array is an object having `min/mid/max` values. It also
+contains additional statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.
+
 #### mad
 
 Returns the median of the `sortedData`.
