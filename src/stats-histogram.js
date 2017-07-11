@@ -153,9 +153,3 @@ var histogram = function ( sortedData, dataPrecision, accessor ) {
 }; // histogram()
 
 module.exports = histogram;
-
-var data = [
-12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
-31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 65
-];
-console.log( histogram( data ) );
