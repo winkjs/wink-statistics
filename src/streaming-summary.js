@@ -36,12 +36,12 @@
 
  *
  * @example
- * var sd = mean();
- * sd.compute( 2 );
- * sd.compute( 3 );
- * sd.compute( 5 );
- * sd.compute( 7 );
- * sd.result();
+ * var ss = mean();
+ * ss.compute( 2 );
+ * ss.compute( 3 );
+ * ss.compute( 5 );
+ * ss.compute( 7 );
+ * ss.result();
  * // returns { n: 4, min: 2, mean: 4.25, max: 7,
  * //   variance: 3.6874999999999996,
  * //   stdev: 1.920286436967152

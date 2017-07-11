@@ -155,7 +155,7 @@ var data = [
   12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
   31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 65
 ];
-console.log( histogram( data ) );
+histogram( data );
 // returns {
 //   classes: [
 //     { min: 12, mid: '19', max: 25 },
@@ -410,12 +410,12 @@ by B. P. Welford.
 **Examples**
 
 ```javascript
-var sd = mean();
-sd.compute( 2 );
-sd.compute( 3 );
-sd.compute( 5 );
-sd.compute( 7 );
-sd.result();
+var ss = mean();
+ss.compute( 2 );
+ss.compute( 3 );
+ss.compute( 5 );
+ss.compute( 7 );
+ss.result();
 // returns { n: 4, min: 2, mean: 4.25, max: 7,
 //   variance: 3.6874999999999996,
 //   stdev: 1.920286436967152

@@ -83,7 +83,7 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
  *   12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
  *   31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 65
  * ];
- * console.log( histogram( data ) );
+ * histogram( data );
  * // returns {
  * //   classes: [
  * //     { min: 12, mid: '19', max: 25 },
