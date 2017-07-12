@@ -132,20 +132,20 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 #### histogram
 
 Generates histogram using Freedman–Diaconis method.
-If IQR & MAD both are `0` then it automatically
-downgrades to Sturges' Rule while ensuring minimum 5 bins are maintained.
-The `dataPrecision` is of the `sortedData`, i.e. the minumum number of decimal
-places observed in the data. It attempts to reduce the sparsity of distribution,
-if any, by recomputing the number of bins using Sturges' Rule.
+If both IQR and MAD are `0` then it automatically
+switches to Sturges' Rule while ensuring minimum of 5 bins.
+It attempts to reduce excessive sparsity of distribution,
+if any, by adjusting the number of bins using Sturges' Rule.
 
 **Parameters**
 
 -   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
--   `dataPrecision` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — of the data in terms of number of decimals.
--   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
-    `sortedData` is an object or an array instead of number. If it is an object
-    then it should be the key (string) to access the value; or if it is an array
-    then it should be the index (number) to access the value; or it should be a function
+-   `dataPrecision` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — typically the minumum number of
+    decimal places observed in the `sortedData`. (optional, default `0`)
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — useful when elements of
+    `sortedData` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
     that extracts the value from the element passed to it. (optional, default `undefined`)
 
 **Examples**
@@ -158,19 +158,20 @@ var data = [
 histogram( data );
 // returns {
 //   classes: [
-//     { min: 12, mid: '19', max: 25 },
-//     { min: 25, mid: '32', max: 38 },
-//     { min: 38, mid: '45', max: 51 },
-//     { min: 51, mid: '58', max: 64 },
-//     { min: 64, mid: '71', max: 77 } ],
-//   freq: [ 10, 10, 7, 2, 1 ],
+//     { min: 12, mid: 19, max: 25 },
+//     { min: 25, mid: 32, max: 38 },
+//     { min: 38, mid: 45, max: 51 },
+//     { min: 51, mid: 58, max: 64 },
+//     { min: 64, mid: 71, max: 77 } ],
+//   frequencies: [ 10, 10, 7, 2, 1 ],
 //   q1: 20,  q3: 40, iqr: 20, size: 30, min: 12, max: 65,range: 53
 // }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — histogram conatining arrays `classes` and corresponding `freq`.
-Each element of classes array is an object having `min/mid/max` values. It also
-contains additional statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — conatining arrays `classes` and the corresponding `frequencies`.
+Each element of classes array is an object; it contains values for `min/max (class intervals)`
+and `mid` point of a class. In addition, the returned object
+contains useful statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.
 
 #### mad
 
