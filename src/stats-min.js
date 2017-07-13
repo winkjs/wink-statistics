@@ -62,6 +62,3 @@ var min = function ( x, accessor ) {
 }; // min()
 
 module.exports = min;
-
-console.log( min( [ 99, 1, -1, +222, 0, -99 ] ) );
-console.log( min( [ {x:33}, {x:11}, {x:44}], 'x' ) );

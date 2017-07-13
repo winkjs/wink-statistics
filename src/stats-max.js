@@ -62,6 +62,3 @@ var max = function ( x, accessor ) {
 }; // max()
 
 module.exports = max;
-
-console.log( max( [ 99, 1, -1, +222, 0, -99 ] ) );
-console.log( max( [ {x:33}, {x:11}, {x:44}], 'x' ) );
