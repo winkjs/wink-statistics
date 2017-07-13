@@ -112,7 +112,7 @@ including computation of notches and outliers.
 
 -   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
 -   `coeff` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — used for outliers computation. (optional, default `1.5`)
--   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — useful when elements of
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
     `sortedData` are objects or arrays instead of numbers.
     For objects, use key (string) to access the value; in case of arrays, use
     index (number) to access the value; or it could be a function
@@ -180,7 +180,7 @@ if any, by adjusting the number of bins using Sturges' Rule.
 -   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
 -   `dataPrecision` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — typically the minumum number of
     decimal places observed in the `sortedData`. (optional, default `0`)
--   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — useful when elements of
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
     `sortedData` are objects or arrays instead of numbers.
     For objects, use key (string) to access the value; in case of arrays, use
     index (number) to access the value; or it could be a function
@@ -233,6 +233,30 @@ mad( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — median of the `sortedData`.
 
+#### max
+
+Finds the maximum value in the `x` array.
+
+**Parameters**
+
+-   `x` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — array containing 1 or more elements.
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
+    `x` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
+    that extracts the value from the element passed to it. (optional, default `undefined`)
+
+**Examples**
+
+```javascript
+max( [ 99, 1, -1, +222, 0, -99 ] )
+// returns 222
+max( [ { x: 33 }, { x: 11 }, { x:44 } ], 'x' )
+// returns 44
+```
+
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — maximum value from array `x`.
+
 #### median
 
 Returns the median of the `sortedData`.
@@ -254,6 +278,30 @@ median( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 ```
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — median of the `sortedData`.
+
+#### min
+
+Finds the minimum value in the `x` array.
+
+**Parameters**
+
+-   `x` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — array containing 1 or more elements.
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
+    `x` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
+    that extracts the value from the element passed to it. (optional, default `undefined`)
+
+**Examples**
+
+```javascript
+min( [ 99, 1, -1, +222, 0, -99 ] )
+// returns -99
+min( [ { x: 33 }, { x: 11 }, { x:44 } ], 'x' )
+// returns 11
+```
+
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — minimum value from array `x`.
 
 #### percentile
 

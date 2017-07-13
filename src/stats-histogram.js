@@ -92,7 +92,7 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {number} [dataPrecision=0] — typically the minumum number of
  * decimal places observed in the `sortedData`.
- * @param {(string|number|function)} [accessor=undefined] — useful when elements of
+ * @param {(string|number|function)} [accessor=undefined] — required when elements of
  * `sortedData` are objects or arrays instead of numbers.
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
