@@ -257,6 +257,31 @@ max( [ { x: 33 }, { x: 11 }, { x:44 } ], 'x' )
 
 Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — maximum value from array `x`.
 
+#### mean
+
+Comuptes the mean of numbers contained in the `x` array. It is computed
+using method proposed by B. P. Welford.
+
+**Parameters**
+
+-   `x` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — array containing 1 or more elements.
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
+    `x` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
+    that extracts the value from the element passed to it. (optional, default `undefined`)
+
+**Examples**
+
+```javascript
+mean( [ 2, 3, 5, 7 ] )
+// returns 4.25
+mean( [ { x: 2 }, { x: 3 }, { x: 5 }, { x: 7 } ], 'x' )
+// returns 4.25
+```
+
+Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — mean value.
+
 #### median
 
 Returns the median of the `sortedData`.
