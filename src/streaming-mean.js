@@ -25,14 +25,15 @@
 // ### mean
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
- * Use `compute()` to continuously determine the **mean** value of data items passed to it in real-time.
- * Probe the mean anytime using `result()`, which may be reset via `reset()`. The `result()` returns
- * an object containing `mean` along with `size` of data. The computations are carried out using method pioneered
- * by B. P. Welford.
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
  *
- * @return {object} — containing `compute`, `result`, and `reset` functions.
-
+ * Use `compute()` to continuously determine the **mean** aka average value of data items passed to it in real-time.
+ * Probe the mean anytime using `value()`, which may be reset via `reset()`.
+ * The computations are carried out using method pioneered by B. P. Welford.
+ *
+ * The `result()` returns an object containing sample `mean` along with `size` of data.
+ *
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
  *
  * @example
  * var avg = mean();
@@ -40,6 +41,8 @@
  * avg.compute( 3 );
  * avg.compute( 5 );
  * avg.compute( 7 );
+ * avg.value();
+ * // returns 4.25
  * avg.result();
  * // returns { n: 4, mean: 4.25 }
  */
@@ -54,8 +57,15 @@ var mean = function () {
     return undefined;
   }; // compute()
 
+  methods.value = function () {
+    return mean1;
+  }; // value()
+
   methods.result = function () {
-    return { size: items, mean: mean1 };
+    var obj = Object.create( null );
+    obj.size = items;
+    obj.mean = mean1;
+    return obj;
   }; // result()
 
   methods.reset = function () {

@@ -25,18 +25,20 @@
 // ### min
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
- * Use `compute()` to continuously determine the **minimum** value of data items passed to it in real-time.
- * Probe the minimum value anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
- * an object containing `min` of data.
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
  *
- * @return {object} — containing `compute`, `result`, and `reset` functions.
-
+ * Use `compute()` to continuously determine the **minimum** value of data items passed to it in real-time.
+ * Probe the minimum anytime using `value()`, which may be reset via `reset()`.
+ * The `result()` returns an object containing `min`.
+ *
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
  *
  * @example
  * var minimum = min();
  * minimum.compute( 3 );
  * minimum.compute( 6 );
+ * minimum.value();
+ * // returns 3
  * minimum.result();
  * // returns { min: 3 }
  */
@@ -49,8 +51,14 @@ var min = function () {
     return undefined;
   }; // compute()
 
+  methods.value = function () {
+    return minimum;
+  }; // value()
+
   methods.result = function () {
-    return { min: minimum };
+    var obj = Object.create( null );
+    obj.min = minimum;
+    return obj;
   }; // result()
 
   methods.reset = function () {

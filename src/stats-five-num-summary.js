@@ -44,28 +44,22 @@ var percentile = require( './stats-percentile.js' );
  * @example
  * fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
  * // returns {
- * //   min: 1, q1: 1.25, q2: 2.5, q3: 3.75, max: 4,
- * //   iqr: 2.5, range: 3, size: 8
+ * //   q1: 1.25, median: 2.5, q3: 3.75, iqr: 2.5,
+ * //   size: 8, min: 1, max: 4, range: 3
  * // }
 */
 var fiveNumSummary = function ( sortedData, accessor ) {
-  var q1 = percentile( sortedData, 0.25, accessor );
-  var median = percentile( sortedData, 0.50, accessor );
-  var q3 = percentile( sortedData, 0.75, accessor );
-  var min = value( sortedData[ 0 ], accessor );
-  var size = sortedData.length;
-  var max = value( sortedData[ size - 1 ], accessor );
+  var fns = Object.create( null );
+  fns.q1 = percentile( sortedData, 0.25, accessor );
+  fns.median = percentile( sortedData, 0.50, accessor );
+  fns.q3 = percentile( sortedData, 0.75, accessor );
+  fns.iqr = fns.q3 - fns.q1;
+  fns.size = sortedData.length;
+  fns.min = value( sortedData[ 0 ], accessor );
+  fns.max = value( sortedData[ fns.size - 1 ], accessor );
+  fns.range = fns.max - fns.min;
 
-  return ( {
-    min: min,
-    q1: q1,
-    median: median,
-    q3: q3,
-    max: max,
-    iqr: ( q3 - q1 ),
-    range: ( max - min ),
-    size: size
-  } );
+  return ( fns );
 }; // fiveNumSummary()
 
 module.exports = fiveNumSummary;

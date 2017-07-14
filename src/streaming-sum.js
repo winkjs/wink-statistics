@@ -25,13 +25,14 @@
 // ### sum
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
- * Use `compute()` to continuously determine the **minimum** value of data items passed to it in real-time.
- * Probe the sum anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
- * an object containing `sum` of data, which has been compensated for floating point errors using Neumaier Method.
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
  *
- * @return {object} — containing `compute`, `result`, and `reset` functions.
-
+ * Use `compute()` to continuously determine the **sum** of data items passed to it in real-time.
+ * Probe the sum anytime using `value()`, which may be reset via `reset()`. The sum
+ * is compensated for floating point errors using Neumaier Method.
+ * The `result()` returns an object containing `sum`.
+ *
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
  *
  * @example
  * var addition = sum();
@@ -39,6 +40,8 @@
  * addition.compute( 10e+100 );
  * addition.compute( 1 );
  * addition.compute( -10e+100 );
+ * addition.value();
+ * // returns 2
  * addition.result();
  * // returns { sum: 2 }
  */
@@ -62,6 +65,10 @@ var sum = function () {
   }
   return undefined;
   }; // compute()
+
+  methods.value = function () {
+   return ( total + compensation );
+ }; // value()
 
   methods.result = function () {
    return { sum: total + compensation };

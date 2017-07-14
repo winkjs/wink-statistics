@@ -45,7 +45,7 @@ var mad = require( './stats-mad.js' );
  * then it should be the key (string) to access the value; or if it is an array
  * then it should be the index (number) to access the value; or it should be a function
  * that extracts the value from the element passed to it.
- * @returns {object} — histogram conatining arrays `classes` and corresponding `freq`.
+ * @returns {object} — histogram conatining arrays `classes` and corresponding `frequencies`.
  * Each element of classes array is an object having `min/mid/max` values.
  * @private
 */
@@ -54,7 +54,8 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
   var cutoff, i, k, limit, mid, min;
   // Hold x axis and y axis values.
   var x, y;
-
+  // Distribution object.
+  var dist = Object.create( null );
 
   // Find distribution now.
   x = new Array( bins );
@@ -77,7 +78,10 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
       y[ k ] += 1;
     }
   }
-  return ( { classes: x, frequencies: y } );
+
+  dist.classes = x;
+  dist.frequencies = y;
+  return ( dist );
 }; // distribution()
 
 
@@ -152,7 +156,7 @@ var histogram = function ( sortedData, dataPrecision, accessor ) {
     histo = distribution( bins, binWidth, sortedData, rs, precision, accessor );
     // Check how sparse is the distribution - # of 0s > 20% of the total frequencies.
     // If yes then attempt its reduction by using the Sturges' Rule (as above).
-    if ( histo.freq.filter( function ( e ) { return ( e === 0 ); } ).length > histo.freq.length * 0.20 ) { // eslint-disable-line
+    if ( histo.frequencies.filter( function ( e ) { return ( e === 0 ); } ).length > histo.frequencies.length * 0.20 ) { // eslint-disable-line
       // Sparse! Apply Sturge's Rule now.
       bins = Math.max( Math.ceil( Math.log2( rs.size ) + 1 ), 5 );
       binWidth = rs.range /  bins;

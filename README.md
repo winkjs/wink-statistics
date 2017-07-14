@@ -159,8 +159,8 @@ Returns the [five number summary](https://en.wikipedia.org/wiki/Five-number_summ
 ```javascript
 fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
 // returns {
-//   min: 1, q1: 1.25, q2: 2.5, q3: 3.75, max: 4,
-//   iqr: 2.5, range: 3, size: 8
+//   q1: 1.25, median: 2.5, q3: 3.75, iqr: 2.5,
+//   size: 8, min: 1, max: 4, range: 3
 // }
 ```
 
@@ -364,8 +364,8 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 It is a higher order function that returns an object containing `build()`, `result()`, and `reset()` functions.
 Use `build()` to construct a frequency table from value of data items passed to it in real-time.
-Probe a set of statistic anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
-an object containing the frequency `table` sorted in descending order of category counts or frequency, along
+Probe the object containing data-item/frequency pairs using `value()`, which may be reset via `reset()`.
+The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
 with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
 `entropy`.
 
@@ -385,6 +385,8 @@ ft.build( 'Pepsi' );
 ft.build( 'Gin' );
 ft.build( 'Coke' );
 ft.build( 'Coke' );
+ft.value();
+// returns { Tea: 3, Pepsi: 2, Gin: 1, Coke: 2 }
 ft.result();
 // returns {
 //  table: [
@@ -401,14 +403,15 @@ ft.result();
 // }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 #### max
 
-It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
+It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+
 Use `compute()` to continuously determine the **maximum** value of data items passed to it in real-time.
-Probe the maximum value anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
-an object containing `max` of data.
+Probe the maximum anytime using `value()`, which may be reset via `reset()`.
+The `result()` returns an object containing `max`.
 
 **Examples**
 
@@ -416,19 +419,23 @@ an object containing `max` of data.
 var maximum = max();
 maximum.compute( 3 );
 maximum.compute( 6 );
+maximum.value();
+// returns 6
 maximum.result();
-// returns { min: 6 }
+// returns { max: 6 }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 #### mean
 
-It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
-Use `compute()` to continuously determine the **mean** value of data items passed to it in real-time.
-Probe the mean anytime using `result()`, which may be reset via `reset()`. The `result()` returns
-an object containing `mean` along with `size` of data. The computations are carried out using method pioneered
-by B. P. Welford.
+It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+
+Use `compute()` to continuously determine the **mean** aka average value of data items passed to it in real-time.
+Probe the mean anytime using `value()`, which may be reset via `reset()`.
+The computations are carried out using method pioneered by B. P. Welford.
+
+The `result()` returns an object containing sample `mean` along with `size` of data.
 
 **Examples**
 
@@ -438,18 +445,21 @@ avg.compute( 2 );
 avg.compute( 3 );
 avg.compute( 5 );
 avg.compute( 7 );
+avg.value();
+// returns 4.25
 avg.result();
 // returns { n: 4, mean: 4.25 }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 #### min
 
-It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
+It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+
 Use `compute()` to continuously determine the **minimum** value of data items passed to it in real-time.
-Probe the minimum value anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
-an object containing `min` of data.
+Probe the minimum anytime using `value()`, which may be reset via `reset()`.
+The `result()` returns an object containing `min`.
 
 **Examples**
 
@@ -457,20 +467,25 @@ an object containing `min` of data.
 var minimum = min();
 minimum.compute( 3 );
 minimum.compute( 6 );
+minimum.value();
+// returns 3
 minimum.result();
 // returns { min: 3 }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 #### stdev
 
-It is a higher order function that returns an object containing `compute()`, `result()`, `resultPE()`, and `reset()` functions.
+It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+
 Use `compute()` to continuously determine the **standard deviation** value of data items passed to it in real-time.
-Probe the standard deviation anytime using `result()`, which may be reset via `reset()`. The `result()` returns
-an object containing `stdev` along with `variance`, `mean`, and `size` of data. Use `resultPE()` to
-obtain the population estimate of variance and standard deviation. The computations are carried out using method pioneered
-by B. P. Welford.
+Probe the sample standard deviation anytime using `value()`, which may be reset via `reset()`.
+The computations are carried out using method pioneered by B. P. Welford.
+
+The `result()` returns an object containing sample `stdev` along with
+sample `variance`, `mean`, and `size` of data; it also
+contains population standard deviation and variance as `stdevp` and `variancep`.
 
 **Examples**
 
@@ -480,21 +495,27 @@ sd.compute( 2 );
 sd.compute( 3 );
 sd.compute( 5 );
 sd.compute( 7 );
+sd.value();
+// returns 2.217355782608345
 sd.result();
-// returns { n: 4, mean: 4.25,
-//   variance: 3.6874999999999996,
-//   stdev: 1.920286436967152
+// returns { size: 4, mean: 4.25,
+//   variance: 4.916666666666666,
+//   stdev: 2.217355782608345,
+//   variancep: 3.6874999999999996,
+//   stdevp: 1.920286436967152
 // }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, `resultPE`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 #### sum
 
-It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
-Use `compute()` to continuously determine the **minimum** value of data items passed to it in real-time.
-Probe the sum anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
-an object containing `sum` of data, which has been compensated for floating point errors using Neumaier Method.
+It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+
+Use `compute()` to continuously determine the **sum** of data items passed to it in real-time.
+Probe the sum anytime using `value()`, which may be reset via `reset()`. The sum
+is compensated for floating point errors using Neumaier Method.
+The `result()` returns an object containing `sum`.
 
 **Examples**
 
@@ -504,37 +525,45 @@ addition.compute( 1 );
 addition.compute( 10e+100 );
 addition.compute( 1 );
 addition.compute( -10e+100 );
+addition.value();
+// returns 2
 addition.result();
 // returns { sum: 2 }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 #### summary
 
-It is a higher order function that returns an object containing `compute()`, `result()`, `resultPE()`, and `reset()` functions.
-Use `compute()` to continuously determine the basic **summary statistics** value of data items passed to it in real-time.
-Probe the summary statistics anytime using `result()`, which may be reset via `reset()`. The `result()` returns
-an object containing `stdev`, `variance`, `mean`, `size`, `min`, and `max` of data. Use `resultPE()` to
-obtain the population estimate of variance and standard deviation. The computations are carried out using method pioneered
-by B. P. Welford.
+It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+
+Use `compute()` to continuously determine the **summary statistics** of data items passed to it in real-time.
+Probe the sample summary statistics anytime using `value()`, which may be reset via `reset()`. The
+`result()` is also an alias of `value()`.
+The computations are carried out using method pioneered by B. P. Welford.
+
+The summary statistics is an object containing `size`, `min`, `mean`, `max`, sample `stdev` along with
+sample `variance` of data; it also
+contains population standard deviation and variance as `stdevp` and `variancep`.
 
 **Examples**
 
 ```javascript
-var ss = mean();
+var ss = summary();
 ss.compute( 2 );
 ss.compute( 3 );
 ss.compute( 5 );
 ss.compute( 7 );
 ss.result();
-// returns { n: 4, min: 2, mean: 4.25, max: 7,
-//   variance: 3.6874999999999996,
-//   stdev: 1.920286436967152
+// returns { size: 4, min: 2, mean: 4.25, max: 7,
+//   variance: 4.916666666666666,
+//   stdev: 2.217355782608345,
+//   variancep: 3.6874999999999996,
+//   stdevp: 1.920286436967152
 // }
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `result`, `resultPE`, and `reset` functions.
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — containing `compute`, `value`, `result`, and `reset` functions.
 
 ## Need Help?
 

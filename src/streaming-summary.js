@@ -25,26 +25,31 @@
 // ### summary
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `result()`, `resultPE()`, and `reset()` functions.
- * Use `compute()` to continuously determine the basic **summary statistics** value of data items passed to it in real-time.
- * Probe the summary statistics anytime using `result()`, which may be reset via `reset()`. The `result()` returns
- * an object containing `stdev`, `variance`, `mean`, `size`, `min`, and `max` of data. Use `resultPE()` to
- * obtain the population estimate of variance and standard deviation. The computations are carried out using method pioneered
- * by B. P. Welford.
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
  *
- * @return {object} — containing `compute`, `result`, `resultPE`, and `reset` functions.
-
+ * Use `compute()` to continuously determine the **summary statistics** of data items passed to it in real-time.
+ * Probe the sample summary statistics anytime using `value()`, which may be reset via `reset()`. The
+ * `result()` is also an alias of `value()`.
+ * The computations are carried out using method pioneered by B. P. Welford.
+ *
+ * The summary statistics is an object containing `size`, `min`, `mean`, `max`, sample `stdev` along with
+ * sample `variance` of data; it also
+ * contains population standard deviation and variance as `stdevp` and `variancep`.
+ *
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
  *
  * @example
- * var ss = mean();
+ * var ss = summary();
  * ss.compute( 2 );
  * ss.compute( 3 );
  * ss.compute( 5 );
  * ss.compute( 7 );
  * ss.result();
- * // returns { n: 4, min: 2, mean: 4.25, max: 7,
- * //   variance: 3.6874999999999996,
- * //   stdev: 1.920286436967152
+ * // returns { size: 4, min: 2, mean: 4.25, max: 7,
+ * //   variance: 4.916666666666666,
+ * //   stdev: 2.217355782608345,
+ * //   variancep: 3.6874999999999996,
+ * //   stdevp: 1.920286436967152
  * // }
  */
 var summary = function () {
@@ -68,17 +73,24 @@ var summary = function () {
 
   // This returns the sample's variance and standard deviation.
   methods.result = function () {
-    var variance = varianceXn / items;
-    var stdev = Math.sqrt( variance );
-    return { size: items, min: min, mean: mean, max: max, variance: variance, stdev: stdev };
+    var smmry = Object.create( null );
+    var variance = ( items > 1 ) ? ( varianceXn / ( items - 1 ) ) : 0;
+    var variancep = ( items ) ? ( varianceXn / items ) : 0;
+
+    smmry.size = items;
+    smmry.min = min;
+    smmry.mean = mean;
+    smmry.max = max;
+    smmry.variance = variance;
+    smmry.stdev = Math.sqrt( variance );
+    smmry.variancep = variancep;
+    smmry.stdevp = Math.sqrt( variancep );
+
+    return smmry;
   }; // result()
 
-  // This returns population estimate of variance and standard deviation.
-  methods.resultPE = function () {
-    var variance = ( items ) ? ( varianceXn / ( items - 1 ) ) : 0;
-    var stdev = Math.sqrt( variance );
-    return { size: items, min: min, mean: mean, max: max, variance: variance, stdev: stdev };
-  }; // resultPE()
+  // There is no single summary value; create an alias!
+  methods.value = methods.result;
 
   methods.reset = function () {
     mean = 0;

@@ -30,8 +30,8 @@ var helpers = require( 'wink-helpers' );
  *
  * It is a higher order function that returns an object containing `build()`, `result()`, and `reset()` functions.
  * Use `build()` to construct a frequency table from value of data items passed to it in real-time.
- * Probe a set of statistic anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
- * an object containing the frequency `table` sorted in descending order of category counts or frequency, along
+ * Probe the object containing data-item/frequency pairs using `value()`, which may be reset via `reset()`.
+ * The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
  * with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
  * `entropy`.
  *
@@ -39,7 +39,7 @@ var helpers = require( 'wink-helpers' );
  * `percentage` in `table` give the percentage of a category count against the `sum`; and `expected` is the count
  * assuming an uniform distribution.
  *
- * @return {object} — containing `compute`, `result`, and `reset` functions.
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
 
  *
  * @example
@@ -52,6 +52,8 @@ var helpers = require( 'wink-helpers' );
  * ft.build( 'Gin' );
  * ft.build( 'Coke' );
  * ft.build( 'Coke' );
+ * ft.value();
+ * // returns { Tea: 3, Pepsi: 2, Gin: 1, Coke: 2 }
  * ft.result();
  * // returns {
  * //  table: [
@@ -78,6 +80,10 @@ var freqTable = function () {
     return undefined;
   }; // compute()
 
+  methods.value = function () {
+    return obj;
+  }; // value()
+
   methods.result = function () {
     var t = helpers.object.table( obj );
     var imax = t.length;
@@ -87,6 +93,8 @@ var freqTable = function () {
     var entropy = 0;
     var p;
     var diff;
+    var ft = Object.create( null );
+
     t.sort( helpers.array.descendingOnValue );
     for ( var i = 0;  i < imax; i += 1 ) {
       table[ i ] = Object.create( null );
@@ -99,14 +107,15 @@ var freqTable = function () {
       x2 += ( diff * ( diff / expectedVal ) );
       entropy += -p * Math.log2( p );
     }
-    return {
-      table: table,
-      size: imax,
-      sum: sum,
-      x2: +x2.toFixed( 3 ),
-      df: ( imax - 1 ),
-      entropy: entropy
-    };
+
+    ft.table = table;
+    ft.size = imax;
+    ft.sum = sum;
+    ft.x2 = +x2.toFixed( 3 );
+    ft.df = ( imax - 1 );
+    ft.entropy = entropy;
+
+    return ft;
   }; // result()
 
   methods.reset = function () {

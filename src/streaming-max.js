@@ -25,20 +25,22 @@
 // ### max
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `result()`, and `reset()` functions.
- * Use `compute()` to continuously determine the **maximum** value of data items passed to it in real-time.
- * Probe the maximum value anytime using `result()`, which may be reset via `reset()`.  The `result()` returns
- * an object containing `max` of data.
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
  *
- * @return {object} — containing `compute`, `result`, and `reset` functions.
-
+ * Use `compute()` to continuously determine the **maximum** value of data items passed to it in real-time.
+ * Probe the maximum anytime using `value()`, which may be reset via `reset()`.
+ * The `result()` returns an object containing `max`.
+ *
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
  *
  * @example
  * var maximum = max();
  * maximum.compute( 3 );
  * maximum.compute( 6 );
+ * maximum.value();
+ * // returns 6
  * maximum.result();
- * // returns { min: 6 }
+ * // returns { max: 6 }
  */
 var max = function () {
   var maximum = -Infinity;
@@ -49,8 +51,14 @@ var max = function () {
     return undefined;
   }; // compute()
 
+  methods.value = function () {
+    return maximum;
+  }; // value()
+
   methods.result = function () {
-    return { max: maximum };
+    var obj = Object.create( null );
+    obj.max = maximum;
+    return obj;
   }; // result()
 
   methods.reset = function () {
@@ -60,4 +68,4 @@ var max = function () {
   return methods;
 }; // max()
 
- module.exports = max;
+module.exports = max;

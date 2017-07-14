@@ -25,15 +25,17 @@
 // ### stdev
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `result()`, `resultPE()`, and `reset()` functions.
- * Use `compute()` to continuously determine the **standard deviation** value of data items passed to it in real-time.
- * Probe the standard deviation anytime using `result()`, which may be reset via `reset()`. The `result()` returns
- * an object containing `stdev` along with `variance`, `mean`, and `size` of data. Use `resultPE()` to
- * obtain the population estimate of variance and standard deviation. The computations are carried out using method pioneered
- * by B. P. Welford.
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
  *
- * @return {object} — containing `compute`, `result`, `resultPE`, and `reset` functions.
-
+ * Use `compute()` to continuously determine the **standard deviation** value of data items passed to it in real-time.
+ * Probe the sample standard deviation anytime using `value()`, which may be reset via `reset()`.
+ * The computations are carried out using method pioneered by B. P. Welford.
+ *
+ * The `result()` returns an object containing sample `stdev` along with
+ * sample `variance`, `mean`, and `size` of data; it also
+ * contains population standard deviation and variance as `stdevp` and `variancep`.
+ *
+ * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
  *
  * @example
  * var sd = stdev();
@@ -41,10 +43,14 @@
  * sd.compute( 3 );
  * sd.compute( 5 );
  * sd.compute( 7 );
+ * sd.value();
+ * // returns 2.217355782608345
  * sd.result();
- * // returns { n: 4, mean: 4.25,
- * //   variance: 3.6874999999999996,
- * //   stdev: 1.920286436967152
+ * // returns { size: 4, mean: 4.25,
+ * //   variance: 4.916666666666666,
+ * //   stdev: 2.217355782608345,
+ * //   variancep: 3.6874999999999996,
+ * //   stdevp: 1.920286436967152
  * // }
  */
 var stdev = function () {
@@ -62,19 +68,28 @@ var stdev = function () {
     return undefined;
   }; // compute()
 
-  // This returns the sample's variance and standard deviation.
-  methods.result = function () {
-    var variance = varianceXn / items;
-    var stdev1 = Math.sqrt( variance );
-    return { size: items, mean: mean, variance: variance, stdev: stdev1 };
-  }; // result()
+  // This returns the sample standard deviation.
+  methods.value = function () {
+    return ( items > 1 ) ? Math.sqrt( varianceXn / ( items - 1 ) ) : 0;
+  }; // value()
 
-  // This returns population estimate of variance and standard deviation.
-  methods.resultPE = function () {
-    var variance = ( items ) ? ( varianceXn / ( items - 1 ) ) : 0;
-    var stdev1 = Math.sqrt( variance );
-    return { size: items, mean: mean, variance: variance, stdev: stdev1 };
-  }; // resultPE()
+  // This returns the sample standard deviation along with host of other statistics.
+  methods.result = function () {
+    var obj = Object.create( null );
+    var variance = ( items > 1 ) ? ( varianceXn / ( items - 1 ) ) : 0;
+    var variancep = ( items ) ? ( varianceXn / items ) : 0;
+
+    obj.size = items;
+    obj.mean = mean;
+    // Sample variance & standard deviation.
+    obj.variance = variance;
+    obj.stdev = Math.sqrt( variance );
+    // Population variance & standard deviation.
+    obj.variancep = variancep;
+    obj.stdevp = Math.sqrt( variancep );
+
+    return obj;
+  }; // result()
 
   methods.reset = function () {
     mean = 0;
