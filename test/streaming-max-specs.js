@@ -23,28 +23,28 @@
 //
 var chai = require( 'chai' );
 var mocha = require( 'mocha' );
-var min = require( '../src/streaming-min.js' )();
+var max = require( '../src/streaming-max.js' )();
 
 var expect = chai.expect;
 var describe = mocha.describe;
 var it = mocha.it;
 
-describe( 'streaming-min', function () {
+describe( 'streaming-max', function () {
   var data1 = [ 6, 90, -1, 22, -12, 0, 10 ];
   var data2 = [ 3, 6 ];
   var i;
 
-  it( 'should return minimum -12 & 3 respectively with data1 & data2 respectively', function () {
+  it( 'should return maximum 90 & 6 respectively with data1 & data2 respectively', function () {
     for ( i = 0; i < data1.length; i += 1 ) {
-      min.compute( data1[ i ] );
+      max.compute( data1[ i ] );
     }
-    expect( min.result().min ).to.deep.equal( min.value() );
-    expect( min.value() ).to.equal( -12 );
-    min.reset();
+    expect( max.result().max ).to.deep.equal( max.value() );
+    expect( max.value() ).to.equal( 90 );
+    max.reset();
     for ( i = 0; i < data2.length; i += 1 ) {
-      min.compute( data2[ i ] );
+      max.compute( data2[ i ] );
     }
-    expect( min.result().min ).to.deep.equal( min.value() );
-    expect( min.value() ).to.equal( 3 );
+    expect( max.result().max ).to.deep.equal( max.value() );
+    expect( max.value() ).to.equal( 6 );
   } );
 } );

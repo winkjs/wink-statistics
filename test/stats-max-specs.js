@@ -23,28 +23,27 @@
 //
 var chai = require( 'chai' );
 var mocha = require( 'mocha' );
-var min = require( '../src/streaming-min.js' )();
+var max = require( '../src/stats-max.js' );
 
 var expect = chai.expect;
 var describe = mocha.describe;
 var it = mocha.it;
 
-describe( 'streaming-min', function () {
+describe( 'stats-max normal behaviour', function () {
   var data1 = [ 6, 90, -1, 22, -12, 0, 10 ];
-  var data2 = [ 3, 6 ];
-  var i;
+  var data2 = [ { x: 3 }, { x: 6 } ];
 
-  it( 'should return minimum -12 & 3 respectively with data1 & data2 respectively', function () {
-    for ( i = 0; i < data1.length; i += 1 ) {
-      min.compute( data1[ i ] );
-    }
-    expect( min.result().min ).to.deep.equal( min.value() );
-    expect( min.value() ).to.equal( -12 );
-    min.reset();
-    for ( i = 0; i < data2.length; i += 1 ) {
-      min.compute( data2[ i ] );
-    }
-    expect( min.result().min ).to.deep.equal( min.value() );
-    expect( min.value() ).to.equal( 3 );
+  it( 'should return maximum 90 respectively with data1', function () {
+    expect( max( data1 ) ).to.equal( 90 );
+    expect( max( data2, 'x' ) ).to.equal( 6 );
+    expect( max( data2, ( e ) =>  e.x ) ).to.equal( 6 );
+  } );
+} );
+
+describe( 'stats-max error behaviour', function () {
+  it( 'should throw error with wrong data-type or empty array', function () {
+    expect( () => max( 3 ) ).to.throw( 'stats-max: x should be an array of length > 0, instead found' );
+    expect( () => max( [] ) ).to.throw( 'stats-max: x should be an array of length > 0, instead found' );
+    expect( () => max( [ { x: 3 } ], {} ) ).to.throw( 'accessor: expecting undefined, string, number, or function, instead found: object' );
   } );
 } );
