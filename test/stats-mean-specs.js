@@ -23,28 +23,27 @@
 //
 var chai = require( 'chai' );
 var mocha = require( 'mocha' );
-var sum = require( '../src/streaming-sum.js' )();
+var mean = require( '../src/stats-mean.js' );
 
 var expect = chai.expect;
 var describe = mocha.describe;
 var it = mocha.it;
 
-describe( 'streaming-sum', function () {
+describe( 'stats-mean normal behaviour', function () {
   var data1 = [ 6, 90, -1, 22, -12, 0, 10 ];
-  var data2 = [ 1, 10e+100, 1, -10e+100 ];
-  var i;
+  var data2 = [ { x: 2 }, { x: 3 }, { x: 5 }, { x: 7 } ];
 
-  it( 'should return minimum 115 & 2 respectively with data1 & data2 respectively', function () {
-    for ( i = 0; i < data1.length; i += 1 ) {
-      sum.compute( data1[ i ] );
-    }
-    expect( sum.result().sum ).to.deep.equal( sum.value() );
-    expect( sum.value() ).to.equal( 115 );
-    sum.reset();
-    for ( i = 0; i < data2.length; i += 1 ) {
-      sum.compute( data2[ i ] );
-    }
-    expect( sum.result().sum ).to.deep.equal( sum.value() );
-    expect( sum.value() ).to.equal( 2 );
+  it( 'should return minimum 16.43 & 4.25 respectively with data1 & data2 respectively', function () {
+    expect( +mean( data1 ).toFixed( 2 ) ).to.equal( 16.43 );
+    expect( mean( data2, 'x' ) ).to.equal( 4.25 );
+    expect( mean( data2, ( e ) =>  e.x ) ).to.equal( 4.25 );
+  } );
+} );
+
+describe( 'stats-max error behaviour', function () {
+  it( 'should throw error with wrong data-type or empty array', function () {
+    expect( () => mean( 3 ) ).to.throw( 'stats-mean: x should be an array of length > 0, instead found' );
+    expect( () => mean( [] ) ).to.throw( 'stats-mean: x should be an array of length > 0, instead found' );
+    expect( () => mean( [ { x: 3 } ], {} ) ).to.throw( 'accessor: expecting undefined, string, number, or function, instead found: object' );
   } );
 } );
