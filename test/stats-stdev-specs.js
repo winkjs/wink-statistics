@@ -33,7 +33,7 @@ describe( 'stats-stdv normal behaviour', function () {
   var data1 = [ 6, 90, -1, 22, -12, 0, 10 ];
   var data2 = [ { x: 2 }, { x: 3 }, { x: 5 }, { x: 7 } ];
 
-  it( 'should return minimum 34.1 & 2.22 respectively with data1 & data2 respectively', function () {
+  it( 'should return minimum 34.1, 2.22, 0 respectively with data1, data2, [ 99 ] respectively', function () {
     expect( +stdev( data1 ).toFixed( 2 ) ).to.equal( 34.1 );
     expect( +stdev( data2, 'x' ).toFixed( 2 ) ).to.equal( 2.22 );
     expect( +stdev( data2, ( e ) =>  e.x ).toFixed( 2 ) ).to.equal( 2.22 );
