@@ -120,6 +120,7 @@ var freqTable = function () {
 
   methods.reset = function () {
     obj = Object.create( null );
+    sum = 0;
   }; // reset()
 
   methods.compute = methods.build;
