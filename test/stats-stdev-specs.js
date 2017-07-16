@@ -37,7 +37,7 @@ describe( 'stats-stdv normal behaviour', function () {
     expect( +stdev( data1 ).toFixed( 2 ) ).to.equal( 34.1 );
     expect( +stdev( data2, 'x' ).toFixed( 2 ) ).to.equal( 2.22 );
     expect( +stdev( data2, ( e ) =>  e.x ).toFixed( 2 ) ).to.equal( 2.22 );
-
+    expect( +stdev( [ 99 ] ) ).to.equal( 0 );
   } );
 } );
 
