@@ -25,9 +25,9 @@
 // ### accessor
 /**
  *
+ * @private 
  * Returns the value from `data` that is accessed via `accessor`.
  *
- * @private
  * @param {number} data — from where a value is extracted using `accessor`.
  * @param {(string|function)} [accessor=undefined] — It should be a property-name
  * contained in `data` or function; `undefined` means the `data` is returned as-is.

@@ -483,8 +483,8 @@ Use `compute()` to continuously determine the **standard deviation** value of da
 Probe the sample standard deviation anytime using `value()`, which may be reset via `reset()`.
 The computations are carried out using method pioneered by B. P. Welford.
 
-The `result()` returns an object containing sample `stdev` along with
-sample `variance`, `mean`, and `size` of data; it also
+The `result()` returns an object containing sample `stdev` and
+`variance`, along with `mean`, `size` of data; it also
 contains population standard deviation and variance as `stdevp` and `variancep`.
 
 **Examples**
