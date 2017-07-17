@@ -50,6 +50,12 @@
  * // returns 0.5
  */
 var aggregate = function ( pa1, pa2 ) {
+  if ( ( typeof pa1 !== 'number' ) || ( pa1 < 0 ) || ( pa1 > 1 ) ) {
+    throw Error( 'probability-aggregate: pa1 should be a number between 0 & 1, instead found: ' + JSON.stringify( pa1 ) );
+  }
+  if ( ( typeof pa2 !== 'number' ) || ( pa2 < 0 ) || ( pa2 > 1 ) ) {
+    throw Error( 'probability-aggregate: pa2 should be a number between 0 & 1, instead found: ' + JSON.stringify( pa2 ) );
+  }
   return ( ( pa1 * pa2 ) / ( ( pa1 * pa2 ) + ( ( 1 - pa1 ) * ( 1 - pa2 ) ) ) );
 }; // aggregate()
 
