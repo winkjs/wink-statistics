@@ -28,8 +28,8 @@ var varianceXn = require( './stats-varianceXn.js' );
 // ### stdev
 /**
  *
- * Comuptes the sample standard deviation of numbers contained in the `x` array. It is computed
- * using method proposed by B. P. Welford.
+ * Comuptes the sample standard deviation of numbers contained in the `x` array.
+ * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * @param {array} x — array containing 1 or more elements.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of
@@ -37,7 +37,7 @@ var varianceXn = require( './stats-varianceXn.js' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @return {number} — sample standard deviation value.
+ * @return {number} — standard deviation of sample.
  * @example
  * stdev( [ 2, 3, 5, 7 ] )
  * // returns 2.217355782608345

@@ -29,7 +29,7 @@
  *
  * Use `compute()` to continuously determine the **standard deviation** value of data items passed to it in real-time.
  * Probe the sample standard deviation anytime using `value()`, which may be reset via `reset()`.
- * The computations are carried out using method pioneered by B. P. Welford.
+ * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * The `result()` returns an object containing sample `stdev` and
  * `variance`, along with `mean`, `size` of data; it also

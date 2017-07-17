@@ -28,9 +28,11 @@ var helpers = require( 'wink-helpers' );
 // ### freqTable
 /**
  *
- * It is a higher order function that returns an object containing `build()`, `result()`, and `reset()` functions.
+ * It is a higher order function that returns an object containing `build()`, `value()`, `result()`, and `reset()` functions.
+ *
  * Use `build()` to construct a frequency table from value of data items passed to it in real-time.
  * Probe the object containing data-item/frequency pairs using `value()`, which may be reset via `reset()`.
+ *
  * The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
  * with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
  * `entropy`.

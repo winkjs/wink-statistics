@@ -37,10 +37,10 @@ var helpers = require( 'wink-helpers' );
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {number} q — should be between 0 and 1 indicating percentile;
  * for example, to get 25<sup>th</sup> percentile, it should be 0.25.
- * @param {(string|number|function)} [accessor=undefined] — Useful when each element of
- * `sortedData` is an object or an array instead of number. If it is an object
- * then it should be the property-name (string) to access the value; or if it is an array
- * then it should be the index (number) to access the value; or it should be a function
+ * @param {(string|number|function)} [accessor=undefined] — required when elements of
+ * `x` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
  * @returns {number} — `q`<sup>th</sup> percentile of `sortedData`.
  * @example

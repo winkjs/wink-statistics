@@ -40,13 +40,13 @@ var mad = require( './stats-mad.js' );
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {object} rs — robust stats containing `min`, `size`, etc.
  * @param {number} precision — of the data.
- * @param {(string|number|function)} [accessor=undefined] — Useful when each element of
- * `sortedData` is an object or an array instead of number. If it is an object
- * then it should be the key (string) to access the value; or if it is an array
- * then it should be the index (number) to access the value; or it should be a function
+ * @param {(string|number|function)} [accessor=undefined] — required when elements of
+ * `x` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
  * @returns {object} — histogram conatining arrays `classes` and corresponding `frequencies`.
- * Each element of classes array is an object having `min/mid/max` values.
+ * Each element of `classes` array is an object having `min/mid/max` values.
  * @private
 */
 var distribution = function ( bins, binWidth, sortedData, rs, precision, accessor ) {
@@ -97,13 +97,13 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
  * @param {number} [dataPrecision=0] — typically the minumum number of
  * decimal places observed in the `sortedData`.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of
- * `sortedData` are objects or arrays instead of numbers.
+ * `x` are objects or arrays instead of numbers.
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
  * @returns {object} — conatining arrays `classes` and the corresponding `frequencies`.
- * Each element of classes array is an object; it contains values for `min/max (class intervals)`
- * and `mid` point of a class. In addition, the returned object
+ * Each element of `classes` array is an object with values for `min/max (class intervals)`
+ * and `mid` point of a class. <br/><br/>In addition, the returned object
  * contains useful statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.
  * @example
  * var data = [

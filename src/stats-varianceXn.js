@@ -27,12 +27,12 @@ var value = require( './accessor.js' );
 // Load wink helpers for validation.
 var helpers = require( 'wink-helpers' );
 
-// ### stdev
+// ### varianceXn
 /**
  *
  * @private
- * Comuptes the population `variance * size` of numbers contained in the `x` array. It is computed
- * using method proposed by B. P. Welford.
+ * Comuptes the population `variance * size` of numbers contained in the `x` array.
+ * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * @param {array} x — array containing 1 or more elements.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of

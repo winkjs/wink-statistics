@@ -34,10 +34,10 @@ var percentile = require( './stats-percentile.js' );
  * Returns the [five number summary](https://en.wikipedia.org/wiki/Five-number_summary) from the `sortedData`.
  *
  * @param {array} sortedData — sorted in ascending order of value.
- * @param {(string|number|function)} [accessor=undefined] — Useful when each element of
- * `sortedData` is an object or an array instead of number. If it is an object
- * then it should be the key (string) to access the value; or if it is an array
- * then it should be the index (number) to access the value; or it should be a function
+ * @param {(string|number|function)} [accessor=undefined] — required when elements of
+ * `x` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
  * @returns {number} — 5-number summary consisting of `min`, `q1`, `median`, `q3`,
  * `max` along with `iqr`, `range`, and `size`.

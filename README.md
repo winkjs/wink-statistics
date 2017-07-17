@@ -8,7 +8,7 @@
 
 Perform fast and numerically stable statistical analysis using **`wink-statistics`**. It is a part of _[wink](https://www.npmjs.com/~sanjaya)_ — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
 
-A class of its functions operate on a real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data.
+Summarize, Discover and Analyze data with  Descriptive, Robust, Streaming Statistics along with Probability.  A class of its functions operate on a real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data. These are especially useful in IoT environment.
 
 ## Installation
 
@@ -24,6 +24,31 @@ var stats = require( 'wink-statistics' );
 ```
 
 ## API
+
+The APIs are available under `probability`,  `stats` and `streaming` name spaces. All `streaming` functions are higher order functions that return an object containing `compute()/build()`, `value()`, `result()`, and `reset()` functions.
+
+```javascript
+// Load the entire library of functions
+var ws = require( 'wink-statistics' );
+//  Use probability functions
+ws.probability.aggregate( 0.5, 0.6 );
+// Use stats functions
+ws.stats.stdev( [ 2, 3, 5, 7 ] );
+// Use streaming higher order functions
+stdev = ws.streaming.stdev();
+```
+
+Alternatively, a single API may be required independently:
+
+```javascript
+// Load a single function
+// Use a probability function
+var aggregate = require( './src/probability-aggregate.js' );
+// Use a stats function
+var stdev = require( './src/stats-stdev.js' );
+// Use a streaming higher order function
+var stdev = require( './src/streaming-stdev.js' )();
+```
 
 ### probability
 
@@ -148,10 +173,10 @@ Returns the [five number summary](https://en.wikipedia.org/wiki/Five-number_summ
 **Parameters**
 
 -   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
--   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
-    `sortedData` is an object or an array instead of number. If it is an object
-    then it should be the key (string) to access the value; or if it is an array
-    then it should be the index (number) to access the value; or it should be a function
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
+    `x` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
     that extracts the value from the element passed to it. (optional, default `undefined`)
 
 **Examples**
@@ -181,7 +206,7 @@ if any, by adjusting the number of bins using Sturges' Rule.
 -   `dataPrecision` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — typically the minumum number of
     decimal places observed in the `sortedData`. (optional, default `0`)
 -   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
-    `sortedData` are objects or arrays instead of numbers.
+    `x` are objects or arrays instead of numbers.
     For objects, use key (string) to access the value; in case of arrays, use
     index (number) to access the value; or it could be a function
     that extracts the value from the element passed to it. (optional, default `undefined`)
@@ -207,8 +232,8 @@ histogram( data );
 ```
 
 Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** — conatining arrays `classes` and the corresponding `frequencies`.
-Each element of classes array is an object; it contains values for `min/max (class intervals)`
-and `mid` point of a class. In addition, the returned object
+Each element of `classes` array is an object with values for `min/max (class intervals)`
+and `mid` point of a class. <br/><br/>In addition, the returned object
 contains useful statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.
 
 #### mad
@@ -218,10 +243,10 @@ Returns the median of the `sortedData`.
 **Parameters**
 
 -   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
--   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
-    `sortedData` is an object or an array instead of number. If it is an object
-    then it should be the key (string) to access the value; or if it is an array
-    then it should be the index (number) to access the value; or it should be a function
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
+    `x` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
     that extracts the value from the element passed to it. (optional, default `undefined`)
 
 **Examples**
@@ -259,8 +284,8 @@ Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### mean
 
-Comuptes the mean of numbers contained in the `x` array. It is computed
-using method proposed by B. P. Welford.
+Comuptes the mean of numbers contained in the `x` array.
+The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
 
 **Parameters**
 
@@ -339,10 +364,10 @@ by Eric Langford published in Journal of Statistics Education Volume 14, Number 
 -   `sortedData` **[array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** — sorted in ascending order of value.
 -   `q` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — should be between 0 and 1 indicating percentile;
     for example, to get 25<sup>th</sup> percentile, it should be 0.25.
--   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — Useful when each element of
-    `sortedData` is an object or an array instead of number. If it is an object
-    then it should be the property-name (string) to access the value; or if it is an array
-    then it should be the index (number) to access the value; or it should be a function
+-   `accessor` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** — required when elements of
+    `x` are objects or arrays instead of numbers.
+    For objects, use key (string) to access the value; in case of arrays, use
+    index (number) to access the value; or it could be a function
     that extracts the value from the element passed to it. (optional, default `undefined`)
 
 **Examples**
@@ -358,8 +383,8 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### stdev
 
-Comuptes the sample standard deviation of numbers contained in the `x` array. It is computed
-using method proposed by B. P. Welford.
+Comuptes the sample standard deviation of numbers contained in the `x` array.
+The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
 
 **Parameters**
 
@@ -379,7 +404,7 @@ stdev( [ { x: 2 }, { x: 3 }, { x: 5 }, { x: 7 } ], 'x' )
 // returns 2.217355782608345
 ```
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — sample standard deviation value.
+Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** — standard deviation of sample.
 
 ### streaming
 
@@ -387,9 +412,11 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### freqTable
 
-It is a higher order function that returns an object containing `build()`, `result()`, and `reset()` functions.
+It is a higher order function that returns an object containing `build()`, `value()`, `result()`, and `reset()` functions.
+
 Use `build()` to construct a frequency table from value of data items passed to it in real-time.
 Probe the object containing data-item/frequency pairs using `value()`, which may be reset via `reset()`.
+
 The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
 with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
 `entropy`.
@@ -458,7 +485,7 @@ It is a higher order function that returns an object containing `compute()`, `va
 
 Use `compute()` to continuously determine the **mean** aka average value of data items passed to it in real-time.
 Probe the mean anytime using `value()`, which may be reset via `reset()`.
-The computations are carried out using method pioneered by B. P. Welford.
+The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
 
 The `result()` returns an object containing sample `mean` along with `size` of data.
 
@@ -506,7 +533,7 @@ It is a higher order function that returns an object containing `compute()`, `va
 
 Use `compute()` to continuously determine the **standard deviation** value of data items passed to it in real-time.
 Probe the sample standard deviation anytime using `value()`, which may be reset via `reset()`.
-The computations are carried out using method pioneered by B. P. Welford.
+The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
 
 The `result()` returns an object containing sample `stdev` and
 `variance`, along with `mean`, `size` of data; it also
@@ -565,7 +592,7 @@ It is a higher order function that returns an object containing `compute()`, `va
 Use `compute()` to continuously determine the **summary statistics** of data items passed to it in real-time.
 Probe the sample summary statistics anytime using `value()`, which may be reset via `reset()`. The
 `result()` is also an alias of `value()`.
-The computations are carried out using method pioneered by B. P. Welford.
+The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
 
 The summary statistics is an object containing `size`, `min`, `mean`, `max`, sample `stdev` along with
 sample `variance` of data; it also

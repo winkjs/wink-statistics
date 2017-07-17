@@ -30,7 +30,7 @@
  * Use `compute()` to continuously determine the **summary statistics** of data items passed to it in real-time.
  * Probe the sample summary statistics anytime using `value()`, which may be reset via `reset()`. The
  * `result()` is also an alias of `value()`.
- * The computations are carried out using method pioneered by B. P. Welford.
+ * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * The summary statistics is an object containing `size`, `min`, `mean`, `max`, sample `stdev` along with
  * sample `variance` of data; it also
