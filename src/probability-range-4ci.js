@@ -56,6 +56,15 @@
  * // }
  */
 var range4CI = function ( successCount, totalCount, zscore ) {
+  if ( ( typeof successCount !== 'number' ) || ( successCount <= 0 ) ) {
+    throw Error( 'probability-range4CI: successCount should be a number > 0, instead found: ' + JSON.stringify( successCount ) );
+  }
+  if ( ( typeof totalCount !== 'number' ) || ( totalCount <= 0 ) ) {
+    throw Error( 'probability-range4CI: totalCount should be a number > 0, instead found: ' + JSON.stringify( totalCount ) );
+  }
+  if ( totalCount < successCount ) {
+    throw Error( 'probability-range4CI: totalCount should be >= successCount, instead found: ' + JSON.stringify( totalCount ) );
+  }
   var z = Math.abs( zscore || 1.645 );
   var t = ( z * z ) / totalCount;
   var p0 = successCount / totalCount;
