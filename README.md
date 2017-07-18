@@ -8,7 +8,14 @@ Fast and Numerically Stable Statistical Analysis Utilities
 
 Perform fast and numerically stable statistical analysis using **`wink-statistics`**. It is a part of _[wink](https://www.npmjs.com/~sanjaya)_ — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
 
-Summarize, Discover and Analyze data with  Descriptive, Robust, Streaming Statistics along with Probability.  A class of its functions operate on a real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data. These are especially useful in IoT environment.
+Summarize, Discover and Analyze data with it's rich set of features:
+
+1. Analyze both continuous and categorical data.
+
+2. Handles real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data.
+
+3. Minimizes data preprocessing by handling array of data structures containing numerical values, e.g. array of objects.
+
 
 ### Installation
 
@@ -16,12 +23,8 @@ Use [npm](https://www.npmjs.com/package/wink-statistics) to install:
 
     npm install wink-statistics --save
 
-### Example [![Build Status](https://badge.runkitcdn.com/wink-statistics.svg)](https://npm.runkit.com/wink-statistics)
-
-```javascript
-// Load Wink Statistics
-var stats = require( 'wink-statistics' );
-```
+### API
+Documentation along with examples is available at https://decisively.github.io/wink-statistics/.
 
 ### Need Help?
 
