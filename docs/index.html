@@ -1,0 +1,2141 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>wink-statistics 1.0.6 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation'>
+  <div class='max-width-4 mx-auto'>
+    <div class='clearfix md-mxn2'>
+      <div class='fixed xs-hide fix-3 overflow-auto max-height-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>wink-statistics</h3>
+          <div class='mb1'><code>1.0.6</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#aggregate'
+                  class="">
+                  aggregate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#range4ci'
+                  class="">
+                  range4CI
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#boxplot'
+                  class="">
+                  boxplot
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#fivenumsummary'
+                  class="">
+                  fiveNumSummary
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#histogram'
+                  class="">
+                  histogram
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#mad'
+                  class="">
+                  mad
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#max'
+                  class="">
+                  max
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#max'
+                  class="">
+                  max
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#mean'
+                  class="">
+                  mean
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#mean'
+                  class="">
+                  mean
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#median'
+                  class="">
+                  median
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#min'
+                  class="">
+                  min
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#min'
+                  class="">
+                  min
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#percentile'
+                  class="">
+                  percentile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#stdev'
+                  class="">
+                  stdev
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#stdev'
+                  class="">
+                  stdev
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#freqtable'
+                  class="">
+                  freqTable
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#sum'
+                  class="">
+                  sum
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#summary'
+                  class="">
+                  summary
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div class='fix-margin-3'>
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='aggregate'>
+      aggregate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Aggregates two probability estimates from independent sources about the occurrence of
+a <strong>single</strong> event <strong>a</strong>. It returns the aggregated probability of occurrence
+of the event <strong>a</strong>. The assumption here is that the two probabilities
+(estimates) are not correlated with each other and the <strong>common prior</strong>
+probability of <strong>a</strong> is <strong>0.5</strong>.</p>
+<p>For a detailed explanation, refer to the paper titled
+<em><a href="http://link.springer.com/article/10.1007/s00355-010-0453-x">Bayesian Group Belief by Franz Dietrich</a></em>
+published in Social Choice and Welfare October 2010, Volume 35, Issue 4, pp 595–626.</p>
+
+
+  <div class='pre p1 fill-light mt0'>aggregate(pa1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, pa2: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pa1</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    — first estimate of probability of occurrence of event 
+<strong>a</strong>
+.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pa2</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    — second estimate of probability of occurrence of event 
+<strong>a</strong>
+.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — the aggregated probability.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>aggregate( <span class="hljs-number">0.5</span>, <span class="hljs-number">0.6</span> );
+<span class="hljs-comment">// returns 0.6</span>
+aggregate( <span class="hljs-number">0.5</span>, <span class="hljs-number">0.4</span> );
+<span class="hljs-comment">// returns 0.4</span>
+aggregate( <span class="hljs-number">0.6</span>, <span class="hljs-number">0.6</span> );
+<span class="hljs-comment">// returns 0.6923076923076923</span>
+aggregate( <span class="hljs-number">0.4</span>, <span class="hljs-number">0.6</span> );
+<span class="hljs-comment">// returns 0.5</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='range4ci'>
+      range4CI
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Computes probability from the <strong>observed</strong> count of successes (<code>successCount</code>) out of the total count (<code>totalCount</code>)
+along with its <strong>range</strong> for required level of Confidence Interval (CI)  i.e. <code>zscore</code> .
+The range is the minimum and maximum probability values for given <code>zscore</code> or CI.</p>
+<p>These computations are based on approach specified in the Wilson's <em>Notes on
+Probable Inference, The Law of Succession, and Statistical Inference</em>
+published in ASA's Journal.</p>
+<p>For quick reference, typical value of <code>zscore</code> for 90% and 95% CI is approximately
+1.645 and 1.960 respectively.</p>
+
+
+  <div class='pre p1 fill-light mt0'>range4CI(successCount: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, totalCount: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, zscore: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>successCount</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    — observed count of successes out of
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>totalCount</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    — the total count.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>zscore</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+            = <code>1.645</code>)</code>
+	    — for the required level of CI.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>probability</code>
+, 
+<code>min</code>
+ and 
+<code>max</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>range4CI( <span class="hljs-number">1</span>, <span class="hljs-number">10</span> );
+<span class="hljs-comment">// returns {</span>
+<span class="hljs-comment">//   probability: 0.18518871952479238,</span>
+<span class="hljs-comment">//   min: 0.02263232984000629,</span>
+<span class="hljs-comment">//   max: 0.34774510920957846</span>
+<span class="hljs-comment">// }</span>
+range4CI( <span class="hljs-number">10</span>, <span class="hljs-number">100</span> );
+<span class="hljs-comment">// returns {</span>
+<span class="hljs-comment">//   probability: 0.1105389143431459,</span>
+<span class="hljs-comment">//   min: 0.06071598345043355,</span>
+<span class="hljs-comment">//   max: 0.16036184523585828</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='boxplot'>
+      boxplot
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Performs complete <a href="https://en.wikipedia.org/wiki/Box_plot">boxplot</a> analysis
+including computation of notches and outliers.</p>
+
+
+  <div class='pre p1 fill-light mt0'>boxplot(sortedData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, coeff: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sortedData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — sorted in ascending order of value.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>coeff</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+            = <code>1.5</code>)</code>
+	    — used for outliers computation.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>sortedData</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — consisting of 
+<code>min</code>
+, 
+<code>q1</code>
+, 
+<code>median</code>
+, 
+<code>q3</code>
+,
+
+<code>max</code>
+, 
+<code>iqr</code>
+, 
+<code>range</code>
+, 
+<code>size</code>
+ along with 
+<code>leftNotch</code>
+, and 
+<code>rightNotch</code>
+.
+The 
+<code>leftOutliers/rightOutliers</code>
+ (object), if present, contains the 
+<code>count</code>
+, 
+<code>fence</code>
+
+and 
+<code>begin/end</code>
+ indexes to 
+<code>sortedData</code>
+ for easy extraction of exact values.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> data = [
+  <span class="hljs-number">-12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">14</span>, <span class="hljs-number">14</span>, <span class="hljs-number">16</span>, <span class="hljs-number">18</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">21</span>, <span class="hljs-number">23</span>, <span class="hljs-number">27</span>, <span class="hljs-number">27</span>, <span class="hljs-number">27</span>, <span class="hljs-number">29</span>, <span class="hljs-number">31</span>,
+  <span class="hljs-number">31</span>, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>, <span class="hljs-number">34</span>, <span class="hljs-number">36</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">42</span>, <span class="hljs-number">51</span>, <span class="hljs-number">56</span>, <span class="hljs-number">60</span>, <span class="hljs-number">88</span>
+];
+boxplot( data );
+returns {
+<span class="hljs-comment">//   min: -12, q1: 20, median: 31, q3: 40, max: 88,</span>
+<span class="hljs-comment">//   iqr: 20, range: 100, size: 30,</span>
+<span class="hljs-comment">//   leftOutliers: { begin: 0, end: 0, count: 1, fence: 14 },</span>
+<span class="hljs-comment">//   rightOutliers: { begin: 29, end: 29, count: 1, fence: 60 },</span>
+<span class="hljs-comment">//   leftNotch: 25.230655727612252,</span>
+<span class="hljs-comment">//   rightNotch: 36.76934427238775</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='fivenumsummary'>
+      fiveNumSummary
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns the <a href="https://en.wikipedia.org/wiki/Five-number_summary">five number summary</a> from the <code>sortedData</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>fiveNumSummary(sortedData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sortedData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — sorted in ascending order of value.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — 5-number summary consisting of 
+<code>min</code>
+, 
+<code>q1</code>
+, 
+<code>median</code>
+, 
+<code>q3</code>
+,
+
+<code>max</code>
+ along with 
+<code>iqr</code>
+, 
+<code>range</code>
+, and 
+<code>size</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>fiveNumSummary( [ <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span> ] );
+<span class="hljs-comment">// returns {</span>
+<span class="hljs-comment">//   q1: 1.25, median: 2.5, q3: 3.75, iqr: 2.5,</span>
+<span class="hljs-comment">//   size: 8, min: 1, max: 4, range: 3</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='histogram'>
+      histogram
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Generates histogram using Freedman–Diaconis method.
+If both IQR and MAD are <code>0</code> then it automatically
+switches to Sturges' Rule while ensuring minimum of 5 bins.
+It attempts to reduce excessive sparsity of distribution,
+if any, by adjusting the number of bins using Sturges' Rule.</p>
+
+
+  <div class='pre p1 fill-light mt0'>histogram(sortedData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, dataPrecision: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sortedData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — sorted in ascending order of value.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataPrecision</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+            = <code>0</code>)</code>
+	    — typically the minumum number of
+decimal places observed in the 
+<code>sortedData</code>
+.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — conatining arrays 
+<code>classes</code>
+ and the corresponding 
+<code>frequencies</code>
+.
+Each element of 
+<code>classes</code>
+ array is an object with values for 
+<code>min/max (class intervals)</code>
+
+and 
+<code>mid</code>
+ point of a class. 
+<br/>
+<br/>
+In addition, the returned object
+contains useful statistics like 
+<code>q1</code>
+, 
+<code>q3</code>
+, 
+<code>iqr</code>
+, 
+<code>min</code>
+, 
+<code>max</code>
+, and 
+<code>range</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> data = [
+  <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">14</span>, <span class="hljs-number">14</span>, <span class="hljs-number">16</span>, <span class="hljs-number">18</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">21</span>, <span class="hljs-number">23</span>, <span class="hljs-number">27</span>, <span class="hljs-number">27</span>, <span class="hljs-number">27</span>, <span class="hljs-number">29</span>, <span class="hljs-number">31</span>,
+  <span class="hljs-number">31</span>, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>, <span class="hljs-number">34</span>, <span class="hljs-number">36</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">42</span>, <span class="hljs-number">51</span>, <span class="hljs-number">56</span>, <span class="hljs-number">60</span>, <span class="hljs-number">65</span>
+];
+histogram( data );
+<span class="hljs-comment">// returns {</span>
+<span class="hljs-comment">//   classes: [</span>
+<span class="hljs-comment">//     { min: 12, mid: 19, max: 25 },</span>
+<span class="hljs-comment">//     { min: 25, mid: 32, max: 38 },</span>
+<span class="hljs-comment">//     { min: 38, mid: 45, max: 51 },</span>
+<span class="hljs-comment">//     { min: 51, mid: 58, max: 64 },</span>
+<span class="hljs-comment">//     { min: 64, mid: 71, max: 77 } ],</span>
+<span class="hljs-comment">//   frequencies: [ 10, 10, 7, 2, 1 ],</span>
+<span class="hljs-comment">//   q1: 20,  q3: 40, iqr: 20, size: 30, min: 12, max: 65,range: 53</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='mad'>
+      mad
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns the median of the <code>sortedData</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>mad(sortedData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sortedData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — sorted in ascending order of value.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — median of the 
+<code>sortedData</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>mad( [ <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span> ] );
+<span class="hljs-comment">// returns 1</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='max'>
+      max
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Finds the maximum value in the <code>x</code> array.</p>
+
+
+  <div class='pre p1 fill-light mt0'>max(x: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>x</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — array containing 1 or more elements.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — maximum value from array 
+<code>x</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>max( [ <span class="hljs-number">99</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, +<span class="hljs-number">222</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-99</span> ] )
+<span class="hljs-comment">// returns 222</span>
+max( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">33</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">11</span> }, { <span class="hljs-attr">x</span>:<span class="hljs-number">44</span> } ], <span class="hljs-string">'x'</span> )
+<span class="hljs-comment">// returns 44</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='max'>
+      max
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>maximum</strong> value of data items passed to it in real-time.
+Probe the maximum anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The <code>result()</code> returns an object containing <code>max</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>max(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> maximum = max();
+maximum.compute( <span class="hljs-number">3</span> );
+maximum.compute( <span class="hljs-number">6</span> );
+maximum.value();
+<span class="hljs-comment">// returns 6</span>
+maximum.result();
+<span class="hljs-comment">// returns { max: 6 }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='mean'>
+      mean
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Comuptes the mean of numbers contained in the <code>x</code> array.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>mean(x: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>x</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — array containing 1 or more elements.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — mean value.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>mean( [ <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span> ] )
+<span class="hljs-comment">// returns 4.25</span>
+mean( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">3</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">5</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">7</span> } ], <span class="hljs-string">'x'</span> )
+<span class="hljs-comment">// returns 4.25</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='mean'>
+      mean
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>mean</strong> aka average value of data items passed to it in real-time.
+Probe the mean anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+<p>The <code>result()</code> returns an object containing sample <code>mean</code> along with <code>size</code> of data.</p>
+
+
+  <div class='pre p1 fill-light mt0'>mean(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> avg = mean();
+avg.compute( <span class="hljs-number">2</span> );
+avg.compute( <span class="hljs-number">3</span> );
+avg.compute( <span class="hljs-number">5</span> );
+avg.compute( <span class="hljs-number">7</span> );
+avg.value();
+<span class="hljs-comment">// returns 4.25</span>
+avg.result();
+<span class="hljs-comment">// returns { n: 4, mean: 4.25 }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='median'>
+      median
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns the median of the <code>sortedData</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>median(sortedData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sortedData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — sorted in ascending order of value.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — Useful when each element of
+
+<code>sortedData</code>
+ is an object or an array instead of number. If it is an object
+then it should be the key (string) to access the value; or if it is an array
+then it should be the index (number) to access the value; or it should be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — median of the 
+<code>sortedData</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>median( [ <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span> ] );
+<span class="hljs-comment">// returns 2.5</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='min'>
+      min
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Finds the minimum value in the <code>x</code> array.</p>
+
+
+  <div class='pre p1 fill-light mt0'>min(x: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>x</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — array containing 1 or more elements.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — minimum value from array 
+<code>x</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>min( [ <span class="hljs-number">99</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, +<span class="hljs-number">222</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-99</span> ] )
+<span class="hljs-comment">// returns -99</span>
+min( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">33</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">11</span> }, { <span class="hljs-attr">x</span>:<span class="hljs-number">44</span> } ], <span class="hljs-string">'x'</span> )
+<span class="hljs-comment">// returns 11</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='min'>
+      min
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>minimum</strong> value of data items passed to it in real-time.
+Probe the minimum anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The <code>result()</code> returns an object containing <code>min</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>min(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> minimum = min();
+minimum.compute( <span class="hljs-number">3</span> );
+minimum.compute( <span class="hljs-number">6</span> );
+minimum.value();
+<span class="hljs-comment">// returns 3</span>
+minimum.result();
+<span class="hljs-comment">// returns { min: 3 }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='percentile'>
+      percentile
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns the <code>q</code><sup>th</sup> percentile from the <code>sortedData</code>. The computation is
+based on Method 11 described in <a href="https://ww2.amstat.org/publications/jse/v14n3/langford.html">Quartiles in Elementary Statistics</a>
+by Eric Langford published in Journal of Statistics Education Volume 14, Number 3 (2006).</p>
+
+
+  <div class='pre p1 fill-light mt0'>percentile(sortedData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, q: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sortedData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — sorted in ascending order of value.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>q</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    — should be between 0 and 1 indicating percentile;
+for example, to get 25
+<sup>
+th
+</sup>
+ percentile, it should be 0.25.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — 
+<code>q</code>
+<sup>
+th
+</sup>
+ percentile of 
+<code>sortedData</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>percentile( [ <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span> ], <span class="hljs-number">0.25</span> );
+<span class="hljs-comment">// returns 1.25</span>
+percentile( [ <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span> ], <span class="hljs-number">0.75</span> );
+<span class="hljs-comment">// returns 3.75</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='stdev'>
+      stdev
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Comuptes the sample standard deviation of numbers contained in the <code>x</code> array.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>stdev(x: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>, accessor: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>x</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    — array containing 1 or more elements.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>accessor</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)
+            = <code>undefined</code>)</code>
+	    — required when elements of
+
+<code>x</code>
+ are objects or arrays instead of numbers.
+For objects, use key (string) to access the value; in case of arrays, use
+index (number) to access the value; or it could be a function
+that extracts the value from the element passed to it.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        — standard deviation of sample.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>stdev( [ <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span> ] )
+<span class="hljs-comment">// returns 2.217355782608345</span>
+stdev( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">3</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">5</span> }, { <span class="hljs-attr">x</span>: <span class="hljs-number">7</span> } ], <span class="hljs-string">'x'</span> )
+<span class="hljs-comment">// returns 2.217355782608345</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='stdev'>
+      stdev
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>standard deviation</strong> value of data items passed to it in real-time.
+Probe the sample standard deviation anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+<p>The <code>result()</code> returns an object containing sample <code>stdev</code> and
+<code>variance</code>, along with <code>mean</code>, <code>size</code> of data; it also
+contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>stdev(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> sd = stdev();
+sd.compute( <span class="hljs-number">2</span> );
+sd.compute( <span class="hljs-number">3</span> );
+sd.compute( <span class="hljs-number">5</span> );
+sd.compute( <span class="hljs-number">7</span> );
+sd.value();
+<span class="hljs-comment">// returns 2.217355782608345</span>
+sd.result();
+<span class="hljs-comment">// returns { size: 4, mean: 4.25,</span>
+<span class="hljs-comment">//   variance: 4.916666666666666,</span>
+<span class="hljs-comment">//   stdev: 2.217355782608345,</span>
+<span class="hljs-comment">//   variancep: 3.6874999999999996,</span>
+<span class="hljs-comment">//   stdevp: 1.920286436967152</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='freqtable'>
+      freqTable
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>build()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>build()</code> to construct a frequency table from value of data items passed to it in real-time.
+Probe the object containing data-item/frequency pairs using <code>value()</code>, which may be reset via <code>reset()</code>.</p>
+<p>The <code>result()</code> returns an object containing the frequency <code>table</code> sorted in descending order of category counts or frequency, along
+with it's <code>size</code>, <code>sum</code> of all counts, <code>x2</code> - chi-squared statistic, <code>df</code> - degree of freedom, and the
+<code>entropy</code>.</p>
+<p>The <code>x2</code> along with the <code>df</code> can be used test the hypothesis that "the distribution is a uniform one". The
+<code>percentage</code> in <code>table</code> give the percentage of a category count against the <code>sum</code>; and <code>expected</code> is the count
+assuming an uniform distribution.</p>
+
+
+  <div class='pre p1 fill-light mt0'>freqTable(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> ft = freqTable();
+ft.build( <span class="hljs-string">'Tea'</span> );
+ft.build( <span class="hljs-string">'Tea'</span> );
+ft.build( <span class="hljs-string">'Tea'</span> );
+ft.build( <span class="hljs-string">'Pepsi'</span> );
+ft.build( <span class="hljs-string">'Pepsi'</span> );
+ft.build( <span class="hljs-string">'Gin'</span> );
+ft.build( <span class="hljs-string">'Coke'</span> );
+ft.build( <span class="hljs-string">'Coke'</span> );
+ft.value();
+<span class="hljs-comment">// returns { Tea: 3, Pepsi: 2, Gin: 1, Coke: 2 }</span>
+ft.result();
+<span class="hljs-comment">// returns {</span>
+<span class="hljs-comment">//  table: [</span>
+<span class="hljs-comment">//   { category: 'Tea', observed: 3, percentage: 37.5, expected: 2 },</span>
+<span class="hljs-comment">//   { category: 'Pepsi', observed: 2, percentage: 25, expected: 2 },</span>
+<span class="hljs-comment">//   { category: 'Coke', observed: 2, percentage: 25, expected: 2 },</span>
+<span class="hljs-comment">//   { category: 'Gin', observed: 1, percentage: 12.5, expected: 2 }</span>
+<span class="hljs-comment">//  ],</span>
+<span class="hljs-comment">//  size: 4,</span>
+<span class="hljs-comment">//  sum: 8,</span>
+<span class="hljs-comment">//  x2: 1,</span>
+<span class="hljs-comment">//  df: 3,</span>
+<span class="hljs-comment">//  entropy: 1.9056390622295665</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='sum'>
+      sum
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>sum</strong> of data items passed to it in real-time.
+Probe the sum anytime using <code>value()</code>, which may be reset via <code>reset()</code>. The sum
+is compensated for floating point errors using Neumaier Method.
+The <code>result()</code> returns an object containing <code>sum</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>sum(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> addition = sum();
+addition.compute( <span class="hljs-number">1</span> );
+addition.compute( <span class="hljs-number">10e+100</span> );
+addition.compute( <span class="hljs-number">1</span> );
+addition.compute( <span class="hljs-number">-10e+100</span> );
+addition.value();
+<span class="hljs-comment">// returns 2</span>
+addition.result();
+<span class="hljs-comment">// returns { sum: 2 }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='summary'>
+      summary
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>summary statistics</strong> of data items passed to it in real-time.
+Probe the sample summary statistics anytime using <code>value()</code>, which may be reset via <code>reset()</code>. The
+<code>result()</code> is also an alias of <code>value()</code>.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+<p>The summary statistics is an object containing <code>size</code>, <code>min</code>, <code>mean</code>, <code>max</code>, sample <code>stdev</code> along with
+sample <code>variance</code> of data; it also
+contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>summary(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        — containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> ss = summary();
+ss.compute( <span class="hljs-number">2</span> );
+ss.compute( <span class="hljs-number">3</span> );
+ss.compute( <span class="hljs-number">5</span> );
+ss.compute( <span class="hljs-number">7</span> );
+ss.result();
+<span class="hljs-comment">// returns { size: 4, min: 2, mean: 4.25, max: 7,</span>
+<span class="hljs-comment">//   variance: 4.916666666666666,</span>
+<span class="hljs-comment">//   stdev: 2.217355782608345,</span>
+<span class="hljs-comment">//   variancep: 3.6874999999999996,</span>
+<span class="hljs-comment">//   stdevp: 1.920286436967152</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
