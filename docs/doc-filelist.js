@@ -1,1 +1,0 @@
-var tree={"files":["accessor.js","probability-aggregate.js","probability-range-4ci.js","stats-boxplot.js","stats-five-num-summary.js","stats-histogram.js","stats-mad.js","stats-median.js","stats-percentile.js","streaming-freq-table.js","streaming-max.js","streaming-mean.js","streaming-min.js","streaming-stdev.js","streaming-sum.js","streaming-summary.js","wink-statistics.js"]};
