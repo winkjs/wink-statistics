@@ -42,7 +42,7 @@ var value = require( './accessor.js' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @returns {object} — consisting of `min`, `q1`, `median`, `q3`,
+ * @returns {object} consisting of `min`, `q1`, `median`, `q3`,
  * `max`, `iqr`, `range`, `size` along with `leftNotch`, and `rightNotch`.
  * The `leftOutliers/rightOutliers` (object), if present, contains the `count`, `fence`
  * and `begin/end` indexes to `sortedData` for easy extraction of exact values.

@@ -38,7 +38,7 @@ var varianceXn = require( './stats-varianceXn.js' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @return {number} — standard deviation of sample.
+ * @return {number} standard deviation of sample.
  * @example
  * stdev( [ 2, 3, 5, 7 ] )
  * // returns 2.217355782608345

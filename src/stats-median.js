@@ -38,7 +38,7 @@ var percentile = require( './stats-percentile.js' );
  * then it should be the key (string) to access the value; or if it is an array
  * then it should be the index (number) to access the value; or it should be a function
  * that extracts the value from the element passed to it.
- * @returns {number} — median of the `sortedData`.
+ * @returns {number} median of the `sortedData`.
  * @example
  * median( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
  * // returns 2.5

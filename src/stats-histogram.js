@@ -45,7 +45,7 @@ var mad = require( './stats-mad.js' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @returns {object} — histogram conatining arrays `classes` and corresponding `frequencies`.
+ * @returns {object} histogram conatining arrays `classes` and corresponding `frequencies`.
  * Each element of `classes` array is an object having `min/mid/max` values.
  * @private
 */
@@ -103,7 +103,7 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @returns {object} — conatining arrays `classes` and the corresponding `frequencies`.
+ * @returns {object} conatining arrays `classes` and the corresponding `frequencies`.
  * Each element of `classes` array is an object with values for `min/max (class intervals)`
  * and `mid` point of a class. <br/><br/>In addition, the returned object
  * contains useful statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.

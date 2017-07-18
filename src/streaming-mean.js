@@ -34,7 +34,7 @@
  * The `result()` returns an object containing sample `mean` along with `size` of data.
  *
  * @name streaming.mean
- * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var avg = mean();
  * avg.compute( 2 );

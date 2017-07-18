@@ -36,7 +36,7 @@
  * contains population standard deviation and variance as `stdevp` and `variancep`.
  *
  * @name streaming.stdev
- * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var sd = stdev();
  * sd.compute( 2 );

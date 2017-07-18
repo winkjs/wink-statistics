@@ -42,7 +42,7 @@ var helpers = require( 'wink-helpers' );
  * assuming an uniform distribution.
  *
  * @name streaming.freqTable
- * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var ft = freqTable();
  * ft.build( 'Tea' );

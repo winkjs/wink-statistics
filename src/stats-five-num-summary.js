@@ -40,7 +40,7 @@ var percentile = require( './stats-percentile.js' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @returns {number} — 5-number summary consisting of `min`, `q1`, `median`, `q3`,
+ * @returns {number} 5-number summary consisting of `min`, `q1`, `median`, `q3`,
  * `max` along with `iqr`, `range`, and `size`.
  * @example
  * fiveNumSummary( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );

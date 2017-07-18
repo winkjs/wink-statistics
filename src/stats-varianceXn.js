@@ -40,7 +40,7 @@ var helpers = require( 'wink-helpers' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @return {object} — containing `varianceXn` and `size`.
+ * @return {object} containing `varianceXn` and `size`.
  *
  * @example
  * varianceXN( [ 2, 3, 5, 7 ] );

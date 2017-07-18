@@ -39,7 +39,7 @@ var helpers = require( 'wink-helpers' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @return {object} — maximum value from array `x`.
+ * @return {object} maximum value from array `x`.
  * @example
  * max( [ 99, 1, -1, +222, 0, -99 ] )
  * // returns 222

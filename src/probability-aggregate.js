@@ -38,7 +38,7 @@
  * @name probability.aggregate
  * @param {number} pa1 — first estimate of probability of occurrence of event **a**.
  * @param {number} pa2 — second estimate of probability of occurrence of event **a**.
- * @return {number} — the aggregated probability.
+ * @return {number} the aggregated probability.
  * @example
  * aggregate( 0.5, 0.6 );
  * // returns 0.6

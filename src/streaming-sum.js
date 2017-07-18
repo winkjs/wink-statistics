@@ -33,7 +33,7 @@
  * The `result()` returns an object containing `sum`.
  *
  * @name streaming.sum
- * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var addition = sum();
  * addition.compute( 1 );

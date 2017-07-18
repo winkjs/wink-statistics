@@ -42,7 +42,7 @@ var helpers = require( 'wink-helpers' );
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
  * that extracts the value from the element passed to it.
- * @returns {number} — median of the `sortedData`.
+ * @returns {number} median of the `sortedData`.
  * @example
  * mad( [ 1, 1, 2, 2, 3, 3, 4, 4 ] );
  * // returns 1

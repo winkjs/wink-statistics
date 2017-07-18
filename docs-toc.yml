@@ -2,11 +2,9 @@ toc:
   - name: Introduction
     file: README.md
   - name: Probability
-    description: Probability
   - probability.aggregate
   - probability.range4CI
   - name: Stats
-    description: Stats
   - stats.mean
   - stats.median
   - stats.max
@@ -18,7 +16,6 @@ toc:
   - stats.histogram
   - stats.fiveNumSummary
   - name: Streaming
-    description: Streaming
   - streaming.mean
   - streaming.max
   - streaming.min

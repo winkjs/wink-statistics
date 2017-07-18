@@ -1,12 +1,14 @@
 {
   "name": "wink-statistics",
-  "version": "1.0.6",
-  "description": "Implementation of Porter Stemmer Algorithm V2 by Dr Martin F Porter",
+  "version": "1.0.0",
+  "description": "Fast and Numerically Stable Statistical Analysis Utilities",
   "keywords": [
-    "Stemmer",
-    "Porter Stemmer V2",
-    "NLP",
-    "Natural Language Processing"
+    "Statistics",
+    "Probability",
+    "Real Time",
+    "Streaming",
+    "Stats",
+    "Math"
   ],
   "main": "src/wink-statistics.js",
   "scripts": {

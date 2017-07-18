@@ -32,7 +32,7 @@
  * The `result()` returns an object containing `max`.
  *
  * @name streaming.max
- * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var maximum = max();
  * maximum.compute( 3 );

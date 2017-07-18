@@ -1,6 +1,6 @@
 # wink-statistics
 
-> Fast and Numerically Stable Statistical Analysis Utilities
+Fast and Numerically Stable Statistical Analysis Utilities
 
 ### [![Build Status](https://api.travis-ci.org/decisively/wink-statistics.svg?branch=master)](https://travis-ci.org/decisively/wink-statistics) [![Coverage Status](https://coveralls.io/repos/github/decisively/wink-statistics/badge.svg?branch=master)](https://coveralls.io/github/decisively/wink-statistics?branch=master) [![Inline docs](http://inch-ci.org/github/decisively/wink-statistics.svg?branch=master)](http://inch-ci.org/github/decisively/wink-statistics) [![devDependencies Status](https://david-dm.org/decisively/wink-statistics/dev-status.svg)](https://david-dm.org/decisively/wink-statistics?type=dev)
 
