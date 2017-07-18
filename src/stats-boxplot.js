@@ -33,6 +33,8 @@ var value = require( './accessor.js' );
  *
  * Performs complete [boxplot](https://en.wikipedia.org/wiki/Box_plot) analysis
  * including computation of notches and outliers.
+ *
+ * @name stats.boxplot
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {number} [coeff=1.5] — used for outliers computation.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of

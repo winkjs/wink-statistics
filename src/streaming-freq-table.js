@@ -41,9 +41,8 @@ var helpers = require( 'wink-helpers' );
  * `percentage` in `table` give the percentage of a category count against the `sum`; and `expected` is the count
  * assuming an uniform distribution.
  *
+ * @name streaming.freqTable
  * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
-
- *
  * @example
  * var ft = freqTable();
  * ft.build( 'Tea' );

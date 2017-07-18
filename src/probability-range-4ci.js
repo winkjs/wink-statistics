@@ -36,11 +36,11 @@
  * For quick reference, typical value of `zscore` for 90% and 95% CI is approximately
  * 1.645 and 1.960 respectively.
  *
+ * @name probability.range4CI
  * @param {number} successCount — observed count of successes out of
  * @param {number} totalCount — the total count.
  * @param {number} [zscore=1.645] — for the required level of CI.
  * @return {object} — containing `probability`, `min` and `max`.
- *
  * @example
  * range4CI( 1, 10 );
  * // returns {

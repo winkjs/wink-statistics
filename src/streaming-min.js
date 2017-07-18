@@ -31,8 +31,8 @@
  * Probe the minimum anytime using `value()`, which may be reset via `reset()`.
  * The `result()` returns an object containing `min`.
  *
+ * @name streaming.min
  * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
- *
  * @example
  * var minimum = min();
  * minimum.compute( 3 );

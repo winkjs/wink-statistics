@@ -36,8 +36,8 @@
  * sample `variance` of data; it also
  * contains population standard deviation and variance as `stdevp` and `variancep`.
  *
+ * @name streaming.summary
  * @return {object} — containing `compute`, `value`, `result`, and `reset` functions.
- *
  * @example
  * var ss = summary();
  * ss.compute( 2 );
