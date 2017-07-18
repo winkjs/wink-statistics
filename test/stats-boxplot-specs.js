@@ -32,7 +32,7 @@ var it = mocha.it;
 describe( 'stats-boxplot normal behaviour', function () {
   var data1 = [ 1, 1, 2, 2, 3, 3, 4, 4 ];
   var data2 = [ [ -100 ], [ 1 ], [ 2 ], [ 2 ], [ 3 ], [ 3 ], [ 4 ], [ 400 ] ];
-  var data3 = [ 1, 2, 2, 2, 1 ];
+  var data3 = [ 1, 2, 2, 2, 2, 2, 3 ];
 
   it( 'should return minimum boxplot analysis with data1, data2, data3 respectively', function () {
     expect( +bp( data1 ).q1.toFixed( 2 ) ).to.equal( 1.25 );

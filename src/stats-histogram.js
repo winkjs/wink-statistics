@@ -182,3 +182,4 @@ var histogram = function ( sortedData, dataPrecision, accessor ) {
 }; // histogram()
 
 module.exports = histogram;
+// console.log( histogram( [ 9, 9.19, 9.29, 9.39, 9.49, 9.5, 9.6, 9.7, 9.8, 9.9 ], 0 ) );
