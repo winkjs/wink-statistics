@@ -61,7 +61,7 @@ describe( 'stats-histogram normal behaviour', function () {
     // expect( bp( data1 ).leftOutliers ).to.equal( undefined );
     // expect( bp( data1 ).rightOutliers ).to.equal( undefined );
     expect( bp( data2, 1, 0 ).iqr ).to.equal( 2.5 );
-    expect( +bp( data4, 1 ).iqr.toFixed( 4 ) ).to.equal( 0.46 );
+    expect( +bp( data4, 0 ).iqr.toFixed( 4 ) ).to.equal( 0.46 );
     // expect( bp( data2, 1.5, 0 ).min ).to.equal( -100 );
     // expect( bp( data2, 1.5, ( e ) =>  e[ 0 ] ).q3 ).to.equal( 3.75 );
     // expect( bp( data2, 1.5, ( e ) =>  e[ 0 ] ).min ).to.equal( -100 );
