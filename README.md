@@ -10,24 +10,24 @@ Perform fast and numerically stable statistical analysis using **`wink-statistic
 
 Summarize, Discover and Analyze data with  Descriptive, Robust, Streaming Statistics along with Probability.  A class of its functions operate on a real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data. These are especially useful in IoT environment.
 
-## Installation
+### Installation
 
 Use [npm](https://www.npmjs.com/package/wink-statistics) to install:
 
     npm install wink-statistics --save
 
-## Example [![Build Status](https://badge.runkitcdn.com/wink-statistics.svg)](https://npm.runkit.com/wink-statistics)
+### Example [![Build Status](https://badge.runkitcdn.com/wink-statistics.svg)](https://npm.runkit.com/wink-statistics)
 
 ```javascript
 // Load Wink Statistics
 var stats = require( 'wink-statistics' );
 ```
 
-## Need Help?
+### Need Help?
 
 If you spot a bug and the same has not yet been reported, raise a new [issue](https://github.com/decisively/wink-statistics/issues) or consider fixing it and sending a pull request.
 
-## Copyright & License
+### Copyright & License
 
 **wink-statistics** is copyright 2017 GRAYPE Systems Private Limited.
 
