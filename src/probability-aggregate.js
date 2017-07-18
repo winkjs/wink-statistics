@@ -35,10 +35,10 @@
  * *[Bayesian Group Belief by Franz Dietrich](http://link.springer.com/article/10.1007/s00355-010-0453-x)*
  * published in Social Choice and Welfare October 2010, Volume 35, Issue 4, pp 595–626.
  *
+ * @name probability.aggregate
  * @param {number} pa1 — first estimate of probability of occurrence of event **a**.
  * @param {number} pa2 — second estimate of probability of occurrence of event **a**.
  * @return {number} — the aggregated probability.
- *
  * @example
  * aggregate( 0.5, 0.6 );
  * // returns 0.6
