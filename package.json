@@ -10,11 +10,11 @@
   ],
   "main": "src/wink-statistics.js",
   "scripts": {
-    "pretest": "npm run lint && npm run hint && npm run readmedocs",
+    "pretest": "npm run lint && npm run hint && npm run docs",
     "test": "istanbul cover _mocha ./test/",
     "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
-    "docs": "docker -i src -o docs --sidebar no",
-    "readmedocs": "documentation readme src/probability*.js --section=probability && documentation readme src/streaming*.js --section=streaming && documentation readme src/stats*.js --section=stats",
+    "sourcedocs": "docker -i src -o sourcedocs --sidebar no",
+    "docs": "documentation build src/** -f html -o docs",
     "hint": "jshint ./src/*.js ./test/*.js ./runkit/*.js",
     "lint": "eslint ./src/*.js ./test/*.js ./runkit/*.js"
   },
