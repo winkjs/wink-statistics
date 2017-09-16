@@ -2,7 +2,7 @@
 
 Fast and Numerically Stable Statistical Analysis Utilities
 
-### [![Build Status](https://api.travis-ci.org/decisively/wink-statistics.svg?branch=master)](https://travis-ci.org/decisively/wink-statistics) [![Coverage Status](https://coveralls.io/repos/github/decisively/wink-statistics/badge.svg?branch=master)](https://coveralls.io/github/decisively/wink-statistics?branch=master) [![Inline docs](http://inch-ci.org/github/decisively/wink-statistics.svg?branch=master)](http://inch-ci.org/github/decisively/wink-statistics) [![devDependencies Status](https://david-dm.org/decisively/wink-statistics/dev-status.svg)](https://david-dm.org/decisively/wink-statistics?type=dev)
+### [![Build Status](https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master)](https://travis-ci.org/winkjs/wink-statistics) [![Coverage Status](https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master)](https://coveralls.io/github/winkjs/wink-statistics?branch=master) [![Inline docs](http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master)](http://inch-ci.org/github/winkjs/wink-statistics) [![devDependencies Status](https://david-dm.org/winkjs/wink-statistics/dev-status.svg)](https://david-dm.org/winkjs/wink-statistics?type=dev)
 
 <img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >
 
@@ -24,11 +24,11 @@ Use [npm](https://www.npmjs.com/package/wink-statistics) to install:
     npm install wink-statistics --save
 
 ### API
-Documentation along with examples is available at https://decisively.github.io/wink-statistics/.
+Documentation along with examples is available at https://winkjs.github.io/wink-statistics/.
 
 ### Need Help?
 
-If you spot a bug and the same has not yet been reported, raise a new [issue](https://github.com/decisively/wink-statistics/issues) or consider fixing it and sending a pull request.
+If you spot a bug and the same has not yet been reported, raise a new [issue](https://github.com/winkjs/wink-statistics/issues) or consider fixing it and sending a pull request.
 
 ### Copyright & License
 

@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/decisively/wink-statistics.git"
+    "url": "git+https://github.com/winkjs/wink-statistics.git"
   },
   "author": "Sanjaya Kumar Saxena",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/decisively/wink-statistics/issues"
+    "url": "https://github.com/winkjs/wink-statistics/issues"
   },
-  "homepage": "https://github.com/decisively/wink-statistics#readme",
+  "homepage": "https://github.com/winkjs/wink-statistics#readme",
   "devDependencies": {
     "chai": "^4.1.0",
     "coveralls": "^2.11.15",
@@ -43,6 +43,6 @@
   },
   "runkitExampleFilename": "./runkit/example.js",
   "dependencies": {
-    "wink-helpers": "^1.1.1"
+    "wink-helpers": "^1.2.0"
   }
 }
