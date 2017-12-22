@@ -25,7 +25,7 @@
 // ### accessor
 /**
  *
- * @private 
+ * @private
  * Returns the value from `data` that is accessed via `accessor`.
  *
  * @param {number} data — from where a value is extracted using `accessor`.
