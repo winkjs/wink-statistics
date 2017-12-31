@@ -6,7 +6,7 @@ Fast and Numerically Stable Statistical Analysis Utilities
 
 <img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >
 
-Perform fast and numerically stable statistical analysis using **`wink-statistics`**. It is a part of [wink](https://www.npmjs.com/~sanjaya) — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
+Perform fast and numerically stable statistical analysis using **`wink-statistics`**. It is a part of [wink](http://winkjs.org/) — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
 
 Summarize, Discover and Analyze data with it's rich set of features:
 
