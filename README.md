@@ -2,7 +2,7 @@
 
 Fast and Numerically Stable Statistical Analysis Utilities
 
-### [![Build Status](https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master)](https://travis-ci.org/winkjs/wink-statistics) [![Coverage Status](https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master)](https://coveralls.io/github/winkjs/wink-statistics?branch=master) [![Inline docs](http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master)](http://inch-ci.org/github/winkjs/wink-statistics) [![dependencies Status](https://david-dm.org/winkjs/wink-statistics/status.svg)](https://david-dm.org/winkjs/wink-statistics) [![devDependencies Status](https://david-dm.org/winkjs/wink-statistics/dev-status.svg)](https://david-dm.org/winkjs/wink-statistics?type=dev)
+### [![Build Status](https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master)](https://travis-ci.org/winkjs/wink-statistics) [![Coverage Status](https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master)](https://coveralls.io/github/winkjs/wink-statistics?branch=master) [![Inline docs](http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master)](http://inch-ci.org/github/winkjs/wink-statistics) [![dependencies Status](https://david-dm.org/winkjs/wink-statistics/status.svg)](https://david-dm.org/winkjs/wink-statistics) [![devDependencies Status](https://david-dm.org/winkjs/wink-statistics/dev-status.svg)](https://david-dm.org/winkjs/wink-statistics?type=dev) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/winkjs/Lobby)
 
 <img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >
 
