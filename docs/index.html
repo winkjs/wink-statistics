@@ -263,16 +263,17 @@
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
         
           
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+            <div class='keyline-top-not py2'>
+  <section class='py2 clearfix'>
 
-  <h2 id='introduction' class='mt0'>
-    Introduction
-  </h2>
+    <h2 id='introduction' class='mt0'>
+      Introduction
+    </h2>
 
-  
-    <h1>wink-statistics</h1>
+    
+      <h1>wink-statistics</h1>
 <p>Fast and Numerically Stable Statistical Analysis Utilities</p>
-<h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a></h3>
+<h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3>
 <img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >
 <p>Perform fast and numerically stable statistical analysis using <strong><code>wink-statistics</code></strong>. It is a part of <a href="http://winkjs.org/">wink</a> — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.</p>
 <p>Summarize, Discover and Analyze data with it's rich set of features:</p>
@@ -300,28 +301,145 @@
 <p>It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
 Software Foundation, version 3 of the License.</p>
 
-  
-</section>
-</div>
-          
-        
-          
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
-
-  <h2 id='probability' class='mt0'>
-    Probability
-  </h2>
-
-  
     
+  </section>
+</div>
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='introduction'>
+      Introduction
+    </h3>
+    
+    
+  </div>
+  
+
+  <h1>wink-statistics</h1>
+<p>Fast and Numerically Stable Statistical Analysis Utilities</p>
+<h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3>
+<img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >
+<p>Perform fast and numerically stable statistical analysis using <strong><code>wink-statistics</code></strong>. It is a part of <a href="http://winkjs.org/">wink</a> — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.</p>
+<p>Summarize, Discover and Analyze data with it's rich set of features:</p>
+<ol>
+<li>
+<p>Analyze both continuous and categorical data.</p>
+</li>
+<li>
+<p>Handles real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data.</p>
+</li>
+<li>
+<p>Minimizes data preprocessing by handling array of data structures containing numerical values, e.g. array of objects.</p>
+</li>
+</ol>
+<h3>Installation</h3>
+<p>Use <a href="https://www.npmjs.com/package/wink-statistics">npm</a> to install:</p>
+<pre><code>npm install wink-statistics --save
+</code></pre>
+<h3>API</h3>
+<p>Check out the <a href="http://winkjs.org/wink-statistics/">statistics API documentation</a> to learn more.</p>
+<h3>Need Help?</h3>
+<p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-statistics/issues">issue</a> or consider fixing it and sending a pull request.</p>
+<h3>Copyright &#x26; License</h3>
+<p><strong>wink-statistics</strong> is copyright 2017 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
+<p>It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, version 3 of the License.</p>
+
+ 
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 </section>
-</div>
-          
+
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+            <div class='keyline-top-not py2'>
+  <section class='py2 clearfix'>
+
+    <h2 id='probability' class='mt0'>
+      Probability
+    </h2>
+
+    
+      
+
+    
+  </section>
+</div>
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='probability'>
+      Probability
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+ 
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -343,8 +461,10 @@ probability of <strong>a</strong> is <strong>0.5</strong>.</p>
 <em><a href="http://link.springer.com/article/10.1007/s00355-010-0453-x">Bayesian Group Belief by Franz Dietrich</a></em>
 published in Social Choice and Welfare October 2010, Volume 35, Issue 4, pp 595–626.</p>
 
-
-  <div class='pre p1 fill-light mt0'>probability.aggregate</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>probability.aggregate</div>
+   
   
   
 
@@ -420,10 +540,9 @@ aggregate( <span class="hljs-number">0.4</span>, <span class="hljs-number">0.6</
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -445,8 +564,10 @@ published in ASA's Journal.</p>
 <p>For quick reference, typical value of <code>zscore</code> for 90% and 95% CI is approximately
 1.645 and 1.960 respectively.</p>
 
-
-  <div class='pre p1 fill-light mt0'>probability.range4CI</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>probability.range4CI</div>
+   
   
   
 
@@ -538,25 +659,69 @@ range4CI( <span class="hljs-number">10</span>, <span class="hljs-number">100</sp
   
 </section>
 
-          
         
           
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+            <div class='keyline-top-not py2'>
+  <section class='py2 clearfix'>
 
-  <h2 id='stats' class='mt0'>
-    Stats
-  </h2>
+    <h2 id='stats' class='mt0'>
+      Stats
+    </h2>
+
+    
+      
+
+    
+  </section>
+</div>
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
+  <div class='clearfix'>
     
+    <h3 class='fl m0' id='stats'>
+      Stats
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+ 
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 </section>
-</div>
-          
+
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -572,8 +737,10 @@ range4CI( <span class="hljs-number">10</span>, <span class="hljs-number">100</sp
   <p>Comuptes the mean of numbers contained in the <code>x</code> array.
 The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.mean</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.mean</div>
+   
   
   
 
@@ -648,10 +815,9 @@ mean( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> }
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -666,8 +832,10 @@ mean( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> }
 
   <p>Returns the median of the <code>sortedData</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.median</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.median</div>
+   
   
   
 
@@ -742,10 +910,9 @@ that extracts the value from the element passed to it.
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -760,8 +927,10 @@ that extracts the value from the element passed to it.
 
   <p>Finds the maximum value in the <code>x</code> array.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.max</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.max</div>
+   
   
   
 
@@ -838,10 +1007,9 @@ max( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">33</span> }
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -856,8 +1024,10 @@ max( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">33</span> }
 
   <p>Finds the minimum value in the <code>x</code> array.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.min</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.min</div>
+   
   
   
 
@@ -934,10 +1104,9 @@ min( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">33</span> }
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -952,8 +1121,10 @@ min( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">33</span> }
 
   <p>Returns the median of the <code>sortedData</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.mad</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.mad</div>
+   
   
   
 
@@ -1028,10 +1199,9 @@ that extracts the value from the element passed to it.
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1047,8 +1217,10 @@ that extracts the value from the element passed to it.
   <p>Performs complete <a href="https://en.wikipedia.org/wiki/Box_plot">boxplot</a> analysis
 including computation of notches and outliers.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.boxplot</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.boxplot</div>
+   
   
   
 
@@ -1175,10 +1347,9 @@ returns {
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1194,8 +1365,10 @@ returns {
   <p>Comuptes the sample standard deviation of numbers contained in the <code>x</code> array.
 The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.stdev</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.stdev</div>
+   
   
   
 
@@ -1270,10 +1443,9 @@ stdev( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> 
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1290,8 +1462,10 @@ stdev( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> 
 based on Method 11 described in <a href="https://ww2.amstat.org/publications/jse/v14n3/langford.html">Quartiles in Elementary Statistics</a>
 by Eric Langford published in Journal of Statistics Education Volume 14, Number 3 (2006).</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.percentile</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.percentile</div>
+   
   
   
 
@@ -1386,10 +1560,9 @@ percentile( [ <span class="hljs-number">1</span>, <span class="hljs-number">1</s
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1408,8 +1581,10 @@ switches to Sturges' Rule while ensuring minimum of 5 bins.
 It attempts to reduce excessive sparsity of distribution,
 if any, by adjusting the number of bins using Sturges' Rule.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.histogram</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.histogram</div>
+   
   
   
 
@@ -1536,10 +1711,9 @@ histogram( data );
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1554,8 +1728,10 @@ histogram( data );
 
   <p>Returns the <a href="https://en.wikipedia.org/wiki/Five-number_summary">five number summary</a> from the <code>sortedData</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>stats.fiveNumSummary</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>stats.fiveNumSummary</div>
+   
   
   
 
@@ -1648,25 +1824,69 @@ that extracts the value from the element passed to it.
   
 </section>
 
-          
         
           
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+            <div class='keyline-top-not py2'>
+  <section class='py2 clearfix'>
 
-  <h2 id='streaming' class='mt0'>
-    Streaming
-  </h2>
+    <h2 id='streaming' class='mt0'>
+      Streaming
+    </h2>
+
+    
+      
+
+    
+  </section>
+</div>
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
+  <div class='clearfix'>
     
+    <h3 class='fl m0' id='streaming'>
+      Streaming
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+ 
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 </section>
-</div>
-          
+
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1685,8 +1905,10 @@ Probe the mean anytime using <code>value()</code>, which may be reset via <code>
 The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
 <p>The <code>result()</code> returns an object containing sample <code>mean</code> along with <code>size</code> of data.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.mean</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.mean</div>
+   
   
   
 
@@ -1744,10 +1966,9 @@ avg.result();
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1765,8 +1986,10 @@ avg.result();
 Probe the maximum anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
 The <code>result()</code> returns an object containing <code>max</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.max</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.max</div>
+   
   
   
 
@@ -1822,10 +2045,9 @@ maximum.result();
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1843,8 +2065,10 @@ maximum.result();
 Probe the minimum anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
 The <code>result()</code> returns an object containing <code>min</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.min</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.min</div>
+   
   
   
 
@@ -1900,10 +2124,9 @@ minimum.result();
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -1924,8 +2147,10 @@ The computations are inspired by the method proposed by <a href="http://dx.doi.o
 <code>variance</code>, along with <code>mean</code>, <code>size</code> of data; it also
 contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.stdev</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.stdev</div>
+   
   
   
 
@@ -1988,10 +2213,9 @@ sd.result();
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -2010,8 +2234,10 @@ Probe the sum anytime using <code>value()</code>, which may be reset via <code>r
 is compensated for floating point errors using Neumaier Method.
 The <code>result()</code> returns an object containing <code>sum</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.sum</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.sum</div>
+   
   
   
 
@@ -2069,10 +2295,9 @@ addition.result();
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -2094,8 +2319,10 @@ The computations are inspired by the method proposed by <a href="http://dx.doi.o
 sample <code>variance</code> of data; it also
 contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.summary</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.summary</div>
+   
   
   
 
@@ -2156,10 +2383,9 @@ ss.result();
   
 </section>
 
-          
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -2182,8 +2408,10 @@ with it's <code>size</code>, <code>sum</code> of all counts, <code>x2</code> - c
 <code>percentage</code> in <code>table</code> give the percentage of a category count against the <code>sum</code>; and <code>expected</code> is the count
 assuming an uniform distribution.</p>
 
-
-  <div class='pre p1 fill-light mt0'>streaming.freqTable</div>
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.freqTable</div>
+   
   
   
 
@@ -2257,7 +2485,6 @@ ft.result();
   
 </section>
 
-          
         
       </div>
     </div>
