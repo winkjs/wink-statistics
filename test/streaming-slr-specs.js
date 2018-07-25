@@ -59,7 +59,20 @@ describe( 'streaming-slr', function () {
     expect( slr.result().size ).to.equal( undefined );
   } );
 
+  it( 'should return all undefined with zero variance', function () {
+    slr.reset();
+    slr.compute( 3, 3 );
+    slr.compute( 3, 3 );
+    expect( slr.result().slope ).to.equal( undefined );
+    expect( slr.result().intecept ).to.equal( undefined );
+    expect( slr.result().r ).to.equal( undefined );
+    expect( slr.result().r2 ).to.equal( undefined );
+    expect( slr.result().se ).to.equal( undefined );
+    expect( slr.result().size ).to.equal( undefined );
+  } );
+
   it( 'should return slope/intercept of -2.0728/91.7868 after reset and with revised data', function () {
+    slr.reset();
     slr.compute( 16, 65 );
     slr.compute( 18, 50 );
     slr.compute( 21, 45 );

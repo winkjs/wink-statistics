@@ -35,7 +35,8 @@
  * The `result()` also has an alias `value()`.
  *
  * The correlation is an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
- * the `size` of data i.e. number of x & y pairs.
+ * the `size` of data i.e. number of x & y pairs. *In case of any error such as no
+ * input data or zero variance, correlation object will be an empty one*.
  *
  * @name streaming.slr
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.

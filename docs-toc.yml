@@ -5,20 +5,22 @@ toc:
   - probability.aggregate
   - probability.range4CI
   - name: Stats
+  - stats.boxplot
+  - stats.fiveNumSummary
+  - stats.histogram
+  - stats.mad
+  - stats.max
   - stats.mean
   - stats.median
-  - stats.max
   - stats.min
-  - stats.mad
-  - stats.boxplot
-  - stats.stdev
   - stats.percentile
-  - stats.histogram
-  - stats.fiveNumSummary
+  - stats.stdev
   - name: Streaming
-  - streaming.mean
+  - streaming.freqTable 
   - streaming.max
+  - streaming.mean
   - streaming.min
+  - streaming.slr
   - streaming.stdev
   - streaming.sum
   - streaming.summary
