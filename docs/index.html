@@ -253,6 +253,16 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#streamingslr'
+                  class="">
+                  streaming.slr
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -2474,6 +2484,100 @@ ft.result();
 <span class="hljs-comment">//  x2: 1,</span>
 <span class="hljs-comment">//  df: 3,</span>
 <span class="hljs-comment">//  entropy: 1.9056390622295665</span>
+<span class="hljs-comment">// }</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='streamingslr'>
+      streaming.slr
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Simple Linear Regression — <strong>slr</strong> is a higher order function that returns an
+object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>correlation</strong> between <code>x</code> and <code>y</code> values passed to it in real-time.
+Probe the correlation anytime using <code>result()</code>, which may be reset via <code>reset()</code>.
+The <code>result()</code> accepts a parameter <code>fractionDigits</code> that defines the number of
+decimals in values returned in correlation object. Its default value is <strong>4</strong>.
+The <code>result()</code> also has an alias <code>value()</code>.</p>
+<p>The correlation is an object containing <code>slope</code>, <code>intercept</code>, <code>r</code>, <code>r2</code>, <code>se</code> along with
+the <code>size</code> of data i.e. number of x &#x26; y pairs.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>streaming.slr</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        containing 
+<code>compute</code>
+, 
+<code>value</code>
+, 
+<code>result</code>
+, and 
+<code>reset</code>
+ functions.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> regression = slr();
+regression.compute( <span class="hljs-number">10</span>, <span class="hljs-number">80</span> );
+regression.compute( <span class="hljs-number">15</span>, <span class="hljs-number">75</span> );
+regression.compute( <span class="hljs-number">16</span>, <span class="hljs-number">65</span> );
+regression.compute( <span class="hljs-number">18</span>, <span class="hljs-number">50</span> );
+regression.compute( <span class="hljs-number">21</span>, <span class="hljs-number">45</span> );
+regression.compute( <span class="hljs-number">30</span>, <span class="hljs-number">30</span> );
+regression.compute( <span class="hljs-number">36</span>, <span class="hljs-number">18</span> );
+regression.compute( <span class="hljs-number">40</span>, <span class="hljs-number">9</span> );
+regression.result();
+<span class="hljs-comment">// returns { slope: -2.3621,</span>
+<span class="hljs-comment">//   intercept: 101.4188,</span>
+<span class="hljs-comment">//   r: -0.9766,</span>
+<span class="hljs-comment">//   r2: 0.9537,</span>
+<span class="hljs-comment">//   se: 5.624,</span>
+<span class="hljs-comment">//   size: 8</span>
 <span class="hljs-comment">// }</span></pre>
     
   
