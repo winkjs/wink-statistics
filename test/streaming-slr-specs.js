@@ -31,7 +31,7 @@ var it = mocha.it;
 
 describe( 'streaming-slr', function () {
 
-  it( 'should return minimum 34.1 & 2.22 respectively with data1 & data2 respectively', function () {
+  it( 'should return slope & intercept of -2.3621 & 101.4188 respectively', function () {
     slr.compute( 10, 80 );
     slr.compute( 15, 75 );
     slr.compute( 16, 65 );
@@ -41,12 +41,12 @@ describe( 'streaming-slr', function () {
     slr.compute( 36, 18 );
     slr.compute( 40, 9 );
     expect( slr.result() ).to.deep.equal( slr.value() );
-    expect( +slr.result().slope ).to.equal( -2.3621 );
-    expect( +slr.result().intercept ).to.equal( 101.4188 );
-    expect( +slr.result().r ).to.equal( -0.9766 );
-    expect( +slr.result().r2 ).to.equal( 0.9537 );
-    expect( +slr.result().se ).to.equal( 5.624 );
-    expect( +slr.result().size ).to.equal( 8 );
+    expect( slr.result().slope ).to.equal( -2.3621 );
+    expect( slr.result().intercept ).to.equal( 101.4188 );
+    expect( slr.result().r ).to.equal( -0.9766 );
+    expect( slr.result().r2 ).to.equal( 0.9537 );
+    expect( slr.result().se ).to.equal( 5.624 );
+    expect( slr.result().size ).to.equal( 8 );
   } );
 
   it( 'should return all undefined with no data', function () {
@@ -57,5 +57,21 @@ describe( 'streaming-slr', function () {
     expect( slr.result().r2 ).to.equal( undefined );
     expect( slr.result().se ).to.equal( undefined );
     expect( slr.result().size ).to.equal( undefined );
+  } );
+
+  it( 'should return slope/intercept of -2.0728/91.7868 after reset and with revised data', function () {
+    slr.compute( 16, 65 );
+    slr.compute( 18, 50 );
+    slr.compute( 21, 45 );
+    slr.compute( 30, 30 );
+    slr.compute( 36, 18 );
+    slr.compute( 40, 9 );
+    expect( slr.result() ).to.deep.equal( slr.value() );
+    expect( slr.result().slope ).to.equal( -2.0728 );
+    expect( slr.result().intercept ).to.equal( 91.7868 );
+    expect( slr.result().r ).to.equal( -0.9835 );
+    expect( slr.result().r2 ).to.equal( 0.9673 );
+    expect( slr.result().se ).to.equal( 3.799 );
+    expect( slr.result().size ).to.equal( 6 );
   } );
 } );

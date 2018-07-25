@@ -84,7 +84,7 @@ var slr = function () {
   methods.result = function ( fractionDigits ) {
     var model = Object.create( null );
     var fd = fractionDigits || 4;
-    if ( items > 1 ) {
+    if ( ( items > 1 ) && ( varX !== 0 ) && ( varY !== 0 ) ) {
       model.slope = +( covXY / varX ).toFixed( fd );
       model.intercept = +( meanY - ( model.slope * meanX ) ).toFixed( fd );
       model.r = +( covXY / Math.sqrt( varX * varY ) ).toFixed( fd );
