@@ -61,11 +61,13 @@ ws.streaming.max = require( './streaming-max.js' );
 ws.streaming.mean = require( './streaming-mean.js' );
 // 4. min
 ws.streaming.min = require( './streaming-min.js' );
-// 5. stdev
+// 5. slr
+ws.streaming.slr = require( './streaming-slr.js' );
+// 6. stdev
 ws.streaming.stdev = require( './streaming-stdev.js' );
-// 6. sum
+// 7. sum
 ws.streaming.sum = require( './streaming-sum.js' );
-// 7. summary
+// 8. summary
 ws.streaming.summary = require( './streaming-summary.js' );
 
 module.exports = ws;
