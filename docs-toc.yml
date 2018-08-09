@@ -16,7 +16,8 @@ toc:
   - stats.percentile
   - stats.stdev
   - name: Streaming
-  - streaming.freqTable 
+  - streaming.cov
+  - streaming.freqTable
   - streaming.max
   - streaming.mean
   - streaming.min

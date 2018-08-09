@@ -10,7 +10,8 @@
     "Stats",
     "Math",
     "Wink",
-    "Regression"
+    "Regression",
+    "Covariance"
   ],
   "main": "src/wink-statistics.js",
   "scripts": {
