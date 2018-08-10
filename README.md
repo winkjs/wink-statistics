@@ -12,7 +12,7 @@ Summarize, Discover and Analyze data with it's rich set of features:
 
 1. Analyze both continuous and categorical data.
 
-2. Handles real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data.
+2. Handles real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data as in **standard deviation** or **simple linear regression**.
 
 3. Minimizes data preprocessing by handling array of data structures containing numerical values, e.g. array of objects.
 
