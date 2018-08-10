@@ -50,6 +50,7 @@ describe( 'streaming-cov', function () {
 
   it( 'should return all 0 with no data', function () {
     cov.reset();
+    expect( cov.value() ).to.equal( 0 );
     expect( cov.result().meanX ).to.equal( 0 );
     expect( cov.result().meanY ).to.equal( 0 );
     expect( cov.result().cov ).to.equal( 0 );
@@ -61,6 +62,7 @@ describe( 'streaming-cov', function () {
     cov.reset();
     cov.compute( 3, 3 );
     cov.compute( 3, 3 );
+    expect( cov.value() ).to.equal( 0 );
     expect( cov.result().meanX ).to.equal( 3 );
     expect( cov.result().meanY ).to.equal( 3 );
     expect( cov.result().cov ).to.equal( 0 );
@@ -76,7 +78,7 @@ describe( 'streaming-cov', function () {
     cov.compute( 30, 30 );
     cov.compute( 36, 18 );
     cov.compute( 40, 9 );
-    expect( cov.value( 2 ) ).to.equal( -205.97 );
+    expect( cov.value() ).to.equal( -205.9667 );
     expect( cov.result().meanX ).to.equal( 26.8333 );
     expect( cov.result().meanY ).to.equal( 36.1667 );
     expect( cov.result().cov ).to.equal( -205.9667 );
