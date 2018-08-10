@@ -53,21 +53,23 @@ ws.stats.stdev = require( './stats-stdev.js' );
 
 // Streaming name space.
 ws.streaming = Object.create( null );
-// 1. freqTable
+// 1. cov
+ws.streaming.cov = require( './streaming-cov.js' );
+// 2. freqTable
 ws.streaming.freqTable = require( './streaming-freq-table.js' );
-// 2. max
+// 3. max
 ws.streaming.max = require( './streaming-max.js' );
-// 3. mean
+// 4. mean
 ws.streaming.mean = require( './streaming-mean.js' );
-// 4. min
+// 5. min
 ws.streaming.min = require( './streaming-min.js' );
-// 5. slr
+// 6. slr
 ws.streaming.slr = require( './streaming-slr.js' );
-// 6. stdev
+// 7. stdev
 ws.streaming.stdev = require( './streaming-stdev.js' );
-// 7. sum
+// 8. sum
 ws.streaming.sum = require( './streaming-sum.js' );
-// 8. summary
+// 9. summary
 ws.streaming.summary = require( './streaming-summary.js' );
 
 module.exports = ws;
