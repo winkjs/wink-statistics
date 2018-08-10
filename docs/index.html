@@ -1922,9 +1922,9 @@ stdev( [ { <span class="hljs-attr">x</span>: <span class="hljs-number">2</span> 
   <p>Covariance — <strong>cov</strong> is a higher order function that returns an
 object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
 <p>Use <code>compute()</code> to continuously determine the <strong>covariance</strong> between <code>x</code> and <code>y</code> values passed to it in real-time.
-Probe the sample covariance anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
-The <code>result()</code> and <code>value()</code> accept a parameter <code>fractionDigits</code> that defines the number of
-decimals in values returned. Its default value is <strong>4</strong>.</p>
+Probe the sample covariance anytime using <code>value()</code>, which may be reset via <code>reset()</code>.</p>
+<p>Number of decimals in the returned numerical values can be configured by defining
+<code>fractionDigits</code> as parameter in <code>result()</code> and <code>value()</code>. Its default value is <strong>4</strong>.</p>
 <p>The <code>result()</code> returns an object containing sample covariance <code>cov</code>, along with
 <code>meanX</code>, <code>meanY</code> and <code>size</code> of data i.e. number of x &#x26; y pairs. It also contains
 population covariance <code>covp</code>.</p>
@@ -2357,9 +2357,9 @@ minimum.result();
   <p>Simple Linear Regression — <strong>slr</strong> is a higher order function that returns an
 object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
 <p>Use <code>compute()</code> to continuously determine the <strong>correlation</strong> between <code>x</code> and <code>y</code> values passed to it in real-time.
-Probe the correlation anytime using <code>result()</code>, which may be reset via <code>reset()</code>.
-The <code>result()</code> accepts a parameter <code>fractionDigits</code> that defines the number of
-decimals in values returned in correlation object. Its default value is <strong>4</strong>.
+Probe the correlation anytime using <code>result()</code>, which may be reset via <code>reset()</code>.</p>
+<p>Number of decimals in the correlated values can be configured by defining
+<code>fractionDigits</code> as parameter in <code>result()</code>. Its default value is <strong>4</strong>.
 The <code>result()</code> also has an alias <code>value()</code>.</p>
 <p>The correlation is an object containing <code>slope</code>, <code>intercept</code>, <code>r</code>, <code>r2</code>, <code>se</code> along with
 the <code>size</code> of data i.e. number of x &#x26; y pairs. <em>In case of any error such as no

@@ -30,8 +30,9 @@
  *
  * Use `compute()` to continuously determine the **covariance** between `x` and `y` values passed to it in real-time.
  * Probe the sample covariance anytime using `value()`, which may be reset via `reset()`.
- * The `result()` and `value()` accept a parameter `fractionDigits` that defines the number of
- * decimals in values returned. Its default value is **4**.
+ *
+ * Number of decimals in the returned numerical values can be configured by defining
+ * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
  *
  * The `result()` returns an object containing sample covariance `cov`, along with
  * `meanX`, `meanY` and `size` of data i.e. number of x & y pairs. It also contains

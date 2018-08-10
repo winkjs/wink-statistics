@@ -30,8 +30,9 @@
  *
  * Use `compute()` to continuously determine the **correlation** between `x` and `y` values passed to it in real-time.
  * Probe the correlation anytime using `result()`, which may be reset via `reset()`.
- * The `result()` accepts a parameter `fractionDigits` that defines the number of
- * decimals in values returned in correlation object. Its default value is **4**.
+ *
+ * Number of decimals in the correlated values can be configured by defining
+ * `fractionDigits` as parameter in `result()`. Its default value is **4**.
  * The `result()` also has an alias `value()`.
  *
  * The correlation is an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
