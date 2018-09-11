@@ -32,7 +32,7 @@
  * is compensated for floating point errors using Neumaier Method.
  * The `result()` returns an object containing `sum`.
  *
- * @name streaming.sum
+ * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var addition = sum();

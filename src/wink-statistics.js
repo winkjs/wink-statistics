@@ -21,14 +21,21 @@
 //     If not, see <http://www.gnu.org/licenses/>.
 
 var ws = Object.create( null );
-// Probability name space.
+
+/**
+ * Probability
+ * @namespace probability
+ */
 ws.probability = Object.create( null );
 // 1. range4CI
 ws.probability.range4CI = require( './probability-range-4ci.js' );
 // 2. aggregate
 ws.probability.aggregate = require( './probability-aggregate.js' );
 
-// Stats name space.
+/**
+ * Statistics
+ * @namespace stats
+ */
 ws.stats = Object.create( null );
 // 1. boxplot
 ws.stats.boxplot = require( './stats-boxplot.js' );
@@ -51,7 +58,10 @@ ws.stats.percentile = require( './stats-percentile.js' );
 // 10. stdev
 ws.stats.stdev = require( './stats-stdev.js' );
 
-// Streaming name space.
+/**
+ * Streaming
+ * @namespace streaming
+ */
 ws.streaming = Object.create( null );
 // 1. cov
 ws.streaming.cov = require( './streaming-cov.js' );

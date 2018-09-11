@@ -33,7 +33,7 @@
  *
  * The `result()` returns an object containing sample `mean` along with `size` of data.
  *
- * @name streaming.mean
+ * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var avg = mean();

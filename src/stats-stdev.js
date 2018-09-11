@@ -31,7 +31,7 @@ var varianceXn = require( './stats-varianceXn.js' );
  * Comuptes the sample standard deviation of numbers contained in the `x` array.
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
- * @name stats.stdev
+ * @memberof stats
  * @param {array} x — array containing 1 or more elements.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of
  * `x` are objects or arrays instead of numbers.

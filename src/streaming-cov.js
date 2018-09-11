@@ -38,7 +38,7 @@
  * `meanX`, `meanY` and `size` of data i.e. number of x & y pairs. It also contains
  * population covariance `covp`.
  *
- * @name streaming.cov
+ * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var covariance = cov();

@@ -32,7 +32,7 @@ var helpers = require( 'wink-helpers' );
  *
  * Finds the maximum value in the `x` array.
  *
- * @name stats.max
+ * @memberof stats
  * @param {array} x — array containing 1 or more elements.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of
  * `x` are objects or arrays instead of numbers.
