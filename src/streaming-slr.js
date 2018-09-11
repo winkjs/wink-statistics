@@ -39,7 +39,7 @@
  * the `size` of data i.e. number of x & y pairs. *In case of any error such as no
  * input data or zero variance, correlation object will be an empty one*.
  *
- * @name streaming.slr
+ * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var regression = slr();

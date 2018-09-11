@@ -31,7 +31,7 @@
  * Probe the maximum anytime using `value()`, which may be reset via `reset()`.
  * The `result()` returns an object containing `max`.
  *
- * @name streaming.max
+ * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
  * var maximum = max();

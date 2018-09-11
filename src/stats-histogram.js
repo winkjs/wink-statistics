@@ -94,7 +94,7 @@ var distribution = function ( bins, binWidth, sortedData, rs, precision, accesso
  * It attempts to reduce excessive sparsity of distribution,
  * if any, by adjusting the number of bins using Sturges' Rule.
  *
- * @name stats.histogram
+ * @memberof stats
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {number} [dataPrecision=0] — typically the minumum number of
  * decimal places observed in the `sortedData`.

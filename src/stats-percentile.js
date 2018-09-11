@@ -34,7 +34,7 @@ var helpers = require( 'wink-helpers' );
  * based on Method 11 described in [Quartiles in Elementary Statistics](https://ww2.amstat.org/publications/jse/v14n3/langford.html)
  * by Eric Langford published in Journal of Statistics Education Volume 14, Number 3 (2006).
  *
- * @name stats.percentile
+ * @memberof stats
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {number} q — should be between 0 and 1 indicating percentile;
  * for example, to get 25<sup>th</sup> percentile, it should be 0.25.

@@ -35,7 +35,7 @@ var helpers = require( 'wink-helpers' );
  *
  * Returns the median of the `sortedData`.
  *
- * @name stats.mad
+ * @memberof stats
  * @param {array} sortedData — sorted in ascending order of value.
  * @param {(string|number|function)} [accessor=undefined] — required when elements of
  * `x` are objects or arrays instead of numbers.
