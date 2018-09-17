@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>streaming - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Namespaces</h3><ul><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="stats.html">stats</a><ul class='methods'><li data-type='method'><a href="stats.html#.boxplot">boxplot</a></li><li data-type='method'><a href="stats.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="stats.html#.histogram">histogram</a></li><li data-type='method'><a href="stats.html#.mad">mad</a></li><li data-type='method'><a href="stats.html#.max">max</a></li><li data-type='method'><a href="stats.html#.mean">mean</a></li><li data-type='method'><a href="stats.html#.median">median</a></li><li data-type='method'><a href="stats.html#.min">min</a></li><li data-type='method'><a href="stats.html#.percentile">percentile</a></li><li data-type='method'><a href="stats.html#.stdev">stdev</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#.covariance">covariance</a></li><li data-type='method'><a href="streaming.html#.freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#.max">max</a></li><li data-type='method'><a href="streaming.html#.mean">mean</a></li><li data-type='method'><a href="streaming.html#.min">min</a></li><li data-type='method'><a href="streaming.html#.slr">slr</a></li><li data-type='method'><a href="streaming.html#.stdev">stdev</a></li><li data-type='method'><a href="streaming.html#.sum">sum</a></li><li data-type='method'><a href="streaming.html#.summary">summary</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">streaming</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        streaming
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+                <div class="description"><p>Streaming</p></div>
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".covariance"><span class="type-signature">(static) </span>covariance<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-cov.js.html">streaming-cov.js</a>, <a href="streaming-cov.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Covariance — <strong>cov</strong> is a higher order function that returns an
+object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>covariance</strong> between <code>x</code> and <code>y</code> values passed to it in real-time.
+Probe the sample covariance anytime using <code>value()</code>, which may be reset via <code>reset()</code>.</p>
+<p>Number of decimals in the returned numerical values can be configured by defining
+<code>fractionDigits</code> as parameter in <code>result()</code> and <code>value()</code>. Its default value is <strong>4</strong>.</p>
+<p>The <code>result()</code> returns an object containing sample covariance <code>cov</code>, along with
+<code>meanX</code>, <code>meanY</code> and <code>size</code> of data i.e. number of x &amp; y pairs. It also contains
+population covariance <code>covp</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var covariance = cov();
+covariance.compute( 10, 80 );
+covariance.compute( 15, 75 );
+covariance.compute( 16, 65 );
+covariance.compute( 18, 50 );
+covariance.compute( 21, 45 );
+covariance.compute( 30, 30 );
+covariance.compute( 36, 18 );
+covariance.compute( 40, 9 );
+covariance.result();
+// returns { size: 8,
+//   meanX: 23.25,
+//   meanY: 46.5,
+//   cov: -275.8571,
+//   covp: -241.375
+// }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".freqTable"><span class="type-signature">(static) </span>freqTable<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-freq-table.js.html">streaming-freq-table.js</a>, <a href="streaming-freq-table.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>build()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>build()</code> to construct a frequency table from value of data items passed to it in real-time.
+Probe the object containing data-item/frequency pairs using <code>value()</code>, which may be reset via <code>reset()</code>.</p>
+<p>The <code>result()</code> returns an object containing the frequency <code>table</code> sorted in descending order of category counts or frequency, along
+with it's <code>size</code>, <code>sum</code> of all counts, <code>x2</code> - chi-squared statistic, <code>df</code> - degree of freedom, and the
+<code>entropy</code>.</p>
+<p>The <code>x2</code> along with the <code>df</code> can be used test the hypothesis that &quot;the distribution is a uniform one&quot;. The
+<code>percentage</code> in <code>table</code> give the percentage of a category count against the <code>sum</code>; and <code>expected</code> is the count
+assuming an uniform distribution.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var ft = freqTable();
+ft.build( 'Tea' );
+ft.build( 'Tea' );
+ft.build( 'Tea' );
+ft.build( 'Pepsi' );
+ft.build( 'Pepsi' );
+ft.build( 'Gin' );
+ft.build( 'Coke' );
+ft.build( 'Coke' );
+ft.value();
+// returns { Tea: 3, Pepsi: 2, Gin: 1, Coke: 2 }
+ft.result();
+// returns {
+//  table: [
+//   { category: 'Tea', observed: 3, percentage: 37.5, expected: 2 },
+//   { category: 'Pepsi', observed: 2, percentage: 25, expected: 2 },
+//   { category: 'Coke', observed: 2, percentage: 25, expected: 2 },
+//   { category: 'Gin', observed: 1, percentage: 12.5, expected: 2 }
+//  ],
+//  size: 4,
+//  sum: 8,
+//  x2: 1,
+//  df: 3,
+//  entropy: 1.9056390622295665
+// }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".max"><span class="type-signature">(static) </span>max<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-max.js.html">streaming-max.js</a>, <a href="streaming-max.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>maximum</strong> value of data items passed to it in real-time.
+Probe the maximum anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The <code>result()</code> returns an object containing <code>max</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var maximum = max();
+maximum.compute( 3 );
+maximum.compute( 6 );
+maximum.value();
+// returns 6
+maximum.result();
+// returns { max: 6 }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".mean"><span class="type-signature">(static) </span>mean<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-mean.js.html">streaming-mean.js</a>, <a href="streaming-mean.js.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>mean</strong> aka average value of data items passed to it in real-time.
+Probe the mean anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+<p>The <code>result()</code> returns an object containing sample <code>mean</code> along with <code>size</code> of data.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var avg = mean();
+avg.compute( 2 );
+avg.compute( 3 );
+avg.compute( 5 );
+avg.compute( 7 );
+avg.value();
+// returns 4.25
+avg.result();
+// returns { n: 4, mean: 4.25 }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".min"><span class="type-signature">(static) </span>min<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-min.js.html">streaming-min.js</a>, <a href="streaming-min.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>minimum</strong> value of data items passed to it in real-time.
+Probe the minimum anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The <code>result()</code> returns an object containing <code>min</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var minimum = min();
+minimum.compute( 3 );
+minimum.compute( 6 );
+minimum.value();
+// returns 3
+minimum.result();
+// returns { min: 3 }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".slr"><span class="type-signature">(static) </span>slr<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-slr.js.html">streaming-slr.js</a>, <a href="streaming-slr.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Simple Linear Regression — <strong>slr</strong> is a higher order function that returns an
+object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>correlation</strong> between <code>x</code> and <code>y</code> values passed to it in real-time.
+Probe the correlation anytime using <code>result()</code>, which may be reset via <code>reset()</code>.</p>
+<p>Number of decimals in the correlated values can be configured by defining
+<code>fractionDigits</code> as parameter in <code>result()</code>. Its default value is <strong>4</strong>.
+The <code>result()</code> also has an alias <code>value()</code>.</p>
+<p>The correlation is an object containing <code>slope</code>, <code>intercept</code>, <code>r</code>, <code>r2</code>, <code>se</code> along with
+the <code>size</code> of data i.e. number of x &amp; y pairs. <em>In case of any error such as no
+input data or zero variance, correlation object will be an empty one</em>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var regression = slr();
+regression.compute( 10, 80 );
+regression.compute( 15, 75 );
+regression.compute( 16, 65 );
+regression.compute( 18, 50 );
+regression.compute( 21, 45 );
+regression.compute( 30, 30 );
+regression.compute( 36, 18 );
+regression.compute( 40, 9 );
+regression.result();
+// returns { slope: -2.3621,
+//   intercept: 101.4188,
+//   r: -0.9766,
+//   r2: 0.9537,
+//   se: 5.624,
+//   size: 8
+// }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".stdev"><span class="type-signature">(static) </span>stdev<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-stdev.js.html">streaming-stdev.js</a>, <a href="streaming-stdev.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>standard deviation</strong> value of data items passed to it in real-time.
+Probe the sample standard deviation anytime using <code>value()</code>, which may be reset via <code>reset()</code>.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+<p>The <code>result()</code> returns an object containing sample <code>stdev</code> and
+<code>variance</code>, along with <code>mean</code>, <code>size</code> of data; it also
+contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var sd = stdev();
+sd.compute( 2 );
+sd.compute( 3 );
+sd.compute( 5 );
+sd.compute( 7 );
+sd.value();
+// returns 2.217355782608345
+sd.result();
+// returns { size: 4, mean: 4.25,
+//   variance: 4.916666666666666,
+//   stdev: 2.217355782608345,
+//   variancep: 3.6874999999999996,
+//   stdevp: 1.920286436967152
+// }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".sum"><span class="type-signature">(static) </span>sum<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-sum.js.html">streaming-sum.js</a>, <a href="streaming-sum.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>sum</strong> of data items passed to it in real-time.
+Probe the sum anytime using <code>value()</code>, which may be reset via <code>reset()</code>. The sum
+is compensated for floating point errors using Neumaier Method.
+The <code>result()</code> returns an object containing <code>sum</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var addition = sum();
+addition.compute( 1 );
+addition.compute( 10e+100 );
+addition.compute( 1 );
+addition.compute( -10e+100 );
+addition.value();
+// returns 2
+addition.result();
+// returns { sum: 2 }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".summary"><span class="type-signature">(static) </span>summary<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="streaming-summary.js.html">streaming-summary.js</a>, <a href="streaming-summary.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>It is a higher order function that returns an object containing <code>compute()</code>, <code>value()</code>, <code>result()</code>, and <code>reset()</code> functions.</p>
+<p>Use <code>compute()</code> to continuously determine the <strong>summary statistics</strong> of data items passed to it in real-time.
+Probe the sample summary statistics anytime using <code>value()</code>, which may be reset via <code>reset()</code>. The
+<code>result()</code> is also an alias of <code>value()</code>.
+The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
+<p>The summary statistics is an object containing <code>size</code>, <code>min</code>, <code>mean</code>, <code>max</code>, sample <code>stdev</code> along with
+sample <code>variance</code> of data; it also
+contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var ss = summary();
+ss.compute( 2 );
+ss.compute( 3 );
+ss.compute( 5 );
+ss.compute( 7 );
+ss.result();
+// returns { size: 4, min: 2, mean: 4.25, max: 7,
+//   variance: 4.916666666666666,
+//   stdev: 2.217355782608345,
+//   variancep: 3.6874999999999996,
+//   stdevp: 1.920286436967152
+// }</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>compute</code>, <code>value</code>, <code>result</code>, and <code>reset</code> functions.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Sep 18 2018 13:25:03 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+
+</body>
+</html>

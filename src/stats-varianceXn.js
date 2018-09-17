@@ -29,13 +29,13 @@ var helpers = require( 'wink-helpers' );
 
 // ### varianceXn
 /**
- *
- * @private
  * Comuptes the population `variance * size` of numbers contained in the `x` array.
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
- * @param {array} x — array containing 1 or more elements.
- * @param {(string|number|function)} [accessor=undefined] — required when elements of
+ * @private
+ *
+ * @param {array} x array containing 1 or more elements.
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
  * `x` are objects or arrays instead of numbers.
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function

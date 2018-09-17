@@ -19,10 +19,9 @@
     "test": "istanbul cover _mocha ./test/",
     "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "sourcedocs": "docker -i src -o ./sourcedocs --sidebar no",
-    "docs": "documentation build src/** -f html -o docs -c docs-toc.yml",
     "hint": "jshint ./src/*.js ./test/*.js ./runkit/*.js",
     "lint": "eslint ./src/*.js ./test/*.js ./runkit/*.js",
-    "jsdoc": "jsdoc src/*.js -c .jsdoc.json"
+    "docs": "jsdoc src/*.js -c .jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -37,8 +36,8 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
+    "docdash": "^1.0.0",
     "docker": "^1.0.0",
-    "documentation": "^8.0.2",
     "eslint": "^5.2.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdoc": "^3.5.5",
@@ -48,7 +47,6 @@
   },
   "runkitExampleFilename": "./runkit/example.js",
   "dependencies": {
-    "jsdoc-simple-theme": "^1.2.6",
     "wink-helpers": "^1.5.0"
   }
 }

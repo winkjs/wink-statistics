@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>streaming-slr.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Namespaces</h3><ul><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="stats.html">stats</a><ul class='methods'><li data-type='method'><a href="stats.html#.boxplot">boxplot</a></li><li data-type='method'><a href="stats.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="stats.html#.histogram">histogram</a></li><li data-type='method'><a href="stats.html#.mad">mad</a></li><li data-type='method'><a href="stats.html#.max">max</a></li><li data-type='method'><a href="stats.html#.mean">mean</a></li><li data-type='method'><a href="stats.html#.median">median</a></li><li data-type='method'><a href="stats.html#.min">min</a></li><li data-type='method'><a href="stats.html#.percentile">percentile</a></li><li data-type='method'><a href="stats.html#.stdev">stdev</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#.covariance">covariance</a></li><li data-type='method'><a href="streaming.html#.freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#.max">max</a></li><li data-type='method'><a href="streaming.html#.mean">mean</a></li><li data-type='method'><a href="streaming.html#.min">min</a></li><li data-type='method'><a href="streaming.html#.slr">slr</a></li><li data-type='method'><a href="streaming.html#.stdev">stdev</a></li><li data-type='method'><a href="streaming.html#.sum">sum</a></li><li data-type='method'><a href="streaming.html#.summary">summary</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">streaming-slr.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//     wink-statistics
+//     Fast and Numerically Stable Statistical Analysis Utilities.
+//
+//     Copyright (C) 2017-18  GRAYPE Systems Private Limited
+//
+//     This file is part of “wink-statistics”.
+//
+//     “wink-statistics” is free software: you can redistribute it
+//     and/or modify it under the terms of the GNU Affero
+//     General Public License as published by the Free
+//     Software Foundation, version 3 of the License.
+//
+//     “wink-statistics” is distributed in the hope that it will
+//     be useful, but WITHOUT ANY WARRANTY; without even
+//     the implied warranty of MERCHANTABILITY or FITNESS
+//     FOR A PARTICULAR PURPOSE.  See the GNU Affero General
+//     Public License for more details.
+//
+//     You should have received a copy of the GNU Affero
+//     General Public License along with “wink-statistics”.
+//     If not, see &lt;http://www.gnu.org/licenses/>.
+
+// ## streaming
+
+// ### slr (Simple Linear Regression)
+/**
+ *
+ * Simple Linear Regression — **slr** is a higher order function that returns an
+ * object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+ *
+ * Use `compute()` to continuously determine the **correlation** between `x` and `y` values passed to it in real-time.
+ * Probe the correlation anytime using `result()`, which may be reset via `reset()`.
+ *
+ * Number of decimals in the correlated values can be configured by defining
+ * `fractionDigits` as parameter in `result()`. Its default value is **4**.
+ * The `result()` also has an alias `value()`.
+ *
+ * The correlation is an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
+ * the `size` of data i.e. number of x &amp; y pairs. *In case of any error such as no
+ * input data or zero variance, correlation object will be an empty one*.
+ *
+ * @memberof streaming
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @example
+ * var regression = slr();
+ * regression.compute( 10, 80 );
+ * regression.compute( 15, 75 );
+ * regression.compute( 16, 65 );
+ * regression.compute( 18, 50 );
+ * regression.compute( 21, 45 );
+ * regression.compute( 30, 30 );
+ * regression.compute( 36, 18 );
+ * regression.compute( 40, 9 );
+ * regression.result();
+ * // returns { slope: -2.3621,
+ * //   intercept: 101.4188,
+ * //   r: -0.9766,
+ * //   r2: 0.9537,
+ * //   se: 5.624,
+ * //   size: 8
+ * // }
+ */
+var slr = function () {
+  var meanX = 0;
+  var meanY = 0;
+  var varX = 0;
+  var varY = 0;
+  var covXY = 0;
+  var items = 0;
+  // Returned!
+  var methods = Object.create( null );
+
+  methods.compute = function ( xi, yi ) {
+    var dx, dy;
+    items += 1;
+    dx = xi - meanX;
+    dy = yi - meanY;
+    meanX += dx / items;
+    meanY += dy / items;
+    covXY += dx * ( yi - meanY );
+    varX += dx * ( xi - meanX );
+    varY += dy * ( yi - meanY );
+    return undefined;
+  }; // compute()
+
+  methods.result = function ( fractionDigits ) {
+    var model = Object.create( null );
+    var fd = fractionDigits || 4;
+    if ( ( items > 1 ) &amp;&amp; ( varX !== 0 ) &amp;&amp; ( varY !== 0 ) ) {
+      model.slope = +( covXY / varX ).toFixed( fd );
+      model.intercept = +( meanY - ( model.slope * meanX ) ).toFixed( fd );
+      model.r = +( covXY / Math.sqrt( varX * varY ) ).toFixed( fd );
+      model.r2 = +( model.r * model.r ).toFixed( fd );
+      model.se = +( Math.sqrt( varY / ( items - 1 ) ) * Math.sqrt( 1 - model.r2 ) ).toFixed( fd );
+      model.size = items;
+    }
+    return model;
+  }; // result()
+
+  methods.reset = function () {
+    meanX = 0;
+    meanY = 0;
+    varX = 0;
+    varY = 0;
+    covXY = 0;
+    items = 0;
+  }; // reset()
+
+  // There is no single correlation value; create an alias!
+  methods.value = methods.result;
+
+  return methods;
+}; // slr()
+
+module.exports = slr;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Sep 18 2018 13:25:03 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+
+</body>
+</html>

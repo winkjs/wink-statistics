@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>probability - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Namespaces</h3><ul><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="stats.html">stats</a><ul class='methods'><li data-type='method'><a href="stats.html#.boxplot">boxplot</a></li><li data-type='method'><a href="stats.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="stats.html#.histogram">histogram</a></li><li data-type='method'><a href="stats.html#.mad">mad</a></li><li data-type='method'><a href="stats.html#.max">max</a></li><li data-type='method'><a href="stats.html#.mean">mean</a></li><li data-type='method'><a href="stats.html#.median">median</a></li><li data-type='method'><a href="stats.html#.min">min</a></li><li data-type='method'><a href="stats.html#.percentile">percentile</a></li><li data-type='method'><a href="stats.html#.stdev">stdev</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#.covariance">covariance</a></li><li data-type='method'><a href="streaming.html#.freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#.max">max</a></li><li data-type='method'><a href="streaming.html#.mean">mean</a></li><li data-type='method'><a href="streaming.html#.min">min</a></li><li data-type='method'><a href="streaming.html#.slr">slr</a></li><li data-type='method'><a href="streaming.html#.stdev">stdev</a></li><li data-type='method'><a href="streaming.html#.sum">sum</a></li><li data-type='method'><a href="streaming.html#.summary">summary</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">probability</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        probability
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+                <div class="description"><p>Probability</p></div>
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".aggregate"><span class="type-signature">(static) </span>aggregate<span class="signature">(pa1, pa2)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="probability-aggregate.js.html">probability-aggregate.js</a>, <a href="probability-aggregate.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Aggregates two probability estimates from independent sources about the occurrence of
+a <strong>single</strong> event <strong>a</strong>. It returns the aggregated probability of occurrence
+of the event <strong>a</strong>. The assumption here is that the two probabilities
+(estimates) are not correlated with each other and the <strong>common prior</strong>
+probability of <strong>a</strong> is <strong>0.5</strong>.</p>
+<p>For a detailed explanation, refer to the paper titled
+<em><a href="http://link.springer.com/article/10.1007/s00355-010-0453-x">Bayesian Group Belief by Franz Dietrich</a></em>
+published in Social Choice and Welfare October 2010, Volume 35, Issue 4, pp 595–626.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>aggregate( 0.5, 0.6 );
+// returns 0.6
+aggregate( 0.5, 0.4 );
+// returns 0.4
+aggregate( 0.6, 0.6 );
+// returns 0.6923076923076923
+aggregate( 0.4, 0.6 );
+// returns 0.5</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pa1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>first estimate of probability of occurrence of event <strong>a</strong>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pa2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>second estimate of probability of occurrence of event <strong>a</strong>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>the aggregated probability.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".range4CI"><span class="type-signature">(static) </span>range4CI<span class="signature">(successCount, totalCount, zscore<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="probability-range-4ci.js.html">probability-range-4ci.js</a>, <a href="probability-range-4ci.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Computes probability from the <strong>observed</strong> count of successes (<code>successCount</code>) out of the total count (<code>totalCount</code>)
+along with its <strong>range</strong> for required level of Confidence Interval (CI)  i.e. <code>zscore</code> .
+The range is the minimum and maximum probability values for given <code>zscore</code> or CI.</p>
+<p>These computations are based on approach specified in the Wilson's <em>Notes on
+Probable Inference, The Law of Succession, and Statistical Inference</em>
+published in ASA's Journal.</p>
+<p>For quick reference, typical value of <code>zscore</code> for 90% and 95% CI is approximately
+1.645 and 1.960 respectively.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>range4CI( 1, 10 );
+// returns {
+//   probability: 0.18518871952479238,
+//   min: 0.02263232984000629,
+//   max: 0.34774510920957846
+// }
+range4CI( 10, 100 );
+// returns {
+//   probability: 0.1105389143431459,
+//   min: 0.06071598345043355,
+//   max: 0.16036184523585828
+// }</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>successCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>observed count of successes out of</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>totalCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the total count.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>zscore</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>1.645</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>for the required level of CI.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>containing <code>probability</code>, <code>min</code> and <code>max</code>.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Sep 18 2018 13:25:03 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+
+</body>
+</html>

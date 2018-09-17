@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>streaming-mean.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,46 +31,98 @@
 
 <div id="main">
     
+    <h1 class="page-title">streaming-mean.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//     wink-statistics
+//     Fast and Numerically Stable Statistical Analysis Utilities.
+//
+//     Copyright (C) 2017-18  GRAYPE Systems Private Limited
+//
+//     This file is part of “wink-statistics”.
+//
+//     “wink-statistics” is free software: you can redistribute it
+//     and/or modify it under the terms of the GNU Affero
+//     General Public License as published by the Free
+//     Software Foundation, version 3 of the License.
+//
+//     “wink-statistics” is distributed in the hope that it will
+//     be useful, but WITHOUT ANY WARRANTY; without even
+//     the implied warranty of MERCHANTABILITY or FITNESS
+//     FOR A PARTICULAR PURPOSE.  See the GNU Affero General
+//     Public License for more details.
+//
+//     You should have received a copy of the GNU Affero
+//     General Public License along with “wink-statistics”.
+//     If not, see &lt;http://www.gnu.org/licenses/>.
 
+// ## streaming
 
+// ### mean
+/**
+ *
+ * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+ *
+ * Use `compute()` to continuously determine the **mean** aka average value of data items passed to it in real-time.
+ * Probe the mean anytime using `value()`, which may be reset via `reset()`.
+ * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
+ *
+ * The `result()` returns an object containing sample `mean` along with `size` of data.
+ *
+ * @memberof streaming
+ * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @example
+ * var avg = mean();
+ * avg.compute( 2 );
+ * avg.compute( 3 );
+ * avg.compute( 5 );
+ * avg.compute( 7 );
+ * avg.value();
+ * // returns 4.25
+ * avg.result();
+ * // returns { n: 4, mean: 4.25 }
+ */
+var mean = function () {
+  var mean1 = 0;
+  var items = 0;
+  var methods = Object.create( null );
 
+  methods.compute = function ( di ) {
+    items += 1;
+    mean1 += ( di - mean1 ) / items;
+    return undefined;
+  }; // compute()
 
+  methods.value = function () {
+    return mean1;
+  }; // value()
 
+  methods.result = function () {
+    var obj = Object.create( null );
+    obj.size = items;
+    obj.mean = mean1;
+    return obj;
+  }; // result()
 
+  methods.reset = function () {
+    mean1 = 0;
+    items = 0;
+  }; // reset()
 
+  return methods;
+}; // mean()
 
-
-    
-
-
-    <section class="readme">
-        <article><h1>wink-statistics</h1><p>Fast and Numerically Stable Statistical Analysis Utilities</p>
-<h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3><p><img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" ></p>
-<p>Perform fast and numerically stable statistical analysis using <strong><code>wink-statistics</code></strong>. It is a part of <a href="http://winkjs.org/">wink</a> — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.</p>
-<p>Summarize, Discover and Analyze data with it's rich set of features:</p>
-<ol>
-<li><p>Analyze both continuous and categorical data.</p>
-</li>
-<li><p>Handles real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data as in <strong>standard deviation</strong> or <strong>simple linear regression</strong>.</p>
-</li>
-<li><p>Minimizes data preprocessing by handling array of data structures containing numerical values, e.g. array of objects.</p>
-</li>
-</ol>
-<h3>Installation</h3><p>Use <a href="https://www.npmjs.com/package/wink-statistics">npm</a> to install:</p>
-<pre class="prettyprint source"><code>npm install wink-statistics --save</code></pre><h3>API</h3><p>Check out the <a href="http://winkjs.org/wink-statistics/">statistics API documentation</a> to learn more.</p>
-<h3>Need Help?</h3><p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-statistics/issues">issue</a> or consider fixing it and sending a pull request.</p>
-<h3>Copyright &amp; License</h3><p><strong>wink-statistics</strong> is copyright 2017-18 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
-<p>It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
-Software Foundation, version 3 of the License.</p></article>
+module.exports = mean;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

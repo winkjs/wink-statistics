@@ -32,8 +32,8 @@ var percentile = require( './stats-percentile.js' );
  * Returns the median of the `sortedData`.
  *
  * @memberof stats
- * @param {array} sortedData — sorted in ascending order of value.
- * @param {(string|number|function)} [accessor=undefined] — Useful when each element of
+ * @param {array} sortedData sorted in ascending order of value.
+ * @param {(string|number|function)} [accessor=undefined] Useful when each element of
  * `sortedData` is an object or an array instead of number. If it is an object
  * then it should be the key (string) to access the value; or if it is an array
  * then it should be the index (number) to access the value; or it should be a function
