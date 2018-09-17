@@ -35,10 +35,10 @@ var helpers = require( 'wink-helpers' );
  * by Eric Langford published in Journal of Statistics Education Volume 14, Number 3 (2006).
  *
  * @memberof stats
- * @param {array} sortedData — sorted in ascending order of value.
- * @param {number} q — should be between 0 and 1 indicating percentile;
+ * @param {array} sortedData sorted in ascending order of value.
+ * @param {number} q should be between 0 and 1 indicating percentile;
  * for example, to get 25<sup>th</sup> percentile, it should be 0.25.
- * @param {(string|number|function)} [accessor=undefined] — required when elements of
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
  * `x` are objects or arrays instead of numbers.
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function

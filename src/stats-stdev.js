@@ -32,8 +32,8 @@ var varianceXn = require( './stats-varianceXn.js' );
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * @memberof stats
- * @param {array} x — array containing 1 or more elements.
- * @param {(string|number|function)} [accessor=undefined] — required when elements of
+ * @param {array} x array containing 1 or more elements.
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
  * `x` are objects or arrays instead of numbers.
  * For objects, use key (string) to access the value; in case of arrays, use
  * index (number) to access the value; or it could be a function
