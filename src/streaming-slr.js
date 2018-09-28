@@ -42,7 +42,7 @@
  * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
- * var regression = slr();
+ * var regression = simpleLinearRegression();
  * regression.compute( 10, 80 );
  * regression.compute( 15, 75 );
  * regression.compute( 16, 65 );
@@ -60,7 +60,7 @@
  * //   size: 8
  * // }
  */
-var slr = function () {
+var simpleLinearRegression = function () {
   var meanX = 0;
   var meanY = 0;
   var varX = 0;
@@ -110,6 +110,6 @@ var slr = function () {
   methods.value = methods.result;
 
   return methods;
-}; // slr()
+}; // simpleLinearRegression()
 
-module.exports = slr;
+module.exports = simpleLinearRegression;

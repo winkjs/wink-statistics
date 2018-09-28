@@ -75,6 +75,7 @@ ws.streaming.mean = require( './streaming-mean.js' );
 ws.streaming.min = require( './streaming-min.js' );
 // 6. slr
 ws.streaming.slr = require( './streaming-slr.js' );
+ws.streaming.simpleLinearRegression = require( './streaming-slr.js' );
 // 7. stdev
 ws.streaming.stdev = require( './streaming-stdev.js' );
 // 8. sum

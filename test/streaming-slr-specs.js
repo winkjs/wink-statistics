@@ -23,7 +23,8 @@
 //
 var chai = require( 'chai' );
 var mocha = require( 'mocha' );
-var slr = require( '../src/streaming-slr.js' )();
+var slr = require( '../src/wink-statistics.js' ).streaming.slr();
+var simpleLinearRegression = require( '../src/wink-statistics.js' ).streaming.simpleLinearRegression();
 
 var expect = chai.expect;
 var describe = mocha.describe;
@@ -86,5 +87,21 @@ describe( 'streaming-slr', function () {
     expect( slr.result().r2 ).to.equal( 0.9673 );
     expect( slr.result().se ).to.equal( 3.799 );
     expect( slr.result().size ).to.equal( 6 );
+  } );
+
+  it( 'simpleLinearRegression alias should work', function () {
+    simpleLinearRegression.compute( 16, 65 );
+    simpleLinearRegression.compute( 18, 50 );
+    simpleLinearRegression.compute( 21, 45 );
+    simpleLinearRegression.compute( 30, 30 );
+    simpleLinearRegression.compute( 36, 18 );
+    simpleLinearRegression.compute( 40, 9 );
+    expect( simpleLinearRegression.result() ).to.deep.equal( simpleLinearRegression.value() );
+    expect( simpleLinearRegression.result().slope ).to.equal( -2.0728 );
+    expect( simpleLinearRegression.result().intercept ).to.equal( 91.7868 );
+    expect( simpleLinearRegression.result().r ).to.equal( -0.9835 );
+    expect( simpleLinearRegression.result().r2 ).to.equal( 0.9673 );
+    expect( simpleLinearRegression.result().se ).to.equal( 3.799 );
+    expect( simpleLinearRegression.result().size ).to.equal( 6 );
   } );
 } );
