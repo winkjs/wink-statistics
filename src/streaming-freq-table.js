@@ -24,6 +24,7 @@
 
 // Load wink helpers for object to array conversion & sorting.
 var helpers = require( 'wink-helpers' );
+var getValidFD = require( './get-valid-fd.js' );
 
 // ### freqTable
 /**
@@ -36,6 +37,9 @@ var helpers = require( 'wink-helpers' );
  * The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
  * with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
  * `entropy`.
+ *
+ * Number of decimals in the returned numerical values can be configured by defining
+ * `fractionDigits` as parameter in `result()`. Its default value is **4**.
  *
  * The `x2` along with the `df` can be used test the hypothesis that "the distribution is a uniform one". The
  * `percentage` in `table` give the percentage of a category count against the `sum`; and `expected` is the count
@@ -67,7 +71,7 @@ var helpers = require( 'wink-helpers' );
  * //  sum: 8,
  * //  x2: 1,
  * //  df: 3,
- * //  entropy: 1.9056390622295665
+ * //  entropy: 1.9056
  * // }
  */
 var freqTable = function () {
@@ -85,7 +89,8 @@ var freqTable = function () {
     return obj;
   }; // value()
 
-  methods.result = function () {
+  methods.result = function ( fractionDigits ) {
+    var fd = getValidFD( fractionDigits );
     var t = helpers.object.table( obj );
     var imax = t.length;
     var table = new Array( imax );
@@ -102,8 +107,8 @@ var freqTable = function () {
       table[ i ].category = t[ i ][ 0 ];
       table[ i ].observed = t[ i ][ 1 ];
       p = t[ i ][ 1 ] / sum;
-      table[ i ].percentage = ( p * 100 );
-      table[ i ].expected = expectedVal;
+      table[ i ].percentage = +( p * 100 ).toFixed( fd );
+      table[ i ].expected = +expectedVal.toFixed( fd );
       diff = ( t[ i ][ 1 ] - expectedVal );
       x2 += ( diff * ( diff / expectedVal ) );
       entropy += -p * Math.log2( p );
@@ -112,9 +117,9 @@ var freqTable = function () {
     ft.table = table;
     ft.size = imax;
     ft.sum = sum;
-    ft.x2 = +x2.toFixed( 3 );
+    ft.x2 = +x2.toFixed( fd );
     ft.df = ( imax - 1 );
-    ft.entropy = entropy;
+    ft.entropy = +entropy.toFixed( fd );
 
     return ft;
   }; // result()
