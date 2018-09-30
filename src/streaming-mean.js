@@ -22,6 +22,8 @@
 
 // ## streaming
 
+var getValidFD = require( './get-valid-fd.js' );
+
 // ### mean
 /**
  *
@@ -32,6 +34,10 @@
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * The `result()` returns an object containing sample `mean` along with `size` of data.
+ *
+ * Number of decimals in the returned numerical values can be configured by defining
+ * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
+ *
  *
  * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
@@ -57,14 +63,16 @@ var mean = function () {
     return undefined;
   }; // compute()
 
-  methods.value = function () {
-    return mean1;
+  methods.value = function ( fractionDigits ) {
+    var fd = getValidFD( fractionDigits );
+    return +mean1.toFixed( fd );
   }; // value()
 
-  methods.result = function () {
+  methods.result = function ( fractionDigits ) {
+    var fd = getValidFD( fractionDigits );
     var obj = Object.create( null );
     obj.size = items;
-    obj.mean = mean1;
+    obj.mean = +mean1.toFixed( fd );
     return obj;
   }; // result()
 
