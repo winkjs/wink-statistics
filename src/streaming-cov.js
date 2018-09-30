@@ -22,6 +22,8 @@
 
 // ## streaming
 
+var getValidFD = require( './get-valid-fd.js' );
+
 // ### cov (Covariance)
 /**
  *
@@ -79,14 +81,14 @@ var covariance = function () {
 
   // This returns the sample standard deviation.
   methods.value = function ( fractionDigits ) {
-    var fd = fractionDigits || 4;
+    var fd = getValidFD( fractionDigits );
     return ( items > 1 ) ? +( covXY / ( items - 1 ) ).toFixed( fd ) : 0;
   }; // value()
 
   // This returns the sample covariance along with host of other statistics.
   methods.result = function ( fractionDigits ) {
     var obj = Object.create( null );
-    var fd = fractionDigits || 4;
+    var fd = getValidFD( fractionDigits );
     var cov = ( items > 1 ) ? ( covXY / ( items - 1 ) ) : 0;
     var covp = ( items ) ? ( covXY / items ) : 0;
 

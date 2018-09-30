@@ -22,6 +22,8 @@
 
 // ## streaming
 
+var getValidFD = require( './get-valid-fd.js' );
+
 // ### slr (Simple Linear Regression)
 /**
  *
@@ -85,7 +87,7 @@ var simpleLinearRegression = function () {
 
   methods.result = function ( fractionDigits ) {
     var model = Object.create( null );
-    var fd = fractionDigits || 4;
+    var fd = getValidFD( fractionDigits );
     if ( ( items > 1 ) && ( varX !== 0 ) && ( varY !== 0 ) ) {
       model.slope = +( covXY / varX ).toFixed( fd );
       model.intercept = +( meanY - ( model.slope * meanX ) ).toFixed( fd );
