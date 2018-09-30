@@ -22,6 +22,8 @@
 
 // ## streaming
 
+var getValidFD = require( './get-valid-fd.js' );
+
 // ### sum
 /**
  *
@@ -31,6 +33,9 @@
  * Probe the sum anytime using `value()`, which may be reset via `reset()`. The sum
  * is compensated for floating point errors using Neumaier Method.
  * The `result()` returns an object containing `sum`.
+ *
+ * Number of decimals in the returned numerical values can be configured by defining
+ * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
  *
  * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
@@ -66,12 +71,14 @@ var sum = function () {
   return undefined;
   }; // compute()
 
-  methods.value = function () {
-   return ( total + compensation );
- }; // value()
+  methods.value = function ( fractionDigits ) {
+    var fd = getValidFD( fractionDigits );
+   return +( total + compensation ).toFixed( fd );
+  }; // value()
 
-  methods.result = function () {
-   return { sum: total + compensation };
+  methods.result = function ( fractionDigits ) {
+   var fd = getValidFD( fractionDigits );
+   return { sum: +( total + compensation ).toFixed( fd ) };
   }; // result()
 
   methods.reset = function () {
