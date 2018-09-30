@@ -22,6 +22,8 @@
 
 // ## streaming
 
+var getValidFD = require( './get-valid-fd.js' );
+
 // ### stdev
 /**
  *
@@ -35,6 +37,9 @@
  * `variance`, along with `mean`, `size` of data; it also
  * contains population standard deviation and variance as `stdevp` and `variancep`.
  *
+ * Number of decimals in the returned numerical values can be configured by defining
+ * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
+ *
  * @memberof streaming
  * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
  * @example
@@ -44,13 +49,13 @@
  * sd.compute( 5 );
  * sd.compute( 7 );
  * sd.value();
- * // returns 2.217355782608345
+ * // returns 2.2174
  * sd.result();
  * // returns { size: 4, mean: 4.25,
- * //   variance: 4.916666666666666,
- * //   stdev: 2.217355782608345,
- * //   variancep: 3.6874999999999996,
- * //   stdevp: 1.920286436967152
+ * //   variance:  4.9167,
+ * //   stdev: 2.2174,
+ * //   variancep: 3.6875,
+ * //   stdevp: 1.9203
  * // }
  */
 var stdev = function () {
@@ -69,24 +74,26 @@ var stdev = function () {
   }; // compute()
 
   // This returns the sample standard deviation.
-  methods.value = function () {
-    return ( items > 1 ) ? Math.sqrt( varianceXn / ( items - 1 ) ) : 0;
+  methods.value = function ( fractionDigits ) {
+    var fd = getValidFD( fractionDigits );
+    return ( items > 1 ) ? +( Math.sqrt( varianceXn / ( items - 1 ) ) ).toFixed( fd ) : 0;
   }; // value()
 
   // This returns the sample standard deviation along with host of other statistics.
-  methods.result = function () {
+  methods.result = function ( fractionDigits ) {
+    var fd = getValidFD( fractionDigits );
     var obj = Object.create( null );
     var variance = ( items > 1 ) ? ( varianceXn / ( items - 1 ) ) : 0;
     var variancep = ( items ) ? ( varianceXn / items ) : 0;
 
     obj.size = items;
-    obj.mean = mean;
+    obj.mean = +mean.toFixed( fd );
     // Sample variance & standard deviation.
-    obj.variance = variance;
-    obj.stdev = Math.sqrt( variance );
+    obj.variance = +variance.toFixed( fd );
+    obj.stdev = +( Math.sqrt( variance ) ).toFixed( fd );
     // Population variance & standard deviation.
-    obj.variancep = variancep;
-    obj.stdevp = Math.sqrt( variancep );
+    obj.variancep = +variancep.toFixed( fd );
+    obj.stdevp = +( Math.sqrt( variancep ) ).toFixed( fd );
 
     return obj;
   }; // result()
