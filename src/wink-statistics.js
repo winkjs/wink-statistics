@@ -33,30 +33,33 @@ ws.probability.range4CI = require( './probability-range-4ci.js' );
 ws.probability.aggregate = require( './probability-aggregate.js' );
 
 /**
- * Statistics
- * @namespace stats
+ * Data
+ * @namespace data
  */
-ws.stats = Object.create( null );
+ws.data = Object.create( null );
 // 1. boxplot
-ws.stats.boxplot = require( './stats-boxplot.js' );
+ws.data.boxplot = require( './data-boxplot.js' );
 // 2. fiveNumSummary
-ws.stats.fiveNumSummary = require( './stats-five-num-summary.js' );
+ws.data.fiveNumSummary = require( './data-five-num-summary.js' );
 // 3. histogram
-ws.stats.histogram = require( './stats-histogram.js' );
+ws.data.histogram = require( './data-histogram.js' );
 // 4. mad
-ws.stats.mad = require( './stats-mad.js' );
+ws.data.mad = require( './data-mad.js' );
 // 5. max
-ws.stats.max = require( './stats-max.js' );
+ws.data.max = require( './data-max.js' );
 // 6. mean
-ws.stats.mean = require( './stats-mean.js' );
+ws.data.mean = require( './data-mean.js' );
 // 7. median
-ws.stats.median = require( './stats-median.js' );
+ws.data.median = require( './data-median.js' );
 // 8. min
-ws.stats.min = require( './stats-min.js' );
+ws.data.min = require( './data-min.js' );
 // 9. percentile
-ws.stats.percentile = require( './stats-percentile.js' );
+ws.data.percentile = require( './data-percentile.js' );
 // 10. stdev
-ws.stats.stdev = require( './stats-stdev.js' );
+ws.data.stdev = require( './data-stdev.js' );
+
+// Alias TODO
+ws.stats = ws.data;
 
 /**
  * Streaming

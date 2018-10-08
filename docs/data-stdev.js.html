@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>probability-range-4ci.js - Documentation</title>
+    <title>data-stdev.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">probability-range-4ci.js</h1>
+    <h1 class="page-title">data-stdev.js</h1>
     
 
     
@@ -63,68 +63,37 @@
 //     General Public License along with “wink-statistics”.
 //     If not, see &lt;http://www.gnu.org/licenses/>.
 
-// ## probability
+// ## data
 
-// ### range4CI
+// Load accessor.
+var varianceXn = require( './data-varianceXn.js' );
+
+// ### stdev
 /**
  *
- * Computes probability from the **observed** count of successes (`successCount`) out of the total count (`totalCount`)
- * along with its **range** for required level of Confidence Interval (CI)  i.e. `zscore` .
- * The range is the minimum and maximum probability values for given `zscore` or CI.
+ * Comuptes the sample standard deviation of numbers contained in the `x` array.
+ * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
- * These computations are based on approach specified in the Wilson's *Notes on
- * Probable Inference, The Law of Succession, and Statistical Inference*
- * published in ASA's Journal.
- *
- * For quick reference, typical value of `zscore` for 90% and 95% CI is approximately
- * 1.645 and 1.960 respectively.
- *
- * @memberof probability
- * @param {number} successCount observed count of successes out of
- * @param {number} totalCount the total count.
- * @param {number} [zscore=1.645] for the required level of CI.
- * @return {object} containing `probability`, `min` and `max`.
+ * @memberof data
+ * @param {array} x array containing 1 or more elements.
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
+ * `x` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
+ * that extracts the value from the element passed to it.
+ * @return {number} standard deviation of sample.
  * @example
- * range4CI( 1, 10 );
- * // returns {
- * //   probability: 0.18518871952479238,
- * //   min: 0.02263232984000629,
- * //   max: 0.34774510920957846
- * // }
- * range4CI( 10, 100 );
- * // returns {
- * //   probability: 0.1105389143431459,
- * //   min: 0.06071598345043355,
- * //   max: 0.16036184523585828
- * // }
+ * stdev( [ 2, 3, 5, 7 ] )
+ * // returns 2.217355782608345
+ * stdev( [ { x: 2 }, { x: 3 }, { x: 5 }, { x: 7 } ], 'x' )
+ * // returns 2.217355782608345
  */
-var range4CI = function ( successCount, totalCount, zscore ) {
-  if ( ( typeof successCount !== 'number' ) || ( successCount &lt;= 0 ) ) {
-    throw Error( 'probability-range4CI: successCount should be a number > 0, instead found: ' + JSON.stringify( successCount ) );
-  }
-  if ( ( typeof totalCount !== 'number' ) || ( totalCount &lt;= 0 ) ) {
-    throw Error( 'probability-range4CI: totalCount should be a number > 0, instead found: ' + JSON.stringify( totalCount ) );
-  }
-  if ( totalCount &lt; successCount ) {
-    throw Error( 'probability-range4CI: totalCount should be >= successCount, instead found: ' + JSON.stringify( totalCount ) );
-  }
-  var z = Math.abs( zscore || 1.645 );
-  var t = ( z * z ) / totalCount;
-  var p0 = successCount / totalCount;
-  var q0 = 1 - p0;
-  var delta = Math.sqrt( ( p0 * q0 * t ) + ( ( t * t ) / 4 ) );
+var stdev = function ( x, accessor ) {
+  var vXn = varianceXn( x, accessor );
+  return ( vXn.size > 1 ) ? Math.sqrt( vXn.varianceXn / ( vXn.size - 1 ) ) : 0;
+}; // stdev()
 
-  var min = ( p0 + ( t / 2 ) - delta ) / ( t + 1 );
-  var max = ( p0 + ( t / 2 ) + delta ) / ( t + 1 );
-
-  return {
-    probability: ( p0 + ( t / 2 ) ) / ( t + 1 ),
-    min: min,
-    max: max
-  };
-}; // range4CI()
-
-module.exports = range4CI;
+module.exports = stdev;
 </code></pre>
         </article>
     </section>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>data-histogram.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#.covariance">covariance</a></li><li data-type='method'><a href="streaming.html#.freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#.max">max</a></li><li data-type='method'><a href="streaming.html#.mean">mean</a></li><li data-type='method'><a href="streaming.html#.min">min</a></li><li data-type='method'><a href="streaming.html#.simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#.stdev">stdev</a></li><li data-type='method'><a href="streaming.html#.sum">sum</a></li><li data-type='method'><a href="streaming.html#.summary">summary</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">data-histogram.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//     wink-statistics
+//     Fast and Numerically Stable Statistical Analysis Utilities.
+//
+//     Copyright (C) 2017-18  GRAYPE Systems Private Limited
+//
+//     This file is part of “wink-statistics”.
+//
+//     “wink-statistics” is free software: you can redistribute it
+//     and/or modify it under the terms of the GNU Affero
+//     General Public License as published by the Free
+//     Software Foundation, version 3 of the License.
+//
+//     “wink-statistics” is distributed in the hope that it will
+//     be useful, but WITHOUT ANY WARRANTY; without even
+//     the implied warranty of MERCHANTABILITY or FITNESS
+//     FOR A PARTICULAR PURPOSE.  See the GNU Affero General
+//     Public License for more details.
+//
+//     You should have received a copy of the GNU Affero
+//     General Public License along with “wink-statistics”.
+//     If not, see &lt;http://www.gnu.org/licenses/>.
+
+// ## data
+
+// Load percentile.
+var percentile = require( './data-percentile.js' );
+// Load accessor.
+var value = require( './accessor.js' );
+// Load mad.
+var mad = require( './data-mad.js' );
+
+
+// ### distribution
+/**
+ *
+ * Internal function to compute distribution from `bin` and `binWidth`.
+ *
+ * @param {number} bins number of bins as computed by `histogram()`.
+ * @param {number} binWidth width of each bin.
+ * @param {array} sortedData sorted in ascending order of value.
+ * @param {object} rs robust stats containing `min`, `size`, etc.
+ * @param {number} precision of the data.
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
+ * `x` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
+ * that extracts the value from the element passed to it.
+ * @returns {object} histogram conatining arrays `classes` and corresponding `frequencies`.
+ * Each element of `classes` array is an object having `min/mid/max` values.
+ * @private
+*/
+var distribution = function ( bins, binWidth, sortedData, rs, precision, accessor ) {
+  // Helpers.
+  var cutoff, i, k, limit, mid, min;
+  // Hold x axis and y axis values.
+  var x, y;
+  // Distribution object.
+  var dist = Object.create( null );
+
+  // Find distribution now.
+  x = new Array( bins );
+  y = new Array( bins );
+  cutoff = new Array( bins );
+  limit = +( rs.min + binWidth ).toFixed( precision );
+  min = +( rs.min ).toFixed( precision );
+  for ( i = 0; i &lt; bins; i += 1 ) {
+   y[ i ] = 0;
+   mid = +( limit - ( binWidth / 2 ) ).toFixed( precision );
+   x[ i ] = { min: min, mid: mid, max: limit };
+   cutoff[ i ] = limit;
+   min = +( min + binWidth).toFixed( precision );
+   limit = +( limit + binWidth).toFixed( precision );
+  }
+  i = 0;
+  for ( k = 0; k &lt; bins; k += 1 ) {
+    // > REVIEW: Make it faster by deploying binary search approach.
+    for ( ; ( ( i &lt; rs.size ) &amp;&amp; ( value( sortedData[ i ], accessor ) &lt;= cutoff[ k ] ) ); i += 1 ) {
+      y[ k ] += 1;
+    }
+  }
+
+  dist.classes = x;
+  dist.frequencies = y;
+  return ( dist );
+}; // distribution()
+
+
+// ### histogram
+/**
+ *
+ * Generates histogram using Freedman–Diaconis method.
+ * If both IQR and MAD are `0` then it automatically
+ * switches to Sturges' Rule while ensuring minimum of 5 bins.
+ * It attempts to reduce excessive sparsity of distribution,
+ * if any, by adjusting the number of bins using Sturges' Rule.
+ *
+ * @memberof data
+ * @param {array} sortedData sorted in ascending order of value.
+ * @param {number} [dataPrecision=0] typically the minumum number of
+ * decimal places observed in the `sortedData`.
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
+ * `x` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
+ * that extracts the value from the element passed to it.
+ * @returns {object} conatining arrays `classes` and the corresponding `frequencies`.
+ * Each element of `classes` array is an object with values for `min/max (class intervals)`
+ * and `mid` point of a class. &lt;br/>&lt;br/>In addition, the returned object
+ * contains useful statistics like `q1`, `q3`, `iqr`, `min`, `max`, and `range`.
+ * @example
+ * var data = [
+ *   12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
+ *   31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 65
+ * ];
+ * histogram( data );
+ * // returns {
+ * //   classes: [
+ * //     { min: 12, mid: 19, max: 25 },
+ * //     { min: 25, mid: 32, max: 38 },
+ * //     { min: 38, mid: 45, max: 51 },
+ * //     { min: 51, mid: 58, max: 64 },
+ * //     { min: 64, mid: 71, max: 77 } ],
+ * //   frequencies: [ 10, 10, 7, 2, 1 ],
+ * //   q1: 20,  q3: 40, iqr: 20, size: 30, min: 12, max: 65,range: 53
+ * // }
+*/
+var histogram = function ( sortedData, dataPrecision, accessor ) {
+  var rs = Object.create( null );
+  rs.q1 = percentile( sortedData, 0.25, accessor );
+  rs.q3 = percentile( sortedData, 0.75, accessor );
+  rs.iqr = ( rs.q3 - rs.q1 );
+  rs.size = sortedData.length;
+  rs.min = value( sortedData[ 0 ], accessor );
+  rs.max = value( sortedData[ rs.size - 1 ], accessor );
+  rs.range = ( rs.max - rs.min );
+  // The histogram.
+  var histo;
+  // Number of bins.
+  var bins;
+  // Class interval or bin width.
+  var binWidth = rs.iqr;
+  // The `precision` is extremely important to get a quality histogram - in terms
+  // of number of classes and counting data points in a class interval.
+  var precision = Math.round( Math.abs( dataPrecision || 0 ) );
+  // Compute `bins` and `binWidth`.
+  if ( ( binWidth === 0 ) ) {
+    rs.mad = mad( sortedData, accessor );
+    binWidth = 2 * rs.mad;
+  }
+
+  if ( binWidth > 0 ) {
+    // Apply Freedman–Diaconis formula.
+    binWidth = 2 * binWidth * Math.pow( rs.size, -( 1 / 3 ) );
+    // Adjust `binWidth` according to the `precision`.
+    binWidth = +binWidth.toFixed( precision );
+    if ( binWidth === 0 ) binWidth = 1;
+    bins = Math.ceil( rs.range / binWidth );
+    histo = distribution( bins, binWidth, sortedData, rs, precision, accessor );
+    // Check how sparse is the distribution - # of 0s > 20% of the total frequencies.
+    // If yes then attempt its reduction by using the Sturges' Rule (as above).
+    if ( histo.frequencies.filter( function ( e ) { return ( e === 0 ); } ).length > histo.frequencies.length * 0.20 ) { // eslint-disable-line
+      // Sparse! Apply Sturge's Rule now.
+      bins = Math.max( Math.ceil( Math.log2( rs.size ) + 1 ), 5 );
+      binWidth = rs.range /  bins;
+      binWidth = +binWidth.toFixed( precision );
+      if ( binWidth === 0 ) binWidth = 1;
+      bins = Math.ceil( rs.range / binWidth );
+      histo = distribution( bins, binWidth, sortedData, rs, precision, accessor );
+    }
+  } else {
+    // Nothing is working out, downgrade to Sturges' Rule, but ensure minimum 5 bins.
+    bins = Math.max( Math.ceil( Math.log2( rs.size ) + 1 ), 5 );
+    binWidth = rs.range /  bins;
+    // Adjust `binWidth` according to `precision` and recompute everything.
+    binWidth = +binWidth.toFixed( precision );
+    if ( binWidth === 0 ) binWidth = 1;
+    bins = Math.ceil( rs.range / binWidth );
+    histo = distribution( bins, binWidth, sortedData, rs, precision, accessor );
+  }
+
+  return ( Object.assign( histo, rs ) );
+}; // histogram()
+
+module.exports = histogram;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 08 2018 15:21:46 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+
+</body>
+</html>

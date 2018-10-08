@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>probability-range-4ci.js - Documentation</title>
+    <title>data-boxplot.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">probability-range-4ci.js</h1>
+    <h1 class="page-title">data-boxplot.js</h1>
     
 
     
@@ -63,68 +63,77 @@
 //     General Public License along with “wink-statistics”.
 //     If not, see &lt;http://www.gnu.org/licenses/>.
 
-// ## probability
+// ## data
 
-// ### range4CI
+// Load five number summary.
+var fiveNumSummary = require( './data-five-num-summary.js' );
+// Load accessor.
+var value = require( './accessor.js' );
+
+// ### Boxplot
+
 /**
  *
- * Computes probability from the **observed** count of successes (`successCount`) out of the total count (`totalCount`)
- * along with its **range** for required level of Confidence Interval (CI)  i.e. `zscore` .
- * The range is the minimum and maximum probability values for given `zscore` or CI.
+ * Performs complete [boxplot](https://en.wikipedia.org/wiki/Box_plot) analysis
+ * including computation of notches and outliers.
  *
- * These computations are based on approach specified in the Wilson's *Notes on
- * Probable Inference, The Law of Succession, and Statistical Inference*
- * published in ASA's Journal.
- *
- * For quick reference, typical value of `zscore` for 90% and 95% CI is approximately
- * 1.645 and 1.960 respectively.
- *
- * @memberof probability
- * @param {number} successCount observed count of successes out of
- * @param {number} totalCount the total count.
- * @param {number} [zscore=1.645] for the required level of CI.
- * @return {object} containing `probability`, `min` and `max`.
+ * @memberof data
+ * @param {array} sortedData sorted in ascending order of value.
+ * @param {number} [coeff=1.5] used for outliers computation.
+ * @param {(string|number|function)} [accessor=undefined] required when elements of
+ * `sortedData` are objects or arrays instead of numbers.
+ * For objects, use key (string) to access the value; in case of arrays, use
+ * index (number) to access the value; or it could be a function
+ * that extracts the value from the element passed to it.
+ * @returns {object} consisting of `min`, `q1`, `median`, `q3`,
+ * `max`, `iqr`, `range`, `size` along with `leftNotch`, and `rightNotch`.
+ * The `leftOutliers/rightOutliers` (object), if present, contains the `count`, `fence`
+ * and `begin/end` indexes to `sortedData` for easy extraction of exact values.
  * @example
- * range4CI( 1, 10 );
- * // returns {
- * //   probability: 0.18518871952479238,
- * //   min: 0.02263232984000629,
- * //   max: 0.34774510920957846
+ * var data = [
+ *   -12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
+ *   31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 88
+ * ];
+ * boxplot( data );
+ * returns {
+ * //   min: -12, q1: 20, median: 31, q3: 40, max: 88,
+ * //   iqr: 20, range: 100, size: 30,
+ * //   leftOutliers: { begin: 0, end: 0, count: 1, fence: 14 },
+ * //   rightOutliers: { begin: 29, end: 29, count: 1, fence: 60 },
+ * //   leftNotch: 25.230655727612252,
+ * //   rightNotch: 36.76934427238775
  * // }
- * range4CI( 10, 100 );
- * // returns {
- * //   probability: 0.1105389143431459,
- * //   min: 0.06071598345043355,
- * //   max: 0.16036184523585828
- * // }
- */
-var range4CI = function ( successCount, totalCount, zscore ) {
-  if ( ( typeof successCount !== 'number' ) || ( successCount &lt;= 0 ) ) {
-    throw Error( 'probability-range4CI: successCount should be a number > 0, instead found: ' + JSON.stringify( successCount ) );
-  }
-  if ( ( typeof totalCount !== 'number' ) || ( totalCount &lt;= 0 ) ) {
-    throw Error( 'probability-range4CI: totalCount should be a number > 0, instead found: ' + JSON.stringify( totalCount ) );
-  }
-  if ( totalCount &lt; successCount ) {
-    throw Error( 'probability-range4CI: totalCount should be >= successCount, instead found: ' + JSON.stringify( totalCount ) );
-  }
-  var z = Math.abs( zscore || 1.645 );
-  var t = ( z * z ) / totalCount;
-  var p0 = successCount / totalCount;
-  var q0 = 1 - p0;
-  var delta = Math.sqrt( ( p0 * q0 * t ) + ( ( t * t ) / 4 ) );
+*/
+var boxplot = function ( sortedData, coeff, accessor ) {
+  var fns = fiveNumSummary( sortedData, accessor );
+  var coef = Math.abs( coeff || 1.5 );
+  var i;
+  var iqrXcoef = fns.iqr * coef;
+  var leftFence = fns.q1 - iqrXcoef;
+  var leftOutliers, rightOutliers;
+  var rightFence = fns.q3 + iqrXcoef;
 
-  var min = ( p0 + ( t / 2 ) - delta ) / ( t + 1 );
-  var max = ( p0 + ( t / 2 ) + delta ) / ( t + 1 );
+  var ci = ( 1.58 * fns.iqr ) / ( Math.sqrt( fns.size ) );
+  // Compute outliers only and only if `iqrXcoef` is greater than `0`, because
+  // with `iqrXcoef` as `0`, fences will become `q1` and `q3` respectively!
+  if ( iqrXcoef > 0 ) {
+    // Compute Left outliers, if any.
+    for ( i = 0; value( sortedData[ i ], accessor ) &lt; leftFence; i += 1 ) ;
+    leftOutliers = { begin: 0, end: ( i - 1 ), count: i, fence: value( sortedData[ i ], accessor ) };
+    // Compute right outliers, if any.
+    for ( i = fns.size - 1; value( sortedData[ i ], accessor ) > rightFence; i -= 1 ) ;
+    rightOutliers = { begin: ( i + 1 ), end: ( fns.size - 1 ), count: ( fns.size - i - 1 ), fence: value( sortedData[ i ], accessor ) };
+    // Add left and/or right outliers to `rs`.
+    if ( leftOutliers.count ) fns.leftOutliers = leftOutliers;
+    if ( rightOutliers.count ) fns.rightOutliers = rightOutliers;
+  }
+  // Add notches.
+  fns.leftNotch = fns.median - ci;
+  fns.rightNotch = fns.median + ci;
+  return ( fns );
+}; // boxplot()
 
-  return {
-    probability: ( p0 + ( t / 2 ) ) / ( t + 1 ),
-    min: min,
-    max: max
-  };
-}; // range4CI()
-
-module.exports = range4CI;
+module.exports = boxplot;
 </code></pre>
         </article>
     </section>
