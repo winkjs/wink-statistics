@@ -25,14 +25,12 @@
 // ### max
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+ * It is a higher order function that returns a {@link Stream}.
  *
- * Use `compute()` to continuously determine the **maximum** value of data items passed to it in real-time.
- * Probe the maximum anytime using `value()`, which may be reset via `reset()`.
  * The `result()` returns an object containing `max`.
  *
  * @memberof streaming
- * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var maximum = max();
  * maximum.compute( 3 );

@@ -27,21 +27,14 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### cov (Covariance)
 /**
  *
- * Covariance — **cov** is a higher order function that returns an
- * object containing `compute()`, `value()`, `result()`, and `reset()` functions.
- *
- * Use `compute()` to continuously determine the **covariance** between `x` and `y` values passed to it in real-time.
- * Probe the sample covariance anytime using `value()`, which may be reset via `reset()`.
- *
- * Number of decimals in the returned numerical values can be configured by defining
- * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
+ * Covariance — **cov** is a higher order function that returns a {@link Stream}
  *
  * The `result()` returns an object containing sample covariance `cov`, along with
  * `meanX`, `meanY` and `size` of data i.e. number of x & y pairs. It also contains
  * population covariance `covp`.
  *
  * @memberof streaming
- * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var covariance = cov();
  * covariance.compute( 10, 80 );
