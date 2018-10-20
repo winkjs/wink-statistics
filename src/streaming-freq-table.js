@@ -29,24 +29,18 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### freqTable
 /**
  *
- * It is a higher order function that returns an object containing `build()`, `value()`, `result()`, and `reset()` functions.
- *
- * Use `build()` to construct a frequency table from value of data items passed to it in real-time.
- * Probe the object containing data-item/frequency pairs using `value()`, which may be reset via `reset()`.
+ * It is a higher order function that returns a {@link Stream}
  *
  * The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
  * with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
  * `entropy`.
- *
- * Number of decimals in the returned numerical values can be configured by defining
- * `fractionDigits` as parameter in `result()`. Its default value is **4**.
  *
  * The `x2` along with the `df` can be used test the hypothesis that "the distribution is a uniform one". The
  * `percentage` in `table` give the percentage of a category count against the `sum`; and `expected` is the count
  * assuming an uniform distribution.
  *
  * @memberof streaming
- * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var ft = freqTable();
  * ft.build( 'Tea' );

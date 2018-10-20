@@ -87,3 +87,42 @@ ws.streaming.sum = require( './streaming-sum.js' );
 ws.streaming.summary = require( './streaming-summary.js' );
 
 module.exports = ws;
+
+/**
+ * @classdesc Stream class
+ * @class Stream
+ * @hideconstructor
+ */
+
+/**
+ * Used to continuously determine the result in real-time.
+ *
+ * @method Stream#compute
+*/
+
+/**
+ * Used to probe the sample for the current value at any time.
+ *
+ * @method Stream#value
+ * @return {Number}
+*/
+
+/**
+ * Gives an object that has the entire result, including extra variables.
+ *
+ * @method Stream#result
+ * @param {Number} [fractionDigits=4] Configuration for number of decimals in the returned numerical values.
+ * @return {Object}
+*/
+
+/**
+ * Alias for {@link Stream#compute}.
+ *
+ * @method Stream#build
+*/
+
+/**
+ * Used to reset the entier stream.
+ *
+ * @method Stream#reset
+*/

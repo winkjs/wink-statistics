@@ -27,18 +27,12 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### sum
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+ * It is a higher order function that returns a {@link Stream}.
  *
- * Use `compute()` to continuously determine the **sum** of data items passed to it in real-time.
- * Probe the sum anytime using `value()`, which may be reset via `reset()`. The sum
- * is compensated for floating point errors using Neumaier Method.
  * The `result()` returns an object containing `sum`.
  *
- * Number of decimals in the returned numerical values can be configured by defining
- * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
- *
  * @memberof streaming
- * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var addition = sum();
  * addition.compute( 1 );

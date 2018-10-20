@@ -27,22 +27,15 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### slr (Simple Linear Regression)
 /**
  *
- * Simple Linear Regression — **slr** is a higher order function that returns an
- * object containing `compute()`, `value()`, `result()`, and `reset()` functions.
- *
- * Use `compute()` to continuously determine the **correlation** between `x` and `y` values passed to it in real-time.
- * Probe the correlation anytime using `result()`, which may be reset via `reset()`.
- *
- * Number of decimals in the correlated values can be configured by defining
- * `fractionDigits` as parameter in `result()`. Its default value is **4**.
- * The `result()` also has an alias `value()`.
+ * Simple Linear Regression — **slr** is a higher order function that returns a
+ * {@link Stream}.
  *
  * The correlation is an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
  * the `size` of data i.e. number of x & y pairs. *In case of any error such as no
  * input data or zero variance, correlation object will be an empty one*.
  *
  * @memberof streaming
- * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var regression = simpleLinearRegression();
  * regression.compute( 10, 80 );

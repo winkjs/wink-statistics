@@ -27,20 +27,14 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### mean
 /**
  *
- * It is a higher order function that returns an object containing `compute()`, `value()`, `result()`, and `reset()` functions.
+ * It is a higher order function that returns a {@link Stream}.
  *
- * Use `compute()` to continuously determine the **mean** aka average value of data items passed to it in real-time.
- * Probe the mean anytime using `value()`, which may be reset via `reset()`.
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
  * The `result()` returns an object containing sample `mean` along with `size` of data.
  *
- * Number of decimals in the returned numerical values can be configured by defining
- * `fractionDigits` as parameter in `result()` and `value()`. Its default value is **4**.
- *
- *
  * @memberof streaming
- * @return {object} containing `compute`, `value`, `result`, and `reset` functions.
+ * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var avg = mean();
  * avg.compute( 2 );
