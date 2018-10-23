@@ -27,14 +27,17 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### mean
 /**
  *
- * It is a higher order function that returns a {@link Stream}.
+ * Mean is computed incrementally with arrival of each value from the data stream.
  *
+ * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * a single numeric value as argument.
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
- * The `result()` returns an object containing sample `mean` along with `size` of data.
+ * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * an object containing sample `mean` along with `size` of data.
  *
- * @memberof streaming
- * @return {Stream} A stream object to compute values and obtain results
+ * @memberof streaming#
+ * @return {Stream} Object containing methods such as `compute()`, `result()` & `reset()`.
  * @example
  * var avg = mean();
  * avg.compute( 2 );

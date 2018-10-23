@@ -25,12 +25,16 @@
 // ### min
 /**
  *
- * It is a higher order function that returns a {@link Stream}.
+ * Minimum value is determined incrementally with arrival of each value from the data stream.
  *
- * The `result()` returns an object containing `min`.
+ * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * a single numeric value as argument.
  *
- * @memberof streaming
- * @return {Stream} A stream object to compute values and obtain results
+ * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * an object containing `min`.
+ *
+ * @memberof streaming#
+ * @return {Stream} Object containing methods such as `compute()`, `result()` & `reset()`.
  * @example
  * var minimum = min();
  * minimum.compute( 3 );

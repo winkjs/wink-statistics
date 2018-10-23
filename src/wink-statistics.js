@@ -62,7 +62,8 @@ ws.data.stdev = require( './data-stdev.js' );
 ws.stats = ws.data;
 
 /**
- * All members of streaming are higher order functions that return {@link Stream}.
+ * All members of streaming are higher order functions. Each function returns
+ * a {@link Stream}.
  * @namespace streaming
  */
 ws.streaming = Object.create( null );
@@ -90,15 +91,16 @@ module.exports = ws;
 
 /**
  * @classdesc All functions under [`streaming`](http://winkjs.org/wink-statistics/streaming.html)
- * namespace belong to this class. These compute the required result(s) from the stream
+ * namespace return an object of this class. These compute the required result(s) from the stream
  * of data arriving in real time.
  * @class Stream
  * @hideconstructor
  */
 
 /**
- * Continuously computes the required statistic in real time from the stream
- * of input(s) passed.
+ * Incrementally computes the results in real-time with each successive call.
+ *
+ * Number and type of input arguments depend on the API used.
  *
  * @method Stream#compute
 */

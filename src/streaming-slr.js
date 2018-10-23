@@ -27,15 +27,22 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### slr (Simple Linear Regression)
 /**
  *
- * Simple Linear Regression — **slr** is a higher order function that returns a
- * {@link Stream}.
+ * Linear Regression is determined incrementally with arrival of each pair of `x`
+ * and `y` values from the data stream.
  *
- * The correlation is an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
- * the `size` of data i.e. number of x & y pairs. *In case of any error such as no
+ * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * two numeric arguments viz. `x` — independant variable and `y` — dependant variable.
+ *
+ * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
+ * the `size` of data i.e. number of x & y pairs. It has an alias
+ * [`value()`](http://winkjs.org/wink-statistics/Stream.html#value).
+ *
+ * *In case of any error such as no
  * input data or zero variance, correlation object will be an empty one*.
  *
- * @memberof streaming
- * @return {Stream} A stream object to compute values and obtain results
+ * @memberof streaming#
+ * @return {Stream} Object containing methods such as `compute()`, `result()` & `reset()`.
  * @example
  * var regression = simpleLinearRegression();
  * regression.compute( 10, 80 );

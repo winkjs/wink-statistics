@@ -27,14 +27,19 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### cov (Covariance)
 /**
  *
- * Covariance — **cov** is a higher order function that returns a {@link Stream}
+ * Covariance is computed incrementally with arrival of each pair of `x` and `y`
+ * values from a stream of data.
  *
- * The `result()` returns an object containing sample covariance `cov`, along with
+ * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * two numeric arguments `x` and `y`.
+ *
+ * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * an object containing sample covariance `cov`, along with
  * `meanX`, `meanY` and `size` of data i.e. number of x & y pairs. It also contains
  * population covariance `covp`.
  *
- * @memberof streaming
- * @return {Stream} A stream object to compute values and obtain results
+ * @memberof streaming#
+ * @return {Stream} Object containing methods such as `compute()`, `result()` & `reset()`.
  * @example
  * var covariance = cov();
  * covariance.compute( 10, 80 );

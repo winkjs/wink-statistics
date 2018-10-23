@@ -29,9 +29,11 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### freqTable
 /**
  *
- * It constructs a frequency table from value of data passed to each call to
- * [`build()`](http://winkjs.org/wink-statistics/Stream.html#build) in real-time.
+ * Frequency table is built incrementally with arrival of each value from the
+ * stream of data.
  *
+ * The [`build()`](http://winkjs.org/wink-statistics/Stream.html#build) requires
+ * a single argument, which could be either a string or numeric value.
  *
  * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
  * an object containing the frequency `table` sorted in descending order of
@@ -44,7 +46,7 @@ var getValidFD = require( './get-valid-fd.js' );
  * assuming uniform distribution.
  *
  * @memberof streaming#
- * @return {Stream} A stream object to compute values and obtain results
+ * @return {Stream} Object containing methods such as `build()`, `result()` & `reset()`.
  * @example
  * var ft = freqTable();
  * ft.build( 'Tea' );

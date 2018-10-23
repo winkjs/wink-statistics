@@ -27,16 +27,19 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### stdev
 /**
  *
- * It is a higher order function that returns a {@link Stream}.
+ * Standard Deviation is computed incrementally with arrival of each value from the data stream.
  *
+ * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * a single numeric value as argument.
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
- * The `result()` returns an object containing sample `stdev` and
+ * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * returns an object containing sample `stdev` and
  * `variance`, along with `mean`, `size` of data; it also
  * contains population standard deviation and variance as `stdevp` and `variancep`.
  *
- * @memberof streaming
- * @return {Stream} A stream object to compute values and obtain results
+ * @memberof streaming#
+ * @return {Stream} Object containing methods such as `compute()`, `result()` & `reset()`.
  * @example
  * var sd = stdev();
  * sd.compute( 2 );
