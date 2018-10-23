@@ -29,17 +29,21 @@ var getValidFD = require( './get-valid-fd.js' );
 // ### freqTable
 /**
  *
- * It is a higher order function that returns a {@link Stream}
+ * It constructs a frequency table from value of data passed to each call to
+ * [`build()`](http://winkjs.org/wink-statistics/Stream.html#build) in real-time.
  *
- * The `result()` returns an object containing the frequency `table` sorted in descending order of category counts or frequency, along
- * with it's `size`, `sum` of all counts, `x2` - chi-squared statistic, `df` - degree of freedom, and the
+ *
+ * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * an object containing the frequency `table` sorted in descending order of
+ * category frequency, along with table `size`, `sum` of frequencies,
+ * `x2` — chi-squared statistic, `df` — degree of freedom, and the
  * `entropy`.
  *
- * The `x2` along with the `df` can be used test the hypothesis that "the distribution is a uniform one". The
- * `percentage` in `table` give the percentage of a category count against the `sum`; and `expected` is the count
- * assuming an uniform distribution.
+ * The `x2` along with the `df` can be used to test the hypothesis, "the distribution is uniform". The
+ * `percentage` in `table` represents %age of a category share in the `sum`; and `expected` count
+ * assuming uniform distribution.
  *
- * @memberof streaming
+ * @memberof streaming#
  * @return {Stream} A stream object to compute values and obtain results
  * @example
  * var ft = freqTable();
@@ -55,17 +59,17 @@ var getValidFD = require( './get-valid-fd.js' );
  * // returns { Tea: 3, Pepsi: 2, Gin: 1, Coke: 2 }
  * ft.result();
  * // returns {
- * //  table: [
- * //   { category: 'Tea', observed: 3, percentage: 37.5, expected: 2 },
- * //   { category: 'Pepsi', observed: 2, percentage: 25, expected: 2 },
- * //   { category: 'Coke', observed: 2, percentage: 25, expected: 2 },
- * //   { category: 'Gin', observed: 1, percentage: 12.5, expected: 2 }
- * //  ],
- * //  size: 4,
- * //  sum: 8,
- * //  x2: 1,
- * //  df: 3,
- * //  entropy: 1.9056
+ * //   table: [
+ * //     { category: 'Tea', observed: 3, percentage: 37.5, expected: 2 },
+ * //     { category: 'Pepsi', observed: 2, percentage: 25, expected: 2 },
+ * //     { category: 'Coke', observed: 2, percentage: 25, expected: 2 },
+ * //     { category: 'Gin', observed: 1, percentage: 12.5, expected: 2 }
+ * //   ],
+ * //   size: 4,
+ * //   sum: 8,
+ * //   x2: 1,
+ * //   df: 3,
+ * //   entropy: 1.9056
  * // }
  */
 var freqTable = function () {

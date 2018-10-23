@@ -62,7 +62,7 @@ ws.data.stdev = require( './data-stdev.js' );
 ws.stats = ws.data;
 
 /**
- * Streaming
+ * All members of streaming are higher order functions that return {@link Stream}.
  * @namespace streaming
  */
 ws.streaming = Object.create( null );
@@ -89,10 +89,9 @@ ws.streaming.summary = require( './streaming-summary.js' );
 module.exports = ws;
 
 /**
- * @classdesc All streaming utilities such as [`covariance()`](http://winkjs.org/wink-statistics/streaming.html#.covariance)
- * or [`stdev()`](http://winkjs.org/wink-statistics/streaming.html#.stdev) belong
- * to this class. Such utilities compute the required result(s) from the stream
- * of real time data.
+ * @classdesc All functions under [`streaming`](http://winkjs.org/wink-statistics/streaming.html)
+ * namespace belong to this class. These compute the required result(s) from the stream
+ * of data arriving in real time.
  * @class Stream
  * @hideconstructor
  */
@@ -112,8 +111,10 @@ module.exports = ws;
 */
 
 /**
- * Provides detailed result(s) from the computations carried out so far. It can
- * called any number of times and it will return the result accumulated upto that point.
+ * Provides detailed result(s) from the computations carried out so far. The result(s)
+ * will vary as per the API used.
+ *
+ * It can be called, as and when required to return the accumulated result till that point.
  *
  * @method Stream#result
  * @param {Number} [fractionDigits=4] number of decimals in the returned numerical values. May
@@ -130,8 +131,8 @@ module.exports = ws;
 */
 
 /**
- * Resets all the computions carried out so far. Computations restart again from
- * this point again and the previous result is lost.
+ * Resets all the computations carried out so far. Computations start afresh
+ * from this point again.
  *
  * @method Stream#reset
 */
