@@ -52,22 +52,65 @@
     <section class="readme">
         <article><h1>wink-statistics</h1><p>Fast and Numerically Stable Statistical Analysis Utilities</p>
 <h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3><p><img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" ></p>
-<p>Perform fast and numerically stable statistical analysis using <strong><code>wink-statistics</code></strong>. It is a part of <a href="http://winkjs.org/">wink</a> — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.</p>
-<p>Summarize, Discover and Analyze data with it's rich set of features:</p>
-<ol>
-<li><p>Analyze both continuous and categorical data.</p>
-</li>
-<li><p>Handles real-time stream of data and incrementally compute required statistic that usually would take more than one pass over the data as in <strong>standard deviation</strong> or <strong>simple linear regression</strong>.</p>
-</li>
-<li><p>Minimizes data preprocessing by handling array of data structures containing numerical values, e.g. array of objects.</p>
-</li>
-</ol>
+<p>Perform fast and numerically stable statistical analysis using <strong><code>wink-statistics</code></strong>. Apart from arrays, it can handle <strong>real-time stream of data</strong> and can incrementally compute required statistic that usually would take more than one pass over the data as in standard deviation or simple linear regression.</p>
 <h3>Installation</h3><p>Use <a href="https://www.npmjs.com/package/wink-statistics">npm</a> to install:</p>
-<pre class="prettyprint source"><code>npm install wink-statistics --save</code></pre><h3>API</h3><p>Check out the <a href="http://winkjs.org/wink-statistics/">statistics API documentation</a> to learn more.</p>
+<pre class="prettyprint source"><code>npm install wink-statistics --save</code></pre><h3>Getting Started</h3><h4>Handling Streams</h4><p>Here is an example of computing <code>slope</code>, <code>intercept</code> and <code>r2</code> etc. from a stream of <code>(x, y)</code> data in real-time:</p>
+<pre class="prettyprint source lang-javascript"><code>// Load wink-statistics.
+var stats = require( 'wink-statistics' );
+// Instantiate streaming simple linear regression
+var regression = stats.streaming.simpleLinearRegression();
+// Following would be ideally placed within a stream of data:
+regression.compute( 10, 80 );
+regression.compute( 15, 75 );
+regression.compute( 16, 65 );
+regression.compute( 18, 50 );
+regression.compute( 21, 45 );
+regression.compute( 30, 30 );
+regression.compute( 36, 18 );
+regression.compute( 40, 9 );
+// Use result() method to access the outcome in real time.
+regression.result();
+// returns { slope: -2.3621,
+//   intercept: 101.4188,
+//   r: -0.9766,
+//   r2: 0.9537,
+//   se: 5.624,
+//   size: 8
+// }</code></pre><h3>Handling data array</h3><p>The functions under the <code>data</code> name space require data in an array. Here is an example of boxplot analysis:</p>
+<pre class="prettyprint source lang-javascript"><code>var boxplot = stats.data.boxplot;
+var data = [
+  -12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
+  31, 32, 32, 34, 36, 40, 40, 40, 40, 40, 42, 51, 56, 60, 88
+];
+
+boxplot( data );
+// returns {
+//   min: -12, q1: 20, median: 31, q3: 40, max: 88,
+//   iqr: 20, range: 100, size: 30,
+//   leftOutliers: { begin: 0, end: 0, count: 1, fence: 14 },
+//   rightOutliers: { begin: 29, end: 29, count: 1, fence: 60 },
+//   leftNotch: 25.230655727612252,
+//   rightNotch: 36.76934427238775
+// }</code></pre><p><code>wink-stats</code> can handle data in different formats to avoid pre-processing. For example,  you can compute median from the array of objects containing value:</p>
+<pre class="prettyprint source lang-javascript"><code>var median = stats.data.median;
+var data =  [
+  { value: 1 },
+  { value: 1 },
+  { value: 2 },
+  { value: 2 },
+  { value: 3 },
+  { value: 3 },
+  { value: 4 },
+  { value: 4 }
+];
+// Use key name — `value` as the `accessor`
+median( data, 'value' );
+// returns 2.5</code></pre><p>It even supports passing functions as <code>accessors</code> to handle even more complex data structures.</p>
+<h3>Documentation</h3><p>Check out the <a href="http://winkjs.org/wink-statistics/">statistics API documentation</a> to learn more.</p>
 <h3>Need Help?</h3><p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-statistics/issues">issue</a> or consider fixing it and sending a pull request.</p>
+<h3>About wink</h3><p><a href="http://winkjs.org/">Wink</a> is a family of open source packages for <strong>Statistical Analysis</strong>, <strong>Natural Language Processing</strong> and <strong>Machine Learning</strong> in NodeJS. The code is <strong>thoroughly documented</strong> for easy human comprehension and has a <strong>test coverage of ~100%</strong> for reliability to build production grade solutions.</p>
 <h3>Copyright &amp; License</h3><p><strong>wink-statistics</strong> is copyright 2017-18 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
-<p>It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
-Software Foundation, version 3 of the License.</p></article>
+<p>It is licensed under the terms of the MIT License.</p></article>
     </section>
 
 
@@ -82,7 +125,7 @@ Software Foundation, version 3 of the License.</p></article>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Oct 23 2018 17:09:53 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Nov 04 2018 22:30:10 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
