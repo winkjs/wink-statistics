@@ -43,7 +43,7 @@ regression.result();
 // }
 ```
 
-### Handling data array
+#### Handling data array
 The functions under the `data` name space require data in an array. Here is an example of boxplot analysis:
 
 ```javascript
