@@ -34,6 +34,11 @@
   ((window.gitter = {}).chat = {}).options = {
     room: 'winkjs/Lobby'
   };
+  window.onload = function () {
+      console.log(1);
+      document.querySelector('.gitter-open-chat-button').innerText = 'Need help?'
+      document.querySelector('.gitter-open-chat-button').style.display = 'block';
+  }
 </script>
 <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -68,6 +73,10 @@ body {
 .navbar a {
   color: #fff;
   line-height: 60px;
+  margin-left: 0;
+}
+
+.navbar a.navbar-brand {
   margin-left: 20px;
 }
 
@@ -98,6 +107,7 @@ nav {
 /* Gitter */
 .gitter-open-chat-button {
   background: #6C307D;
+  display: none;
 }
 
 .gitter-open-chat-button:hover {
@@ -144,9 +154,9 @@ function openMember() {
       </div>
       <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
         <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
+        <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
         <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
         <li><a href="http://github.com/winkjs">Github</a></li>
-        <li><a href="https://twitter.com/winkjs_org">Twitter</a></li>
         <li><a href="https://winkjs.org/about.html" class="">About</a></li>
       </ul>
     </div>
@@ -192,11 +202,18 @@ function openMember() {
 
 
     <section class="readme">
-        <article><h1>wink-statistics</h1><p>Fast and Numerically Stable Statistical Analysis Utilities</p>
-<h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3><p><img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" ></p>
+        <article><h1>wink-statistics</h1>
+<p>Fast and Numerically Stable Statistical Analysis Utilities</p>
+<h3><a href="https://travis-ci.org/winkjs/wink-statistics"><img src="https://api.travis-ci.org/winkjs/wink-statistics.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-statistics?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-statistics/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-statistics"><img src="http://inch-ci.org/github/winkjs/wink-statistics.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-statistics"><img src="https://david-dm.org/winkjs/wink-statistics/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-statistics?type=dev"><img src="https://david-dm.org/winkjs/wink-statistics/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3>
+<img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >
 <p>Perform fast and numerically stable statistical analysis using <strong><code>wink-statistics</code></strong>. Apart from arrays, it can handle <strong>real-time stream of data</strong> and can incrementally compute required statistic that usually would take more than one pass over the data as in standard deviation or simple linear regression.</p>
-<h3>Installation</h3><p>Use <a href="https://www.npmjs.com/package/wink-statistics">npm</a> to install:</p>
-<pre class="prettyprint source"><code>npm install wink-statistics --save</code></pre><h3>Getting Started</h3><h4>Handling Streams</h4><p>Here is an example of computing <code>slope</code>, <code>intercept</code> and <code>r2</code> etc. from a stream of <code>(x, y)</code> data in real-time:</p>
+<h3>Installation</h3>
+<p>Use <a href="https://www.npmjs.com/package/wink-statistics">npm</a> to install:</p>
+<pre><code>npm install wink-statistics --save
+</code></pre>
+<h3>Getting Started</h3>
+<h4>Handling Streams</h4>
+<p>Here is an example of computing <code>slope</code>, <code>intercept</code> and <code>r2</code> etc. from a stream of <code>(x, y)</code> data in real-time:</p>
 <pre class="prettyprint source lang-javascript"><code>// Load wink-statistics.
 var stats = require( 'wink-statistics' );
 // Instantiate streaming simple linear regression
@@ -218,7 +235,10 @@ regression.result();
 //   r2: 0.9537,
 //   se: 5.624,
 //   size: 8
-// }</code></pre><h4>Handling data array</h4><p>The functions under the <code>data</code> name space require data in an array. Here is an example of boxplot analysis:</p>
+// }
+</code></pre>
+<h4>Handling data array</h4>
+<p>The functions under the <code>data</code> name space require data in an array. Here is an example of boxplot analysis:</p>
 <pre class="prettyprint source lang-javascript"><code>var boxplot = stats.data.boxplot;
 var data = [
   -12, 14, 14, 14, 16, 18, 20, 20, 21, 23, 27, 27, 27, 29, 31,
@@ -233,7 +253,9 @@ boxplot( data );
 //   rightOutliers: { begin: 29, end: 29, count: 1, fence: 60 },
 //   leftNotch: 25.230655727612252,
 //   rightNotch: 36.76934427238775
-// }</code></pre><p><code>wink-stats</code> can handle data in different formats to avoid pre-processing. For example,  you can compute median from the array of objects containing value:</p>
+// }
+</code></pre>
+<p><code>wink-stats</code> can handle data in different formats to avoid pre-processing. For example,  you can compute median from the array of objects containing value:</p>
 <pre class="prettyprint source lang-javascript"><code>var median = stats.data.median;
 var data =  [
   { value: 1 },
@@ -247,11 +269,17 @@ var data =  [
 ];
 // Use key name — `value` as the `accessor`
 median( data, 'value' );
-// returns 2.5</code></pre><p>It even supports passing functions as <code>accessors</code> to handle even more complex data structures.</p>
-<h3>Documentation</h3><p>Check out the <a href="http://winkjs.org/wink-statistics/">statistics API documentation</a> to learn more.</p>
-<h3>Need Help?</h3><p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-statistics/issues">issue</a> or consider fixing it and sending a pull request.</p>
-<h3>About wink</h3><p><a href="http://winkjs.org/">Wink</a> is a family of open source packages for <strong>Statistical Analysis</strong>, <strong>Natural Language Processing</strong> and <strong>Machine Learning</strong> in NodeJS. The code is <strong>thoroughly documented</strong> for easy human comprehension and has a <strong>test coverage of ~100%</strong> for reliability to build production grade solutions.</p>
-<h3>Copyright &amp; License</h3><p><strong>wink-statistics</strong> is copyright 2017-18 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
+// returns 2.5
+</code></pre>
+<p>It even supports passing functions as <code>accessors</code> to handle even more complex data structures.</p>
+<h3>Documentation</h3>
+<p>Check out the <a href="http://winkjs.org/wink-statistics/">statistics API documentation</a> to learn more.</p>
+<h3>Need Help?</h3>
+<p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-statistics/issues">issue</a> or consider fixing it and sending a pull request.</p>
+<h3>About wink</h3>
+<p><a href="http://winkjs.org/">Wink</a> is a family of open source packages for <strong>Statistical Analysis</strong>, <strong>Natural Language Processing</strong> and <strong>Machine Learning</strong> in NodeJS. The code is <strong>thoroughly documented</strong> for easy human comprehension and has a <strong>test coverage of ~100%</strong> for reliability to build production grade solutions.</p>
+<h3>Copyright &amp; License</h3>
+<p><strong>wink-statistics</strong> is copyright 2017-18 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
 <p>It is licensed under the terms of the MIT License.</p></article>
     </section>
 
@@ -267,7 +295,7 @@ median( data, 'value' );
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 21 2019 09:11:37 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Thu May 30 2019 10:18:49 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
