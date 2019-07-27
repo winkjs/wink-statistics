@@ -35,7 +35,6 @@
     room: 'winkjs/Lobby'
   };
   window.onload = function () {
-      console.log(1);
       document.querySelector('.gitter-open-chat-button').innerText = 'Need help?'
       document.querySelector('.gitter-open-chat-button').style.display = 'block';
   }
@@ -78,6 +77,8 @@ body {
 
 .navbar a.navbar-brand {
   margin-left: 20px;
+  display: block;
+  min-width: 40px;
 }
 
 .navbar-right {
@@ -96,10 +97,6 @@ body {
 }
 
 /* Override docdash */
-nav {
-  top: 80px;
-}
-
 #main {
   margin-top: 30px;
 }
@@ -128,6 +125,14 @@ window.addEventListener('DOMContentLoaded', function () {
       window.scrollTo( 0, (window.pageYOffset || document.documentElement.scrollTop) - 72);
     }, 0)
   }
+
+  document.getElementById('toc-button').addEventListener('click', function () {
+      if (document.getElementById('side-nav').className === '') {
+        document.getElementById('side-nav').className = 'is-open';
+      } else {
+        document.getElementById('side-nav').className = '';
+      }
+  })
 });
 
 window.addEventListener( 'hashchange', function (e) {
@@ -149,38 +154,34 @@ function openMember() {
       <div class="navbar-header">
         <a href="https://winkjs.org/" title="wink" class="navbar-brand">
           <img src="https://winkjs.org/images/logo.svg">
-          wink
+          <span>wink</span>
         </a>
       </div>
-      <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
-        <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
-        <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
-        <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
-        <li><a href="http://github.com/winkjs">Github</a></li>
-        <li><a href="https://winkjs.org/about.html" class="">About</a></li>
-      </ul>
+      <div class="sausage-links">
+        <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
+          <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
+          <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
+          <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
+          <li><a href="http://github.com/winkjs">Github</a></li>
+          <li><a href="https://winkjs.org/about.html" class="">About</a></li>
+        </div>
+      </nav>
     </div>
 </header>
 
+<div id="toc-button">
+  <img src="/menu.svg" alt="">
+</div>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
+<div class="content-container">
+  <div class="main-container">
+    <div id="main">
+        
+        <h1 class="page-title">probability</h1>
+        
 
-<nav >
-    
-    <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Stream.html">Stream</a><ul class='methods'><li data-type='method'><a href="Stream.html#build">build</a></li><li data-type='method'><a href="Stream.html#compute">compute</a></li><li data-type='method'><a href="Stream.html#reset">reset</a></li><li data-type='method'><a href="Stream.html#result">result</a></li><li data-type='method'><a href="Stream.html#value">value</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#covariance">covariance</a></li><li data-type='method'><a href="streaming.html#freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#max">max</a></li><li data-type='method'><a href="streaming.html#mean">mean</a></li><li data-type='method'><a href="streaming.html#min">min</a></li><li data-type='method'><a href="streaming.html#simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#stdev">stdev</a></li><li data-type='method'><a href="streaming.html#sum">sum</a></li><li data-type='method'><a href="streaming.html#summary">summary</a></li></ul></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">probability</h1>
-    
-
-    
+        
 
 
 
@@ -189,9 +190,9 @@ function openMember() {
 
 <header>
     
-        <h2>
+        <!--<h2>
         probability
-        </h2>
+        </h2>-->
         
     
 </header>
@@ -204,12 +205,12 @@ function openMember() {
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line28">line 28</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -259,7 +260,7 @@ function openMember() {
     
 
     
-    
+
     
 
      
@@ -276,7 +277,10 @@ function openMember() {
 
     
 
-    <h4 class="name" id=".aggregate"><span class="type-signature">(static) </span>aggregate<span class="signature">(pa1, pa2)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id=".aggregate">
+      aggregate
+    </h4>
+    <div class="name-signature"><span class="type-signature">(static) </span>aggregate<span class="signature">(pa1, pa2)</span><span class="type-signature"> &rarr; {number}</span></div
 
     
 
@@ -285,12 +289,12 @@ function openMember() {
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="probability-aggregate.js.html">probability-aggregate.js</a>, <a href="probability-aggregate.js.html#line55">line 55</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -360,7 +364,7 @@ aggregate( 0.4, 0.6 );
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -385,13 +389,14 @@ aggregate( 0.4, 0.6 );
 
         <tr>
             
-                <td class="name"><code>pa1</code></td>
+                <td class="name">pa1</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">number</span>
+
 
 
             
@@ -408,13 +413,14 @@ aggregate( 0.4, 0.6 );
 
         <tr>
             
-                <td class="name"><code>pa2</code></td>
+                <td class="name">pa2</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">number</span>
+
 
 
             
@@ -446,7 +452,7 @@ aggregate( 0.4, 0.6 );
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -464,6 +470,7 @@ aggregate( 0.4, 0.6 );
 <span class="param-type">number</span>
 
 
+
     </dd>
 </dl>
 
@@ -471,12 +478,17 @@ aggregate( 0.4, 0.6 );
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id=".range4CI"><span class="type-signature">(static) </span>range4CI<span class="signature">(successCount, totalCount, zscore<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id=".range4CI">
+      range4CI
+    </h4>
+    <div class="name-signature"><span class="type-signature">(static) </span>range4CI<span class="signature">(successCount, totalCount, zscore<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span></div
 
     
 
@@ -485,12 +497,12 @@ aggregate( 0.4, 0.6 );
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="probability-range-4ci.js.html">probability-range-4ci.js</a>, <a href="probability-range-4ci.js.html#line61">line 61</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -564,7 +576,7 @@ range4CI( 10, 100 );
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -593,13 +605,14 @@ range4CI( 10, 100 );
 
         <tr>
             
-                <td class="name"><code>successCount</code></td>
+                <td class="name">successCount</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">number</span>
+
 
 
             
@@ -628,13 +641,14 @@ range4CI( 10, 100 );
 
         <tr>
             
-                <td class="name"><code>totalCount</code></td>
+                <td class="name">totalCount</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">number</span>
+
 
 
             
@@ -663,13 +677,14 @@ range4CI( 10, 100 );
 
         <tr>
             
-                <td class="name"><code>zscore</code></td>
+                <td class="name">zscore</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">number</span>
+
 
 
             
@@ -690,7 +705,7 @@ range4CI( 10, 100 );
             
                 <td class="default">
                 
-                    <code>1.645</code>
+                    1.645
                 
                 </td>
             
@@ -717,7 +732,7 @@ range4CI( 10, 100 );
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -735,12 +750,15 @@ range4CI( 10, 100 );
 <span class="param-type">object</span>
 
 
+
     </dd>
 </dl>
 
     
 
 
+
+<hr>
 
         
     
@@ -756,18 +774,40 @@ range4CI( 10, 100 );
 
 
 
-    
+        
+    </div>
+  </div>
+
+  <nav  id="side-nav">
+      
+      <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Stream.html">Stream</a><ul class='methods'><li data-type='method'><a href="Stream.html#build">build</a></li><li data-type='method'><a href="Stream.html#compute">compute</a></li><li data-type='method'><a href="Stream.html#reset">reset</a></li><li data-type='method'><a href="Stream.html#result">result</a></li><li data-type='method'><a href="Stream.html#value">value</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#covariance">covariance</a></li><li data-type='method'><a href="streaming.html#freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#max">max</a></li><li data-type='method'><a href="streaming.html#mean">mean</a></li><li data-type='method'><a href="streaming.html#min">min</a></li><li data-type='method'><a href="streaming.html#simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#stdev">stdev</a></li><li data-type='method'><a href="streaming.html#sum">sum</a></li><li data-type='method'><a href="streaming.html#summary">summary</a></li></ul></li></ul>
+  </nav>
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Thu May 30 2019 10:18:49 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sat Jul 27 2019 10:13:04 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
 
 
+
+<script src="https://embed.runkit.com"></script>
+<script type="text/javascript">
+  var els = document.getElementsByClassName("runkit");
+
+  Array.prototype.forEach.call(els, function(el) {
+    // Do stuff here
+    var source = el.innerHTML;
+    el.innerHTML = '';
+    var n = RunKit.createNotebook( {
+      element: el,
+      source: source
+    } );
+  });
+</script>
 </body>
 </html>
