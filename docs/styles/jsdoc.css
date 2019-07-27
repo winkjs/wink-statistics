@@ -707,7 +707,7 @@ html[data-search-mode] .level-hide {
   }
 
   nav {
-    background: #FFF;
+    background: #fff;
     width: 100%;
     height: calc(100vh - 60px);
     position: fixed;
@@ -716,10 +716,10 @@ html[data-search-mode] .level-hide {
     bottom: 0;
     left: 0;
     z-index: 3;
-    padding: 0 10px;
     opacity: 0;
     transition: top 0.2s, opacity 0.2s;
     padding: 20px;
+    padding-bottom: 100px;
   }
 
   nav.is-open {
