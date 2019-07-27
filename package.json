@@ -43,12 +43,12 @@
   "homepage": "http://winkjs.org/wink-statistics/",
   "devDependencies": {
     "chai": "^4.2.0",
-    "coveralls": "^3.0.3",
+    "coveralls": "^3.0.5",
     "docdash": "github:winkjs/docdash",
     "docker": "^1.0.0",
     "eslint": "^5.16.0",
     "istanbul": "^1.1.0-alpha.1",
-    "jsdoc": "^3.6.2",
+    "jsdoc": "^3.6.3",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0"
   },

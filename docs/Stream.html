@@ -35,7 +35,6 @@
     room: 'winkjs/Lobby'
   };
   window.onload = function () {
-      console.log(1);
       document.querySelector('.gitter-open-chat-button').innerText = 'Need help?'
       document.querySelector('.gitter-open-chat-button').style.display = 'block';
   }
@@ -78,6 +77,8 @@ body {
 
 .navbar a.navbar-brand {
   margin-left: 20px;
+  display: block;
+  min-width: 40px;
 }
 
 .navbar-right {
@@ -96,10 +97,6 @@ body {
 }
 
 /* Override docdash */
-nav {
-  top: 80px;
-}
-
 #main {
   margin-top: 30px;
 }
@@ -128,6 +125,14 @@ window.addEventListener('DOMContentLoaded', function () {
       window.scrollTo( 0, (window.pageYOffset || document.documentElement.scrollTop) - 72);
     }, 0)
   }
+
+  document.getElementById('toc-button').addEventListener('click', function () {
+      if (document.getElementById('side-nav').className === '') {
+        document.getElementById('side-nav').className = 'is-open';
+      } else {
+        document.getElementById('side-nav').className = '';
+      }
+  })
 });
 
 window.addEventListener( 'hashchange', function (e) {
@@ -149,38 +154,34 @@ function openMember() {
       <div class="navbar-header">
         <a href="https://winkjs.org/" title="wink" class="navbar-brand">
           <img src="https://winkjs.org/images/logo.svg">
-          wink
+          <span>wink</span>
         </a>
       </div>
-      <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
-        <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
-        <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
-        <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
-        <li><a href="http://github.com/winkjs">Github</a></li>
-        <li><a href="https://winkjs.org/about.html" class="">About</a></li>
-      </ul>
+      <div class="sausage-links">
+        <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
+          <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
+          <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
+          <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
+          <li><a href="http://github.com/winkjs">Github</a></li>
+          <li><a href="https://winkjs.org/about.html" class="">About</a></li>
+        </div>
+      </nav>
     </div>
 </header>
 
+<div id="toc-button">
+  <img src="/menu.svg" alt="">
+</div>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
+<div class="content-container">
+  <div class="main-container">
+    <div id="main">
+        
+        <h1 class="page-title">Stream</h1>
+        
 
-<nav >
-    
-    <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Stream.html">Stream</a><ul class='methods'><li data-type='method'><a href="Stream.html#build">build</a></li><li data-type='method'><a href="Stream.html#compute">compute</a></li><li data-type='method'><a href="Stream.html#reset">reset</a></li><li data-type='method'><a href="Stream.html#result">result</a></li><li data-type='method'><a href="Stream.html#value">value</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#covariance">covariance</a></li><li data-type='method'><a href="streaming.html#freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#max">max</a></li><li data-type='method'><a href="streaming.html#mean">mean</a></li><li data-type='method'><a href="streaming.html#min">min</a></li><li data-type='method'><a href="streaming.html#simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#stdev">stdev</a></li><li data-type='method'><a href="streaming.html#sum">sum</a></li><li data-type='method'><a href="streaming.html#summary">summary</a></li></ul></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">Stream</h1>
-    
-
-    
+        
 
 
 
@@ -189,9 +190,9 @@ function openMember() {
 
 <header>
     
-        <h2>
+        <!--<h2>
         Stream
-        </h2>
+        </h2>-->
         
             <div class="class-description"><p>All functions under <a href="http://winkjs.org/wink-statistics/streaming.html"><code>streaming</code></a>
 namespace return an object of this class. These compute the required result(s) from the stream
@@ -208,7 +209,7 @@ of data arriving in real time.</p></div>
     
 
     
-    
+
     
 
      
@@ -225,7 +226,10 @@ of data arriving in real time.</p></div>
 
     
 
-    <h4 class="name" id="build"><span class="type-signature"></span>build<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="build">
+      build
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>build<span class="signature">()</span><span class="type-signature"></span></div
 
     
 
@@ -234,12 +238,12 @@ of data arriving in real time.</p></div>
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line131">line 131</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -308,12 +312,17 @@ of data arriving in real time.</p></div>
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="compute"><span class="type-signature"></span>compute<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="compute">
+      compute
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>compute<span class="signature">()</span><span class="type-signature"></span></div
 
     
 
@@ -322,12 +331,12 @@ of data arriving in real time.</p></div>
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line103">line 103</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -396,12 +405,17 @@ of data arriving in real time.</p></div>
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="reset"><span class="type-signature"></span>reset<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="reset">
+      reset
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>reset<span class="signature">()</span><span class="type-signature"></span></div
 
     
 
@@ -410,12 +424,12 @@ of data arriving in real time.</p></div>
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line138">line 138</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -484,12 +498,17 @@ from this point again.</p>
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="result"><span class="type-signature"></span>result<span class="signature">(fractionDigits<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="result">
+      result
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>result<span class="signature">(fractionDigits<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span></div
 
     
 
@@ -498,12 +517,12 @@ from this point again.</p>
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line118">line 118</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -556,7 +575,7 @@ will vary as per the API used.</p>
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -585,13 +604,14 @@ will vary as per the API used.</p>
 
         <tr>
             
-                <td class="name"><code>fractionDigits</code></td>
+                <td class="name">fractionDigits</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">Number</span>
+
 
 
             
@@ -612,7 +632,7 @@ will vary as per the API used.</p>
             
                 <td class="default">
                 
-                    <code>4</code>
+                    4
                 
                 </td>
             
@@ -641,7 +661,7 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -659,6 +679,7 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 <span class="param-type">Object</span>
 
 
+
     </dd>
 </dl>
 
@@ -666,12 +687,17 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="value"><span class="type-signature"></span>value<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="value">
+      value
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>value<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></div
 
     
 
@@ -680,12 +706,12 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line111">line 111</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -750,7 +776,7 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 
@@ -764,12 +790,15 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 <span class="param-type">Number</span>
 
 
+
     </dd>
 </dl>
 
     
 
 
+
+<hr>
 
         
     
@@ -785,18 +814,40 @@ or [<code>min()</code>](file:///Users/neilsbohr/dev/winkjs/wink-statistics/docs/
 
 
 
-    
+        
+    </div>
+  </div>
+
+  <nav  id="side-nav">
+      
+      <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Stream.html">Stream</a><ul class='methods'><li data-type='method'><a href="Stream.html#build">build</a></li><li data-type='method'><a href="Stream.html#compute">compute</a></li><li data-type='method'><a href="Stream.html#reset">reset</a></li><li data-type='method'><a href="Stream.html#result">result</a></li><li data-type='method'><a href="Stream.html#value">value</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#covariance">covariance</a></li><li data-type='method'><a href="streaming.html#freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#max">max</a></li><li data-type='method'><a href="streaming.html#mean">mean</a></li><li data-type='method'><a href="streaming.html#min">min</a></li><li data-type='method'><a href="streaming.html#simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#stdev">stdev</a></li><li data-type='method'><a href="streaming.html#sum">sum</a></li><li data-type='method'><a href="streaming.html#summary">summary</a></li></ul></li></ul>
+  </nav>
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Thu May 30 2019 10:18:49 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sat Jul 27 2019 10:13:04 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
 
 
+
+<script src="https://embed.runkit.com"></script>
+<script type="text/javascript">
+  var els = document.getElementsByClassName("runkit");
+
+  Array.prototype.forEach.call(els, function(el) {
+    // Do stuff here
+    var source = el.innerHTML;
+    el.innerHTML = '';
+    var n = RunKit.createNotebook( {
+      element: el,
+      source: source
+    } );
+  });
+</script>
 </body>
 </html>

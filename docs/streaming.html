@@ -35,7 +35,6 @@
     room: 'winkjs/Lobby'
   };
   window.onload = function () {
-      console.log(1);
       document.querySelector('.gitter-open-chat-button').innerText = 'Need help?'
       document.querySelector('.gitter-open-chat-button').style.display = 'block';
   }
@@ -78,6 +77,8 @@ body {
 
 .navbar a.navbar-brand {
   margin-left: 20px;
+  display: block;
+  min-width: 40px;
 }
 
 .navbar-right {
@@ -96,10 +97,6 @@ body {
 }
 
 /* Override docdash */
-nav {
-  top: 80px;
-}
-
 #main {
   margin-top: 30px;
 }
@@ -128,6 +125,14 @@ window.addEventListener('DOMContentLoaded', function () {
       window.scrollTo( 0, (window.pageYOffset || document.documentElement.scrollTop) - 72);
     }, 0)
   }
+
+  document.getElementById('toc-button').addEventListener('click', function () {
+      if (document.getElementById('side-nav').className === '') {
+        document.getElementById('side-nav').className = 'is-open';
+      } else {
+        document.getElementById('side-nav').className = '';
+      }
+  })
 });
 
 window.addEventListener( 'hashchange', function (e) {
@@ -149,38 +154,34 @@ function openMember() {
       <div class="navbar-header">
         <a href="https://winkjs.org/" title="wink" class="navbar-brand">
           <img src="https://winkjs.org/images/logo.svg">
-          wink
+          <span>wink</span>
         </a>
       </div>
-      <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
-        <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
-        <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
-        <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
-        <li><a href="http://github.com/winkjs">Github</a></li>
-        <li><a href="https://winkjs.org/about.html" class="">About</a></li>
-      </ul>
+      <div class="sausage-links">
+        <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
+          <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
+          <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
+          <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
+          <li><a href="http://github.com/winkjs">Github</a></li>
+          <li><a href="https://winkjs.org/about.html" class="">About</a></li>
+        </div>
+      </nav>
     </div>
 </header>
 
+<div id="toc-button">
+  <img src="/menu.svg" alt="">
+</div>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
+<div class="content-container">
+  <div class="main-container">
+    <div id="main">
+        
+        <h1 class="page-title">streaming</h1>
+        
 
-<nav >
-    
-    <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Stream.html">Stream</a><ul class='methods'><li data-type='method'><a href="Stream.html#build">build</a></li><li data-type='method'><a href="Stream.html#compute">compute</a></li><li data-type='method'><a href="Stream.html#reset">reset</a></li><li data-type='method'><a href="Stream.html#result">result</a></li><li data-type='method'><a href="Stream.html#value">value</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#covariance">covariance</a></li><li data-type='method'><a href="streaming.html#freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#max">max</a></li><li data-type='method'><a href="streaming.html#mean">mean</a></li><li data-type='method'><a href="streaming.html#min">min</a></li><li data-type='method'><a href="streaming.html#simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#stdev">stdev</a></li><li data-type='method'><a href="streaming.html#sum">sum</a></li><li data-type='method'><a href="streaming.html#summary">summary</a></li></ul></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">streaming</h1>
-    
-
-    
+        
 
 
 
@@ -189,9 +190,9 @@ function openMember() {
 
 <header>
     
-        <h2>
+        <!--<h2>
         streaming
-        </h2>
+        </h2>-->
         
     
 </header>
@@ -204,12 +205,12 @@ function openMember() {
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-statistics.js.html">wink-statistics.js</a>, <a href="wink-statistics.js.html#line67">line 67</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -260,7 +261,7 @@ a <a href="Stream.html">Stream</a>.</p></div>
     
 
     
-    
+
     
 
      
@@ -277,7 +278,10 @@ a <a href="Stream.html">Stream</a>.</p></div>
 
     
 
-    <h4 class="name" id="covariance"><span class="type-signature"></span>covariance<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="covariance">
+      covariance
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>covariance<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -286,12 +290,12 @@ a <a href="Stream.html">Stream</a>.</p></div>
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-cov.js.html">streaming-cov.js</a>, <a href="streaming-cov.js.html#line64">line 64</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -383,7 +387,7 @@ covariance.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -401,6 +405,7 @@ covariance.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -408,12 +413,17 @@ covariance.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="freqTable"><span class="type-signature"></span>freqTable<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="freqTable">
+      freqTable
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>freqTable<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -422,12 +432,12 @@ covariance.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-freq-table.js.html">streaming-freq-table.js</a>, <a href="streaming-freq-table.js.html#line80">line 80</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -532,7 +542,7 @@ ft.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -550,6 +560,7 @@ ft.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -557,12 +568,17 @@ ft.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="max"><span class="type-signature"></span>max<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="max">
+      max
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>max<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -571,12 +587,12 @@ ft.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-max.js.html">streaming-max.js</a>, <a href="streaming-max.js.html#line50">line 50</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -656,7 +672,7 @@ maximum.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -674,6 +690,7 @@ maximum.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -681,12 +698,17 @@ maximum.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="mean"><span class="type-signature"></span>mean<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="mean">
+      mean
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>mean<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -695,12 +717,12 @@ maximum.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-mean.js.html">streaming-mean.js</a>, <a href="streaming-mean.js.html#line55">line 55</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -783,7 +805,7 @@ avg.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -801,6 +823,7 @@ avg.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -808,12 +831,17 @@ avg.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="min"><span class="type-signature"></span>min<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="min">
+      min
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>min<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -822,12 +850,12 @@ avg.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-min.js.html">streaming-min.js</a>, <a href="streaming-min.js.html#line50">line 50</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -907,7 +935,7 @@ minimum.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -925,6 +953,7 @@ minimum.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -932,12 +961,17 @@ minimum.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="simpleLinearRegression"><span class="type-signature"></span>simpleLinearRegression<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="simpleLinearRegression">
+      simpleLinearRegression
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>simpleLinearRegression<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -946,12 +980,12 @@ minimum.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-slr.js.html">streaming-slr.js</a>, <a href="streaming-slr.js.html#line68">line 68</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -1046,7 +1080,7 @@ regression.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -1064,6 +1098,7 @@ regression.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -1071,12 +1106,17 @@ regression.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="stdev"><span class="type-signature"></span>stdev<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="stdev">
+      stdev
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>stdev<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -1085,12 +1125,12 @@ regression.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-stdev.js.html">streaming-stdev.js</a>, <a href="streaming-stdev.js.html#line62">line 62</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -1180,7 +1220,7 @@ sd.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -1198,6 +1238,7 @@ sd.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -1205,12 +1246,17 @@ sd.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="sum"><span class="type-signature"></span>sum<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="sum">
+      sum
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>sum<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -1219,12 +1265,12 @@ sd.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-sum.js.html">streaming-sum.js</a>, <a href="streaming-sum.js.html#line54">line 54</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -1306,7 +1352,7 @@ addition.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -1324,6 +1370,7 @@ addition.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
@@ -1331,12 +1378,17 @@ addition.result();
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="summary"><span class="type-signature"></span>summary<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></h4>
+    <h4 class="name" id="summary">
+      summary
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>summary<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Stream.html">Stream</a>}</span></div
 
     
 
@@ -1345,12 +1397,12 @@ addition.result();
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="streaming-summary.js.html">streaming-summary.js</a>, <a href="streaming-summary.js.html#line60">line 60</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -1438,7 +1490,7 @@ ss.result();
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -1456,12 +1508,15 @@ ss.result();
 <span class="param-type"><a href="Stream.html">Stream</a></span>
 
 
+
     </dd>
 </dl>
 
     
 
 
+
+<hr>
 
         
     
@@ -1477,18 +1532,40 @@ ss.result();
 
 
 
-    
+        
+    </div>
+  </div>
+
+  <nav  id="side-nav">
+      
+      <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-statistics" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Stream.html">Stream</a><ul class='methods'><li data-type='method'><a href="Stream.html#build">build</a></li><li data-type='method'><a href="Stream.html#compute">compute</a></li><li data-type='method'><a href="Stream.html#reset">reset</a></li><li data-type='method'><a href="Stream.html#result">result</a></li><li data-type='method'><a href="Stream.html#value">value</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="data.html">data</a><ul class='methods'><li data-type='method'><a href="data.html#.boxplot">boxplot</a></li><li data-type='method'><a href="data.html#.fiveNumSummary">fiveNumSummary</a></li><li data-type='method'><a href="data.html#.histogram">histogram</a></li><li data-type='method'><a href="data.html#.mad">mad</a></li><li data-type='method'><a href="data.html#.max">max</a></li><li data-type='method'><a href="data.html#.mean">mean</a></li><li data-type='method'><a href="data.html#.median">median</a></li><li data-type='method'><a href="data.html#.min">min</a></li><li data-type='method'><a href="data.html#.percentile">percentile</a></li><li data-type='method'><a href="data.html#.stdev">stdev</a></li></ul></li><li><a href="probability.html">probability</a><ul class='methods'><li data-type='method'><a href="probability.html#.aggregate">aggregate</a></li><li data-type='method'><a href="probability.html#.range4CI">range4CI</a></li></ul></li><li><a href="streaming.html">streaming</a><ul class='methods'><li data-type='method'><a href="streaming.html#covariance">covariance</a></li><li data-type='method'><a href="streaming.html#freqTable">freqTable</a></li><li data-type='method'><a href="streaming.html#max">max</a></li><li data-type='method'><a href="streaming.html#mean">mean</a></li><li data-type='method'><a href="streaming.html#min">min</a></li><li data-type='method'><a href="streaming.html#simpleLinearRegression">simpleLinearRegression</a></li><li data-type='method'><a href="streaming.html#stdev">stdev</a></li><li data-type='method'><a href="streaming.html#sum">sum</a></li><li data-type='method'><a href="streaming.html#summary">summary</a></li></ul></li></ul>
+  </nav>
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Thu May 30 2019 10:18:49 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sat Jul 27 2019 10:13:04 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
 
 
+
+<script src="https://embed.runkit.com"></script>
+<script type="text/javascript">
+  var els = document.getElementsByClassName("runkit");
+
+  Array.prototype.forEach.call(els, function(el) {
+    // Do stuff here
+    var source = el.innerHTML;
+    el.innerHTML = '';
+    var n = RunKit.createNotebook( {
+      element: el,
+      source: source
+    } );
+  });
+</script>
 </body>
 </html>
