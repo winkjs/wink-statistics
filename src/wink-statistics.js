@@ -93,7 +93,7 @@ ws.streaming.summary = require( './streaming-summary.js' );
 module.exports = ws;
 
 /**
- * @classdesc All functions under [`streaming`](http://winkjs.org/wink-statistics/streaming.html)
+ * @classdesc All functions under [`streaming`](https://winkjs.org/wink-statistics/streaming.html)
  * namespace return an object of this class. These compute the required result(s) from the stream
  * of data arriving in real time.
  * @class Stream

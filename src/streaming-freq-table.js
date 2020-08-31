@@ -35,10 +35,10 @@ var getValidFD = require( './get-valid-fd.js' );
  * Frequency table is built incrementally with arrival of each value from the
  * stream of data.
  *
- * The [`build()`](http://winkjs.org/wink-statistics/Stream.html#build) requires
+ * The [`build()`](https://winkjs.org/wink-statistics/Stream.html#build) requires
  * a single argument, which could be either a string or numeric value.
  *
- * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * The [`result()`](https://winkjs.org/wink-statistics/Stream.html#result) returns
  * an object containing the frequency `table` sorted in descending order of
  * category frequency, along with table `size`, `sum` of frequencies,
  * `x2` — chi-squared statistic, `df` — degree of freedom, and the

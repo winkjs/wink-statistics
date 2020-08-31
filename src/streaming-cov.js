@@ -33,10 +33,10 @@ var getValidFD = require( './get-valid-fd.js' );
  * Covariance is computed incrementally with arrival of each pair of `x` and `y`
  * values from a stream of data.
  *
- * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * The [`compute()`](https://winkjs.org/wink-statistics/Stream.html#compute) requires
  * two numeric arguments `x` and `y`.
  *
- * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * The [`result()`](https://winkjs.org/wink-statistics/Stream.html#result) returns
  * an object containing sample covariance `cov`, along with
  * `meanX`, `meanY` and `size` of data i.e. number of x & y pairs. It also contains
  * population covariance `covp`.

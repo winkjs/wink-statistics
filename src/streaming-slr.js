@@ -33,13 +33,13 @@ var getValidFD = require( './get-valid-fd.js' );
  * Linear Regression is determined incrementally with arrival of each pair of `x`
  * and `y` values from the data stream.
  *
- * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * The [`compute()`](https://winkjs.org/wink-statistics/Stream.html#compute) requires
  * two numeric arguments viz. `x` — independant variable and `y` — dependant variable.
  *
- * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * The [`result()`](https://winkjs.org/wink-statistics/Stream.html#result) returns
  * an object containing `slope`, `intercept`, `r`, `r2`, `se` along with
  * the `size` of data i.e. number of x & y pairs. It has an alias
- * [`value()`](http://winkjs.org/wink-statistics/Stream.html#value).
+ * [`value()`](https://winkjs.org/wink-statistics/Stream.html#value).
  *
  * *In case of any error such as no
  * input data or zero variance, correlation object will be an empty one*.

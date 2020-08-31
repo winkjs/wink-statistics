@@ -32,11 +32,11 @@ var getValidFD = require( './get-valid-fd.js' );
  *
  * Mean is computed incrementally with arrival of each value from the data stream.
  *
- * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * The [`compute()`](https://winkjs.org/wink-statistics/Stream.html#compute) requires
  * a single numeric value as argument.
  * The computations are inspired by the method proposed by [B. P. Welford](http://dx.doi.org/10.1080/00401706.1962.10490022).
  *
- * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * The [`result()`](https://winkjs.org/wink-statistics/Stream.html#result) returns
  * an object containing sample `mean` along with `size` of data.
  *
  * @memberof streaming#

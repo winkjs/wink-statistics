@@ -30,10 +30,10 @@
  *
  * Maximum value is determined incrementally with arrival of each value from the data stream.
  *
- * The [`compute()`](http://winkjs.org/wink-statistics/Stream.html#compute) requires
+ * The [`compute()`](https://winkjs.org/wink-statistics/Stream.html#compute) requires
  * a single numeric value as argument.
  *
- * The [`result()`](http://winkjs.org/wink-statistics/Stream.html#result) returns
+ * The [`result()`](https://winkjs.org/wink-statistics/Stream.html#result) returns
  * an object containing `max`.
  *
  * @memberof streaming#

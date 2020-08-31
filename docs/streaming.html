@@ -337,9 +337,9 @@ a <a href="Stream.html">Stream</a>.</p></div>
 <div class="description">
     <p>Covariance is computed incrementally with arrival of each pair of <code>x</code> and <code>y</code>
 values from a stream of data.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 two numeric arguments <code>x</code> and <code>y</code>.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing sample covariance <code>cov</code>, along with
 <code>meanX</code>, <code>meanY</code> and <code>size</code> of data i.e. number of x &amp; y pairs. It also contains
 population covariance <code>covp</code>.</p>
@@ -479,9 +479,9 @@ covariance.result();
 <div class="description">
     <p>Frequency table is built incrementally with arrival of each value from the
 stream of data.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#build"><code>build()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#build"><code>build()</code></a> requires
 a single argument, which could be either a string or numeric value.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing the frequency <code>table</code> sorted in descending order of
 category frequency, along with table <code>size</code>, <code>sum</code> of frequencies,
 <code>x2</code> — chi-squared statistic, <code>df</code> — degree of freedom, and the
@@ -633,9 +633,9 @@ ft.result();
 
 <div class="description">
     <p>Maximum value is determined incrementally with arrival of each value from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 a single numeric value as argument.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing <code>max</code>.</p>
 </div>
 
@@ -763,10 +763,10 @@ maximum.result();
 
 <div class="description">
     <p>Mean is computed incrementally with arrival of each value from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 a single numeric value as argument.
 The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing sample <code>mean</code> along with <code>size</code> of data.</p>
 </div>
 
@@ -896,9 +896,9 @@ avg.result();
 
 <div class="description">
     <p>Minimum value is determined incrementally with arrival of each value from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 a single numeric value as argument.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing <code>min</code>.</p>
 </div>
 
@@ -1027,12 +1027,12 @@ minimum.result();
 <div class="description">
     <p>Linear Regression is determined incrementally with arrival of each pair of <code>x</code>
 and <code>y</code> values from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 two numeric arguments viz. <code>x</code> — independant variable and <code>y</code> — dependant variable.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing <code>slope</code>, <code>intercept</code>, <code>r</code>, <code>r2</code>, <code>se</code> along with
 the <code>size</code> of data i.e. number of x &amp; y pairs. It has an alias
-<a href="http://winkjs.org/wink-statistics/Stream.html#value"><code>value()</code></a>.</p>
+<a href="https://winkjs.org/wink-statistics/Stream.html#value"><code>value()</code></a>.</p>
 <p><em>In case of any error such as no
 input data or zero variance, correlation object will be an empty one</em>.</p>
 </div>
@@ -1171,10 +1171,10 @@ regression.result();
 
 <div class="description">
     <p>Standard Deviation is computed incrementally with arrival of each value from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 a single numeric value as argument.
 The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 returns an object containing sample <code>stdev</code> and
 <code>variance</code>, along with <code>mean</code>, <code>size</code> of data; it also
 contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
@@ -1311,9 +1311,9 @@ sd.result();
 
 <div class="description">
     <p>Sum is computed incrementally with arrival of each value from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 a single numeric value as argument.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing <code>sum</code>.</p>
 </div>
 
@@ -1443,10 +1443,10 @@ addition.result();
 
 <div class="description">
     <p>Summary Statistics is computed incrementally with arrival of each value from the data stream.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#compute"><code>compute()</code></a> requires
 a single numeric value as argument.
 The computations are inspired by the method proposed by <a href="http://dx.doi.org/10.1080/00401706.1962.10490022">B. P. Welford</a>.</p>
-<p>The <a href="http://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
+<p>The <a href="https://winkjs.org/wink-statistics/Stream.html#result"><code>result()</code></a> returns
 an object containing <code>size</code>, <code>min</code>, <code>mean</code>, <code>max</code>, sample <code>stdev</code> along with
 sample <code>variance</code> of data; it also
 contains population standard deviation and variance as <code>stdevp</code> and <code>variancep</code>.</p>
@@ -1547,7 +1547,7 @@ ss.result();
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Mon Aug 31 2020 22:20:54 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Mon Aug 31 2020 22:31:41 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
