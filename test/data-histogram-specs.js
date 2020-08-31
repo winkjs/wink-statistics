@@ -49,6 +49,52 @@ describe( 'data-histogram normal behaviour', function () {
   var data3 = [ 1, 2, 2, 2, 2, 2, 3 ];
   var data4 = [ 9, 9.19, 9.29, 9.39, 9.49, 9.5, 9.6, 9.7, 9.8, 9.9 ];
 
+  var sparseData = [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+    90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90,
+    200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,
+    800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800
+  ];
+
+  var sparseDataOutput = {
+    classes: [
+      { min: 0, mid: 45, max: 89 },
+      { min: 89, mid: 134, max: 178 },
+      { min: 178, mid: 223, max: 267 },
+      { min: 267, mid: 312, max: 356 },
+      { min: 356, mid: 401, max: 445 },
+      { min: 445, mid: 490, max: 534 },
+      { min: 534, mid: 579, max: 623 },
+      { min: 623, mid: 668, max: 712 },
+      { min: 712, mid: 757, max: 801 }
+    ],
+    frequencies: [ 117, 28, 32,  0, 0, 0,  0,  0, 32 ],
+    q1: 10,
+    q3: 200,
+    iqr: 190,
+    size: 209,
+    min: 0,
+    max: 800,
+    range: 800
+  };
+
+  var singleBinData = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ];
+  var singleBinDataOutput = {
+    classes: [ { min: 1, mid: 2, max: 2 } ],
+    frequencies: [ 55 ],
+    q1: 1,
+    q3: 1,
+    iqr: 0,
+    size: 55,
+    min: 1,
+    max: 1,
+    range: 0,
+    mad: 0
+  };
+
   it( 'should return minimum boxplot analysis with data1, data2, data3 respectively', function () {
     expect( +bp( data1 ).q1.toFixed( 2 ) ).to.equal( 20 );
     expect( +bp( data1 ).iqr.toFixed( 2 ) ).to.equal( 20 );
@@ -71,6 +117,14 @@ describe( 'data-histogram normal behaviour', function () {
     // expect( bp( data2, 1.5, ( e ) =>  e[ 0 ] ).leftOutliers ).to.deep.equal( { begin: 0, end: 0, count: 1, fence: 1 } );
     // expect( bp( data2, 1.5, ( e ) =>  e[ 0 ] ).rightOutliers ).to.deep.equal( { begin: 7, end: 7, count: 1, fence: 4 } );
     expect( +bp( data3 ).iqr.toFixed( 2 ) ).to.equal( 0 );
+  } );
+
+  it( 'should return boxplot analysis for sparse data', function () {
+    expect( bp( sparseData ) ).to.deep.equal( sparseDataOutput );
+  } );
+
+  it( 'should return boxplot analysis for single bin data', function () {
+    expect( bp( singleBinData ) ).to.deep.equal( singleBinDataOutput );
   } );
 } );
 

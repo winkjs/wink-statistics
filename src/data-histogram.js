@@ -166,7 +166,7 @@ var histogram = function ( sortedData, dataPrecision, accessor ) {
       bins = Math.max( Math.ceil( Math.log2( rs.size ) + 1 ), 5 );
       binWidth = rs.range /  bins;
       binWidth = +binWidth.toFixed( precision );
-      if ( binWidth === 0 ) binWidth = 1;
+      binWidth = Math.max( binWidth, 1 );
       bins = Math.ceil( rs.range / binWidth );
       histo = distribution( bins, binWidth, sortedData, rs, precision, accessor );
     }
@@ -176,8 +176,8 @@ var histogram = function ( sortedData, dataPrecision, accessor ) {
     binWidth = rs.range /  bins;
     // Adjust `binWidth` according to `precision` and recompute everything.
     binWidth = +binWidth.toFixed( precision );
-    if ( binWidth === 0 ) binWidth = 1;
-    bins = Math.ceil( rs.range / binWidth );
+    binWidth = Math.max( binWidth, 1 );
+    bins = Math.max( Math.ceil( rs.range / binWidth ), 1 );
     histo = distribution( bins, binWidth, sortedData, rs, precision, accessor );
   }
 
