@@ -11,6 +11,7 @@ Perform fast and numerically stable statistical analysis using **`wink-statistic
 ### Functions
 1. [Boxplot](https://winkjs.org/wink-statistics/data.html#.boxplot)
 1. [Covariance](https://winkjs.org/wink-statistics/streaming.html#covariance)
+1. [Difference with definable lag](https://winkjs.org/wink-statistics/data.html#.difference)
 1. [Five Number Summary](https://winkjs.org/wink-statistics/data.html#.fiveNumSummary)
 1. [Frequency Table](https://winkjs.org/wink-statistics/streaming.html#freqTable)
 1. [Histogram](https://winkjs.org/wink-statistics/data.html#.histogram)
