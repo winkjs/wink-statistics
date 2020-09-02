@@ -42,23 +42,25 @@ ws.probability.aggregate = require( './probability-aggregate.js' );
 ws.data = Object.create( null );
 // 1. boxplot
 ws.data.boxplot = require( './data-boxplot.js' );
-// 2. fiveNumSummary
+// 2. difference
+ws.data.difference = require( './data-difference' );
+// 3. fiveNumSummary
 ws.data.fiveNumSummary = require( './data-five-num-summary.js' );
-// 3. histogram
+// 4. histogram
 ws.data.histogram = require( './data-histogram.js' );
-// 4. mad
+// 5. mad
 ws.data.mad = require( './data-mad.js' );
-// 5. max
+// 6. max
 ws.data.max = require( './data-max.js' );
-// 6. mean
+// 7. mean
 ws.data.mean = require( './data-mean.js' );
-// 7. median
+// 8. median
 ws.data.median = require( './data-median.js' );
-// 8. min
+// 9. min
 ws.data.min = require( './data-min.js' );
-// 9. percentile
+// 10. percentile
 ws.data.percentile = require( './data-percentile.js' );
-// 10. stdev
+// 11. stdev
 ws.data.stdev = require( './data-stdev.js' );
 
 // Alias TODO
