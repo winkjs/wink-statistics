@@ -28,7 +28,7 @@
 // Load wink helpers for validation.
 var helpers = require( 'wink-helpers' );
 
-// ### Percentile
+// ### Difference
 
 /**
  * Computes the difference between each n<sup>th</sup> successive element of the
