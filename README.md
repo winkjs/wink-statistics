@@ -28,6 +28,10 @@ Perform fast and numerically stable statistical analysis using **`wink-statistic
 1. [Standard Deviation](https://winkjs.org/wink-statistics/streaming.html#stdev)
 1. [Summary statistics](https://winkjs.org/wink-statistics/streaming.html#summary)
 
+<table><tr><td>
+    <h4>Use <a href="https://github.com/winkjs/wink-nlp">wink-nlp</a> if your are looking for an integrated NLP package✨</h4>
+    <a href="https://github.com/winkjs/wink-nlp">WinkNLP</a> is a <b>developer friendly</b> JavaScript library for Natural Language Processing. Designed specifically to make development of NLP solutions <b>easier</b> and <b>faster</b>, winkNLP is optimized for the right balance of performance and accuracy. The package can handle large amount of raw text at speeds <a href="https://github.com/winkjs/wink-nlp#speed--accuracy">over 525,000 tokens/second</a> for the <a href="https://winkjs.org/wink-nlp/processing-pipeline.html">entire NLP pipeline</a>.
+</td></tr></table>
 
 ## Installation
 
